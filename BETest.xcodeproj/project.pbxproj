@@ -13,16 +13,14 @@
 		EA413A282525E97F00107D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA413A272525E97F00107D4A /* Assets.xcassets */; };
 		EA413A2B2525E97F00107D4A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA413A2A2525E97F00107D4A /* Preview Assets.xcassets */; };
 		EA413A2E2525E97F00107D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA413A2C2525E97F00107D4A /* LaunchScreen.storyboard */; };
-		EA413A392525E97F00107D4A /* BETestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A382525E97F00107D4A /* BETestTests.swift */; };
 		EA413A442525E97F00107D4A /* BETestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A432525E97F00107D4A /* BETestUITests.swift */; };
 		EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A6A2525EBFA00107D4A /* Observer.swift */; };
 		EA413A762525EC0F00107D4A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A752525EC0F00107D4A /* Store.swift */; };
 		EA413A7B2525EF5600107D4A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A7A2525EF5600107D4A /* AppState.swift */; };
 		EA413A802525F00C00107D4A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A7F2525F00C00107D4A /* Action.swift */; };
 		EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A862525F07A00107D4A /* TextDataSource.swift */; };
-		EA413A8C2525F08300107D4A /* TextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A8B2525F08300107D4A /* TextReader.swift */; };
+		EA413A8C2525F08300107D4A /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A8B2525F08300107D4A /* SpeechSynthesizer.swift */; };
 		EA413A912525F27200107D4A /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A902525F27200107D4A /* TextData.swift */; };
-		EA413A972525F38A00107D4A /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A962525F38A00107D4A /* Reader.swift */; };
 		EA413A9F2525FEDE00107D4A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A9E2525FEDE00107D4A /* Command.swift */; };
 		EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AA62525FF2300107D4A /* EnvironmentStore.swift */; };
 		EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AAE2526009C00107D4A /* UIBinder.swift */; };
@@ -31,6 +29,10 @@
 		EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC02526069000107D4A /* TimeEventsEmitter.swift */; };
 		EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC82526071D00107D4A /* CurrentTime.swift */; };
 		EA413ACE2526073A00107D4A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ACD2526073A00107D4A /* Time.swift */; };
+		EA413ADE252611AF00107D4A /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A962525F38A00107D4A /* Prompter.swift */; };
+		EA413AE3252618A800107D4A /* PrompterFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AE2252618A800107D4A /* PrompterFlow.swift */; };
+		EA413AEB25263CA000107D4A /* PrompterItemsArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AEA25263CA000107D4A /* PrompterItemsArrayTests.swift */; };
+		EA413AF325264EEB00107D4A /* PrompterAvailableForSpeechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AF225264EEB00107D4A /* PrompterAvailableForSpeechTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,6 @@
 		EA413A2D2525E97F00107D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA413A2F2525E97F00107D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA413A342525E97F00107D4A /* BETestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BETestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA413A382525E97F00107D4A /* BETestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BETestTests.swift; sourceTree = "<group>"; };
 		EA413A3A2525E97F00107D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA413A3F2525E97F00107D4A /* BETestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BETestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA413A432525E97F00107D4A /* BETestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BETestUITests.swift; sourceTree = "<group>"; };
@@ -70,9 +71,9 @@
 		EA413A7A2525EF5600107D4A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		EA413A7F2525F00C00107D4A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		EA413A862525F07A00107D4A /* TextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDataSource.swift; sourceTree = "<group>"; };
-		EA413A8B2525F08300107D4A /* TextReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReader.swift; sourceTree = "<group>"; };
+		EA413A8B2525F08300107D4A /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		EA413A902525F27200107D4A /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
-		EA413A962525F38A00107D4A /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
+		EA413A962525F38A00107D4A /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		EA413A9E2525FEDE00107D4A /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		EA413AA62525FF2300107D4A /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
 		EA413AAE2526009C00107D4A /* UIBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBinder.swift; sourceTree = "<group>"; };
@@ -81,6 +82,9 @@
 		EA413AC02526069000107D4A /* TimeEventsEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsEmitter.swift; sourceTree = "<group>"; };
 		EA413AC82526071D00107D4A /* CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTime.swift; sourceTree = "<group>"; };
 		EA413ACD2526073A00107D4A /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		EA413AE2252618A800107D4A /* PrompterFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterFlow.swift; sourceTree = "<group>"; };
+		EA413AEA25263CA000107D4A /* PrompterItemsArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterItemsArrayTests.swift; sourceTree = "<group>"; };
+		EA413AF225264EEB00107D4A /* PrompterAvailableForSpeechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterAvailableForSpeechTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +160,8 @@
 		EA413A372525E97F00107D4A /* BETestTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A382525E97F00107D4A /* BETestTests.swift */,
+				EA413AEA25263CA000107D4A /* PrompterItemsArrayTests.swift */,
+				EA413AF225264EEB00107D4A /* PrompterAvailableForSpeechTests.swift */,
 				EA413A3A2525E97F00107D4A /* Info.plist */,
 			);
 			path = BETestTests;
@@ -194,7 +199,7 @@
 		EA413A562525E9CF00107D4A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A962525F38A00107D4A /* Reader.swift */,
+				EA413A962525F38A00107D4A /* Prompter.swift */,
 				EA413AC82526071D00107D4A /* CurrentTime.swift */,
 			);
 			path = Components;
@@ -204,9 +209,10 @@
 			isa = PBXGroup;
 			children = (
 				EA413A7F2525F00C00107D4A /* Action.swift */,
+				EA413AE2252618A800107D4A /* PrompterFlow.swift */,
 				EA413A862525F07A00107D4A /* TextDataSource.swift */,
 				EA413ACD2526073A00107D4A /* Time.swift */,
-				EA413A8B2525F08300107D4A /* TextReader.swift */,
+				EA413A8B2525F08300107D4A /* SpeechSynthesizer.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -450,15 +456,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA413ADE252611AF00107D4A /* Prompter.swift in Sources */,
 				EA413A912525F27200107D4A /* TextData.swift in Sources */,
 				EA413ACE2526073A00107D4A /* Time.swift in Sources */,
-				EA413A8C2525F08300107D4A /* TextReader.swift in Sources */,
+				EA413A8C2525F08300107D4A /* SpeechSynthesizer.swift in Sources */,
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */,
+				EA413AE3252618A800107D4A /* PrompterFlow.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
-				EA413A972525F38A00107D4A /* Reader.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
@@ -476,7 +483,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA413A392525E97F00107D4A /* BETestTests.swift in Sources */,
+				EA413AEB25263CA000107D4A /* PrompterItemsArrayTests.swift in Sources */,
+				EA413AF325264EEB00107D4A /* PrompterAvailableForSpeechTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
