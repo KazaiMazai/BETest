@@ -27,6 +27,10 @@
 		EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AA62525FF2300107D4A /* EnvironmentStore.swift */; };
 		EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AAE2526009C00107D4A /* UIBinder.swift */; };
 		EA413AB4252604F800107D4A /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AB3252604F800107D4A /* EnvironmentProvider.swift */; };
+		EA413ABC2526061900107D4A /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ABB2526061900107D4A /* AppDI.swift */; };
+		EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC02526069000107D4A /* TimeEventsEmitter.swift */; };
+		EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC82526071D00107D4A /* CurrentTime.swift */; };
+		EA413ACE2526073A00107D4A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ACD2526073A00107D4A /* Time.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		EA413AA62525FF2300107D4A /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
 		EA413AAE2526009C00107D4A /* UIBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBinder.swift; sourceTree = "<group>"; };
 		EA413AB3252604F800107D4A /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
+		EA413ABB2526061900107D4A /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
+		EA413AC02526069000107D4A /* TimeEventsEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsEmitter.swift; sourceTree = "<group>"; };
+		EA413AC82526071D00107D4A /* CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTime.swift; sourceTree = "<group>"; };
+		EA413ACD2526073A00107D4A /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413A962525F38A00107D4A /* Reader.swift */,
+				EA413AC82526071D00107D4A /* CurrentTime.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -196,6 +205,7 @@
 			children = (
 				EA413A7F2525F00C00107D4A /* Action.swift */,
 				EA413A862525F07A00107D4A /* TextDataSource.swift */,
+				EA413ACD2526073A00107D4A /* Time.swift */,
 				EA413A8B2525F08300107D4A /* TextReader.swift */,
 			);
 			path = Actions;
@@ -215,7 +225,7 @@
 			children = (
 				EA413A5A2525E9CF00107D4A /* AppUI */,
 				EA413A5B2525E9CF00107D4A /* AppDI */,
-				EA413A5C2525E9CF00107D4A /* ReduxExtensions */,
+				EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */,
 				EA413A5D2525E9CF00107D4A /* AppSideEffects */,
 			);
 			path = App;
@@ -233,11 +243,12 @@
 		EA413A5B2525E9CF00107D4A /* AppDI */ = {
 			isa = PBXGroup;
 			children = (
+				EA413ABB2526061900107D4A /* AppDI.swift */,
 			);
 			path = AppDI;
 			sourceTree = "<group>";
 		};
-		EA413A5C2525E9CF00107D4A /* ReduxExtensions */ = {
+		EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */ = {
 			isa = PBXGroup;
 			children = (
 				EA413A9E2525FEDE00107D4A /* Command.swift */,
@@ -245,12 +256,13 @@
 				EA413AAE2526009C00107D4A /* UIBinder.swift */,
 				EA413AB3252604F800107D4A /* EnvironmentProvider.swift */,
 			);
-			path = ReduxExtensions;
+			path = SwiftUIReduxExtensions;
 			sourceTree = "<group>";
 		};
 		EA413A5D2525E9CF00107D4A /* AppSideEffects */ = {
 			isa = PBXGroup;
 			children = (
+				EA413AC02526069000107D4A /* TimeEventsEmitter.swift */,
 			);
 			path = AppSideEffects;
 			sourceTree = "<group>";
@@ -439,15 +451,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA413A912525F27200107D4A /* TextData.swift in Sources */,
+				EA413ACE2526073A00107D4A /* Time.swift in Sources */,
 				EA413A8C2525F08300107D4A /* TextReader.swift in Sources */,
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
+				EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
+				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
 				EA413A972525F38A00107D4A /* Reader.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
+				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
 				EA413AB4252604F800107D4A /* EnvironmentProvider.swift in Sources */,
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
