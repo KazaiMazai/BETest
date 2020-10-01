@@ -8,33 +8,25 @@
 import SwiftUI
 
 struct AppDI {
-    let store: Store<AppState, Action>
-    let envStore: EnvironmentStore
-
+    let environmentStore: EnvironmentStore
     let timeEventsEmitter: TimeEventsEmitter
 
     init() {
         let state = AppState()
 
-        store = Store(initial: state) { state, action in
+        let store = Store<AppState, Action>(initial: state) { state, action in
             defer { state.reduce(action) }
             print("Reduce: \t\t \(String(reflecting: action))")
         }
 
-        envStore = EnvironmentStore(store: store)
+        environmentStore = EnvironmentStore(store: store)
         timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
 
         subscribeToStore()
     }
+}
 
-    fileprivate func subscribeToStore() {
-        store.subscribe(observer: timeEventsEmitter.asObserver)
-    }
-
-    fileprivate func rootViewWith<V: View>(view: V) -> some View {
-        EnvironmentProvider(store: envStore) { view }
-    }
-
+extension AppDI {
     func launchUIWith(scene: UIScene) -> UIWindow? {
         guard let windowScene = scene as? UIWindowScene else {
             return nil
@@ -46,5 +38,15 @@ struct AppDI {
 
         window.rootViewController = UIHostingController(rootView: rootView)
         return window
+    }
+}
+
+extension AppDI {
+    private func subscribeToStore() {
+        environmentStore.store.subscribe(observer: timeEventsEmitter.asObserver)
+    }
+
+    private func rootViewWith<V: View>(view: V) -> some View {
+        EnvironmentProvider(store: environmentStore) { view }
     }
 }
