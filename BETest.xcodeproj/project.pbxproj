@@ -99,6 +99,10 @@
 		EA413A202525E97E00107D4A /* BETest */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A5E2525E9D600107D4A /* Library */,
+				EA413A592525E9CF00107D4A /* App */,
+				EA413A542525E9CF00107D4A /* Core */,
+				EA413A582525E9CF00107D4A /* Redux */,
 				EA413A212525E97E00107D4A /* AppDelegate.swift */,
 				EA413A232525E97E00107D4A /* SceneDelegate.swift */,
 				EA413A252525E97E00107D4A /* ContentView.swift */,
@@ -134,6 +138,130 @@
 				EA413A452525E97F00107D4A /* Info.plist */,
 			);
 			path = BETestUITests;
+			sourceTree = "<group>";
+		};
+		EA413A542525E9CF00107D4A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EA413A552525E9CF00107D4A /* Models */,
+				EA413A562525E9CF00107D4A /* Components */,
+				EA413A572525E9CF00107D4A /* Actions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EA413A552525E9CF00107D4A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EA413A562525E9CF00107D4A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EA413A572525E9CF00107D4A /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		EA413A582525E9CF00107D4A /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		EA413A592525E9CF00107D4A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EA413A5A2525E9CF00107D4A /* AppUI */,
+				EA413A5B2525E9CF00107D4A /* AppDI */,
+				EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */,
+				EA413A5D2525E9CF00107D4A /* AppSideEffects */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EA413A5A2525E9CF00107D4A /* AppUI */ = {
+			isa = PBXGroup;
+			children = (
+				EA413A622525EAEB00107D4A /* Screens */,
+				EA413A612525EAE500107D4A /* UIComponents */,
+			);
+			path = AppUI;
+			sourceTree = "<group>";
+		};
+		EA413A5B2525E9CF00107D4A /* AppDI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppDI;
+			sourceTree = "<group>";
+		};
+		EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftUIReduxExtensions;
+			sourceTree = "<group>";
+		};
+		EA413A5D2525E9CF00107D4A /* AppSideEffects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppSideEffects;
+			sourceTree = "<group>";
+		};
+		EA413A5E2525E9D600107D4A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				EA413A602525E9E500107D4A /* SwiftUIExtensions */,
+				EA413A5F2525E9DB00107D4A /* FoundationExtensions */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		EA413A5F2525E9DB00107D4A /* FoundationExtensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FoundationExtensions;
+			sourceTree = "<group>";
+		};
+		EA413A602525E9E500107D4A /* SwiftUIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftUIExtensions;
+			sourceTree = "<group>";
+		};
+		EA413A612525EAE500107D4A /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		EA413A622525EAEB00107D4A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				EA413A632525EAF700107D4A /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		EA413A632525EAF700107D4A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
