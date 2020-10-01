@@ -18,6 +18,11 @@
 		EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A6A2525EBFA00107D4A /* Observer.swift */; };
 		EA413A762525EC0F00107D4A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A752525EC0F00107D4A /* Store.swift */; };
 		EA413A7B2525EF5600107D4A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A7A2525EF5600107D4A /* AppState.swift */; };
+		EA413A802525F00C00107D4A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A7F2525F00C00107D4A /* Action.swift */; };
+		EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A862525F07A00107D4A /* TextDataSource.swift */; };
+		EA413A8C2525F08300107D4A /* TextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A8B2525F08300107D4A /* TextReader.swift */; };
+		EA413A912525F27200107D4A /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A902525F27200107D4A /* TextData.swift */; };
+		EA413A972525F38A00107D4A /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A962525F38A00107D4A /* Reader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		EA413A6A2525EBFA00107D4A /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		EA413A752525EC0F00107D4A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		EA413A7A2525EF5600107D4A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		EA413A7F2525F00C00107D4A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		EA413A862525F07A00107D4A /* TextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDataSource.swift; sourceTree = "<group>"; };
+		EA413A8B2525F08300107D4A /* TextReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReader.swift; sourceTree = "<group>"; };
+		EA413A902525F27200107D4A /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
+		EA413A962525F38A00107D4A /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,11 +158,11 @@
 		EA413A542525E9CF00107D4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A952525F32000107D4A /* State */,
 				EA413A582525E9CF00107D4A /* ReduxStore */,
 				EA413A552525E9CF00107D4A /* Models */,
 				EA413A562525E9CF00107D4A /* Components */,
 				EA413A572525E9CF00107D4A /* Actions */,
-				EA413A7A2525EF5600107D4A /* AppState.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -160,6 +170,7 @@
 		EA413A552525E9CF00107D4A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A902525F27200107D4A /* TextData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +178,7 @@
 		EA413A562525E9CF00107D4A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A962525F38A00107D4A /* Reader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -174,6 +186,9 @@
 		EA413A572525E9CF00107D4A /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A7F2525F00C00107D4A /* Action.swift */,
+				EA413A862525F07A00107D4A /* TextDataSource.swift */,
+				EA413A8B2525F08300107D4A /* TextReader.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -261,16 +276,24 @@
 		EA413A622525EAEB00107D4A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A632525EAF700107D4A /* Main */,
+				EA413A632525EAF700107D4A /* Reader */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		EA413A632525EAF700107D4A /* Main */ = {
+		EA413A632525EAF700107D4A /* Reader */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Main;
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		EA413A952525F32000107D4A /* State */ = {
+			isa = PBXGroup;
+			children = (
+				EA413A7A2525EF5600107D4A /* AppState.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,12 +426,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA413A912525F27200107D4A /* TextData.swift in Sources */,
+				EA413A8C2525F08300107D4A /* TextReader.swift in Sources */,
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
+				EA413A972525F38A00107D4A /* Reader.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
+				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
+				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
