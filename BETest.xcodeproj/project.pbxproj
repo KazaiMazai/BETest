@@ -23,6 +23,9 @@
 		EA413A8C2525F08300107D4A /* TextReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A8B2525F08300107D4A /* TextReader.swift */; };
 		EA413A912525F27200107D4A /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A902525F27200107D4A /* TextData.swift */; };
 		EA413A972525F38A00107D4A /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A962525F38A00107D4A /* Reader.swift */; };
+		EA413A9F2525FEDE00107D4A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A9E2525FEDE00107D4A /* Command.swift */; };
+		EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AA62525FF2300107D4A /* EnvironmentStore.swift */; };
+		EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AAE2526009C00107D4A /* UIBinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		EA413A8B2525F08300107D4A /* TextReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReader.swift; sourceTree = "<group>"; };
 		EA413A902525F27200107D4A /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
 		EA413A962525F38A00107D4A /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
+		EA413A9E2525FEDE00107D4A /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		EA413AA62525FF2300107D4A /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
+		EA413AAE2526009C00107D4A /* UIBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +213,7 @@
 			children = (
 				EA413A5A2525E9CF00107D4A /* AppUI */,
 				EA413A5B2525E9CF00107D4A /* AppDI */,
-				EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */,
+				EA413A5C2525E9CF00107D4A /* ReduxExtensions */,
 				EA413A5D2525E9CF00107D4A /* AppSideEffects */,
 			);
 			path = App;
@@ -229,11 +235,14 @@
 			path = AppDI;
 			sourceTree = "<group>";
 		};
-		EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */ = {
+		EA413A5C2525E9CF00107D4A /* ReduxExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A9E2525FEDE00107D4A /* Command.swift */,
+				EA413AA62525FF2300107D4A /* EnvironmentStore.swift */,
+				EA413AAE2526009C00107D4A /* UIBinder.swift */,
 			);
-			path = SwiftUIReduxExtensions;
+			path = ReduxExtensions;
 			sourceTree = "<group>";
 		};
 		EA413A5D2525E9CF00107D4A /* AppSideEffects */ = {
@@ -433,10 +442,13 @@
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
 				EA413A972525F38A00107D4A /* Reader.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
+				EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
+				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
+				EA413A9F2525FEDE00107D4A /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
