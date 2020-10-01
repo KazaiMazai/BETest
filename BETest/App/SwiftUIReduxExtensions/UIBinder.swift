@@ -10,12 +10,13 @@ import SwiftUI
 protocol UIBinder: View {
     associatedtype Content: View
     associatedtype Props
+
     func contentWith(props: Props) -> Content
     func prepareProps(state: AppState, store: EnvironmentStore) -> Props
 }
 
 extension UIBinder {
-    func map(state: AppState, store: EnvironmentStore) -> Content {
+    private func map(state: AppState, store: EnvironmentStore) -> Content {
         contentWith(props: prepareProps(state: state, store: store))
     }
 
