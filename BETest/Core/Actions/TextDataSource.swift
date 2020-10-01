@@ -12,7 +12,7 @@ extension Actions {
 }
 
 extension Actions.TextDataSource {
-    struct ReceievedData: Action {
-        let result: Result<[TextData], Error>
+    struct ReceievedDataSuccess: Action {
+        let value: [TextData]
     }
 }

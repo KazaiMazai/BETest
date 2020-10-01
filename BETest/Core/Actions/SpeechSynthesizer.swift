@@ -8,16 +8,16 @@
 import Foundation
 
 extension Actions {
-    enum TextReader {}
+    enum SpeechSynthesizer {}
 }
 
-extension Actions.TextReader {
-    struct ReadingStateChange: Action {
+extension Actions.SpeechSynthesizer {
+    struct StateChange: Action {
         let state: State
     }
 }
 
-extension Actions.TextReader.ReadingStateChange {
+extension Actions.SpeechSynthesizer.StateChange {
     enum State {
         case start
         case finish
