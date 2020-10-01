@@ -26,6 +26,7 @@
 		EA413A9F2525FEDE00107D4A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A9E2525FEDE00107D4A /* Command.swift */; };
 		EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AA62525FF2300107D4A /* EnvironmentStore.swift */; };
 		EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AAE2526009C00107D4A /* UIBinder.swift */; };
+		EA413AB4252604F800107D4A /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AB3252604F800107D4A /* EnvironmentProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		EA413A9E2525FEDE00107D4A /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		EA413AA62525FF2300107D4A /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
 		EA413AAE2526009C00107D4A /* UIBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBinder.swift; sourceTree = "<group>"; };
+		EA413AB3252604F800107D4A /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				EA413A9E2525FEDE00107D4A /* Command.swift */,
 				EA413AA62525FF2300107D4A /* EnvironmentStore.swift */,
 				EA413AAE2526009C00107D4A /* UIBinder.swift */,
+				EA413AB3252604F800107D4A /* EnvironmentProvider.swift */,
 			);
 			path = ReduxExtensions;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
+				EA413AB4252604F800107D4A /* EnvironmentProvider.swift in Sources */,
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
 				EA413A9F2525FEDE00107D4A /* Command.swift in Sources */,
