@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct AppState: Codable {
-    private(set) var reader = Reader()
+struct AppState {
+    private(set) var prompter = Prompter(delay: 0.5)
     private(set) var currentTime = CurrentTime()
 
     mutating func reduce(_ action: Action) {
-        reader.reduce(action)
+        prompter.reduce(action)
     }
 }
