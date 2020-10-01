@@ -15,6 +15,9 @@
 		EA413A2E2525E97F00107D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA413A2C2525E97F00107D4A /* LaunchScreen.storyboard */; };
 		EA413A392525E97F00107D4A /* BETestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A382525E97F00107D4A /* BETestTests.swift */; };
 		EA413A442525E97F00107D4A /* BETestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A432525E97F00107D4A /* BETestUITests.swift */; };
+		EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A6A2525EBFA00107D4A /* Observer.swift */; };
+		EA413A762525EC0F00107D4A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A752525EC0F00107D4A /* Store.swift */; };
+		EA413A7B2525EF5600107D4A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A7A2525EF5600107D4A /* AppState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		EA413A3F2525E97F00107D4A /* BETestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BETestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA413A432525E97F00107D4A /* BETestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BETestUITests.swift; sourceTree = "<group>"; };
 		EA413A452525E97F00107D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA413A6A2525EBFA00107D4A /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		EA413A752525EC0F00107D4A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		EA413A7A2525EF5600107D4A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +108,6 @@
 				EA413A5E2525E9D600107D4A /* Library */,
 				EA413A592525E9CF00107D4A /* App */,
 				EA413A542525E9CF00107D4A /* Core */,
-				EA413A582525E9CF00107D4A /* Redux */,
 				EA413A212525E97E00107D4A /* AppDelegate.swift */,
 				EA413A232525E97E00107D4A /* SceneDelegate.swift */,
 				EA413A252525E97E00107D4A /* ContentView.swift */,
@@ -143,9 +148,11 @@
 		EA413A542525E9CF00107D4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A582525E9CF00107D4A /* ReduxStore */,
 				EA413A552525E9CF00107D4A /* Models */,
 				EA413A562525E9CF00107D4A /* Components */,
 				EA413A572525E9CF00107D4A /* Actions */,
+				EA413A7A2525EF5600107D4A /* AppState.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -171,11 +178,13 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
-		EA413A582525E9CF00107D4A /* Redux */ = {
+		EA413A582525E9CF00107D4A /* ReduxStore */ = {
 			isa = PBXGroup;
 			children = (
+				EA413A6A2525EBFA00107D4A /* Observer.swift */,
+				EA413A752525EC0F00107D4A /* Store.swift */,
 			);
-			path = Redux;
+			path = ReduxStore;
 			sourceTree = "<group>";
 		};
 		EA413A592525E9CF00107D4A /* App */ = {
@@ -394,9 +403,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
+				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
+				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
