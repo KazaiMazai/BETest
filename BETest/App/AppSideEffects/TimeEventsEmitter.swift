@@ -30,8 +30,10 @@ class TimeEventsEmitter {
             return .active
         }
     }
+}
 
-    fileprivate func observe(state: AppState) {
+extension TimeEventsEmitter {
+    private func observe(state: AppState) {
         guard state.currentTime.shouldReceiveTimeEvents else {
             timer?.invalidate()
             timer = nil

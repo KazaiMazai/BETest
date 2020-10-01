@@ -18,16 +18,11 @@ class EnvironmentStore: ObservableObject {
 
         store.subscribe(observer: asObserver)
     }
+}
 
+extension EnvironmentStore {
     func dispatch(_ action: Action) {
         store.dispatch(action: action)
-    }
-
-    private var asObserver: Observer<AppState> {
-        Observer(queue: .main) { state in
-            self.state = state
-            return .active
-        }
     }
 
     func bind(_ action: Action) -> Command {
@@ -39,6 +34,15 @@ class EnvironmentStore: ObservableObject {
     func bind<T>(_ action: @escaping (T) -> Action) -> CommandWith<T> {
         return { value in
             self.dispatch(action(value))
+        }
+    }
+}
+
+extension EnvironmentStore {
+    private var asObserver: Observer<AppState> {
+        Observer(queue: .main) { state in
+            self.state = state
+            return .active
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct EnvironmentProvider<Content: View>: View {
     let store: EnvironmentStore
     let content: () -> Content
+    
     var body: some View {
         content().injectEnvironment(store: store)
     }
