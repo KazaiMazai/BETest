@@ -56,13 +56,14 @@ private extension DialogueView {
                     BallonView(props: $0.element, maxLayoutWidth: layoutWidth)
                         .rotationEffect(.radians(.pi))
                         .transition(itemTransitionForIndex($0.offset))
+
                 }
             }
         }
         .animation(.linear(duration: props.animationDuration))
         .rotationEffect(.radians(.pi))
         .background(theme.dialogueViewStyle.background)
-        .ignoresSafeArea(edges: .vertical)
+        .edgesIgnoringSafeArea(.vertical)
     }
 
     func itemTransitionForIndex(_ idx: Int) -> AnyTransition {
