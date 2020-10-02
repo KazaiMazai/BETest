@@ -36,6 +36,7 @@
 		EA413AFB25272E3000107D4A /* BallonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AFA25272E3000107D4A /* BallonView.swift */; };
 		EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0025272E7E00107D4A /* AppUITheme.swift */; };
 		EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B082527331900107D4A /* AppUIThemeKey.swift */; };
+		EA413B0E2527350400107D4A /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0D2527350400107D4A /* Color+hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		EA413AFA25272E3000107D4A /* BallonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallonView.swift; sourceTree = "<group>"; };
 		EA413B0025272E7E00107D4A /* AppUITheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITheme.swift; sourceTree = "<group>"; };
 		EA413B082527331900107D4A /* AppUIThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIThemeKey.swift; sourceTree = "<group>"; };
+		EA413B0D2527350400107D4A /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 		EA413A602525E9E500107D4A /* SwiftUIExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				EA413B0D2527350400107D4A /* Color+hex.swift */,
 			);
 			path = SwiftUIExtensions;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */,
 				EA413AE3252618A800107D4A /* PrompterFlow.swift in Sources */,
+				EA413B0E2527350400107D4A /* Color+hex.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
