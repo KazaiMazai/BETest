@@ -11,11 +11,13 @@ extension DialogueView {
     struct Props {
         let items: [BallonView.Props]
         let animationDuration: CGFloat
+        let onAppear: Command
 
         static func preview(count: Int) -> Props {
             .init(
                 items: Array(0..<count).map { .preview(id: $0) },
-                animationDuration: 0.5)
+                animationDuration: 0.5,
+                onAppear: nop)
         }
     }
 }
@@ -26,7 +28,7 @@ struct DialogueView: View {
     let props: Props
 
     var body: some View {
-       makeBody
+        makeBody.onAppear { props.onAppear() }
     }
 }
 

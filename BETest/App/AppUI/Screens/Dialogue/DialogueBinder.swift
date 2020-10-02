@@ -14,7 +14,8 @@ struct DialogueBinder: UIBinder {
 
     func prepareProps(state: AppState, store: EnvironmentStore) -> DialogueView.Props {
         .init(items: state.prompter.items.map { .init(with: $0) },
-              animationDuration: CGFloat(state.prompter.delay))
+              animationDuration: CGFloat(state.prompter.delay),
+              onAppear: store.bind(Actions.PrompterFlow.Run()))
     }
 }
 
