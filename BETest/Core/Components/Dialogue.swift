@@ -10,6 +10,10 @@ import Foundation
 struct Dialogue {
     let delay: TimeInterval
 
+    var animationsDelay: TimeInterval {
+        delay
+    }
+
     private var pendingItems: [TextData] = []
     private var state: State = .none
 
@@ -31,7 +35,7 @@ struct Dialogue {
 
             let item = pendingItems.removeFirst()
             state = .processingItem(PayloadRequest(id: UUID(), payload: item),
-                                    speechAvailableAfter: Date().addingTimeInterval(delay * 2.0))
+                                    speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
             items.append(item)
         case let action as Actions.SpeechSynthesizer.StateChange:
             guard case .finish = action.state else {
@@ -54,7 +58,7 @@ struct Dialogue {
             }
 
             state = .processingItem(PayloadRequest(id: UUID(), payload: item),
-                                    speechAvailableAfter: Date().addingTimeInterval(delay * 2.0))
+                                    speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
             items.append(item)
         default:
             break
