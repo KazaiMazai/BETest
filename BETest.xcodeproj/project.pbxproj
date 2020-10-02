@@ -38,6 +38,7 @@
 		EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B082527331900107D4A /* AppUIThemeKey.swift */; };
 		EA413B0E2527350400107D4A /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0D2527350400107D4A /* Color+hex.swift */; };
 		EA413B132527595000107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
+		EA413B1B2527623800107D4A /* DialogueBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B1A2527623800107D4A /* DialogueBinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		EA413B082527331900107D4A /* AppUIThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIThemeKey.swift; sourceTree = "<group>"; };
 		EA413B0D2527350400107D4A /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		EA413B122527595000107D4A /* DialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueView.swift; sourceTree = "<group>"; };
+		EA413B1A2527623800107D4A /* DialogueBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413B122527595000107D4A /* DialogueView.swift */,
+				EA413B1A2527623800107D4A /* DialogueBinder.swift */,
 			);
 			path = Dialogue;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				EA413AE3252618A800107D4A /* PrompterFlow.swift in Sources */,
 				EA413B0E2527350400107D4A /* Color+hex.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
+				EA413B1B2527623800107D4A /* DialogueBinder.swift in Sources */,
 				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
