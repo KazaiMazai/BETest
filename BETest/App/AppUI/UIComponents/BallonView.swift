@@ -22,20 +22,16 @@ extension BallonView {
 struct BallonView: View {
     @Environment(\.appUITheme) var theme
     let props: Props
-    @State private var layoutWidth: CGFloat = 0
+    let maxLayoutWidth: CGFloat
 
     var body: some View {
         makeBody
-            .overlay(
-                GeometryReader { geo in
-                    Color.clear.onAppear { layoutWidth = geo.size.width }
-                })
     }
 }
 
 struct BallonView_Previews: PreviewProvider {
     static var previews: some View {
-        BallonView(props: .preview(id: 1))
+        BallonView(props: .preview(id: 1), maxLayoutWidth: 414)
     }
 }
 
@@ -43,8 +39,7 @@ private extension BallonView {
     var makeBody: some View {
             HStack {
                 textView
-                Spacer(minLength: layoutWidth * maxSpacerProportionalWidth)
-
+                Spacer(minLength: maxLayoutWidth * maxSpacerProportionalWidth)
             }
             .background(theme.dialogueViewStyle.background)
             .padding(.leading, theme.baloonStyle.paddings.leftContentInset)
@@ -56,11 +51,11 @@ private extension BallonView {
             .foregroundColor(theme.baloonStyle.textColor)
             .padding(theme.baloonStyle.paddings.textPaddings)
             .lineLimit(nil)
-//            .fixedSize(horizontal: false, vertical: false)
+            .fixedSize(horizontal: false, vertical: false)
     }
 
     var textView: some View {
-        ZStack {
+        Group {
             text
         }
         .background(theme.baloonStyle.background)

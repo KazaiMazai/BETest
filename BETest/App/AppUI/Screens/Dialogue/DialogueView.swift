@@ -10,7 +10,7 @@ import SwiftUI
 extension DialogueView {
     struct Props {
         let items: [BallonView.Props]
-        let animationDuration: CGFloat
+        let animationDuration: Double
         let onAppear: Command
 
         static func preview(count: Int) -> Props {
@@ -24,13 +24,18 @@ extension DialogueView {
 
 struct DialogueView: View {
     @Environment(\.appUITheme) var theme
-
+    @State private var layoutWidth: CGFloat = 0
+    
     let props: Props
 
     var body: some View {
         makeBody
             .onAppear { props.onAppear() }
             .disabled(true)
+            .overlay(
+                GeometryReader { geo in
+                    Color.clear.onAppear { layoutWidth = geo.size.width  }
+                })
     }
 }
 
@@ -40,22 +45,29 @@ struct DialogueView_Previews: PreviewProvider {
     }
 }
 
-extension DialogueView {
+private extension DialogueView {
     var makeBody: some View {
         ScrollView {
             VStack(spacing: theme.baloonStyle.paddings.interItemSpacing) {
                 Color.clear.frame(height: 0)
+                ForEach(props.items.enumerated().reversed(),
+                        id: \.element.id) {
 
-                ForEach(props.items.reversed()) {
-                    BallonView(props: $0).rotationEffect(.radians(.pi))
+                    BallonView(props: $0.element, maxLayoutWidth: layoutWidth)
+                        .rotationEffect(.radians(.pi))
+                        .transition(itemTransitionForIndex($0.offset))
                 }
-
-
             }
         }
-
+        .animation(.linear(duration: props.animationDuration))
         .rotationEffect(.radians(.pi))
-        .ignoresSafeArea(edges: .vertical)
         .background(theme.dialogueViewStyle.background)
+        .ignoresSafeArea(edges: .vertical)
+    }
+
+    func itemTransitionForIndex(_ idx: Int) -> AnyTransition {
+        return idx == 0 ?
+            AnyTransition.opacity
+            : AnyTransition.move(edge: .top).combined(with: .opacity)
     }
 }
