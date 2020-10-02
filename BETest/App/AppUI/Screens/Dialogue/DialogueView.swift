@@ -38,7 +38,6 @@ struct DialogueView_Previews: PreviewProvider {
     }
 }
 
-
 extension DialogueView {
     var makeBody: some View {
         ScrollView {

@@ -19,12 +19,6 @@ struct DialogueBinder: UIBinder {
     }
 }
 
-struct DialogueBinder_Previews: PreviewProvider {
-    static var previews: some View {
-        DialogueBinder()
-    }
-}
-
 extension BallonView.Props {
     init(with model: TextData) {
         self.init(id: model.id,
