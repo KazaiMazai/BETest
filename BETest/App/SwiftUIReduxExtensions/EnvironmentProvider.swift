@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct EnvironmentProvider<Content: View>: View {
+    let theme: AppUITheme
     let store: EnvironmentStore
     let content: () -> Content
     
     var body: some View {
-        content().injectEnvironment(store: store)
+        content().injectEnvironment(store: store,
+                                    theme: theme)
     }
 }
 
 private extension View {
-    func injectEnvironment(store: EnvironmentStore) -> some View {
+    func injectEnvironment(store: EnvironmentStore,
+                           theme: AppUITheme) -> some View {
         self.environmentObject(store)
+            .environment(\.appUITheme, theme)
     }
 }

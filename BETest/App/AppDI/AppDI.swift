@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AppDI {
+    let theme: AppUITheme
     let environmentStore: EnvironmentStore
     let timeEventsEmitter: TimeEventsEmitter
 
@@ -19,6 +20,7 @@ struct AppDI {
             print("Reduce: \t\t \(String(reflecting: action))")
         }
 
+        theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
         timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
 
@@ -47,6 +49,7 @@ extension AppDI {
     }
 
     private func rootViewWith<V: View>(view: V) -> some View {
-        EnvironmentProvider(store: environmentStore) { view }
+        EnvironmentProvider(theme: theme,
+                            store: environmentStore) { view }
     }
 }

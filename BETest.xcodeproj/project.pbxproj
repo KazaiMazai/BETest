@@ -33,6 +33,9 @@
 		EA413AE3252618A800107D4A /* PrompterFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AE2252618A800107D4A /* PrompterFlow.swift */; };
 		EA413AEB25263CA000107D4A /* PrompterItemsArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AEA25263CA000107D4A /* PrompterItemsArrayTests.swift */; };
 		EA413AF325264EEB00107D4A /* PrompterAvailableForSpeechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AF225264EEB00107D4A /* PrompterAvailableForSpeechTests.swift */; };
+		EA413AFB25272E3000107D4A /* BallonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AFA25272E3000107D4A /* BallonView.swift */; };
+		EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0025272E7E00107D4A /* AppUITheme.swift */; };
+		EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B082527331900107D4A /* AppUIThemeKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,9 @@
 		EA413AE2252618A800107D4A /* PrompterFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterFlow.swift; sourceTree = "<group>"; };
 		EA413AEA25263CA000107D4A /* PrompterItemsArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterItemsArrayTests.swift; sourceTree = "<group>"; };
 		EA413AF225264EEB00107D4A /* PrompterAvailableForSpeechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrompterAvailableForSpeechTests.swift; sourceTree = "<group>"; };
+		EA413AFA25272E3000107D4A /* BallonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallonView.swift; sourceTree = "<group>"; };
+		EA413B0025272E7E00107D4A /* AppUITheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITheme.swift; sourceTree = "<group>"; };
+		EA413B082527331900107D4A /* AppUIThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIThemeKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +246,7 @@
 		EA413A5A2525E9CF00107D4A /* AppUI */ = {
 			isa = PBXGroup;
 			children = (
+				EA413AFF25272E6D00107D4A /* Theme */,
 				EA413A622525EAEB00107D4A /* Screens */,
 				EA413A612525EAE500107D4A /* UIComponents */,
 			);
@@ -299,6 +306,7 @@
 		EA413A612525EAE500107D4A /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EA413AFA25272E3000107D4A /* BallonView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -324,6 +332,15 @@
 				EA413A7A2525EF5600107D4A /* AppState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		EA413AFF25272E6D00107D4A /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				EA413B0025272E7E00107D4A /* AppUITheme.swift */,
+				EA413B082527331900107D4A /* AppUIThemeKey.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,8 +474,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA413ADE252611AF00107D4A /* Prompter.swift in Sources */,
+				EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */,
 				EA413A912525F27200107D4A /* TextData.swift in Sources */,
 				EA413ACE2526073A00107D4A /* Time.swift in Sources */,
+				EA413AFB25272E3000107D4A /* BallonView.swift in Sources */,
 				EA413A8C2525F08300107D4A /* SpeechSynthesizer.swift in Sources */,
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */,
@@ -472,6 +491,7 @@
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
+				EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */,
 				EA413AB4252604F800107D4A /* EnvironmentProvider.swift in Sources */,
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
