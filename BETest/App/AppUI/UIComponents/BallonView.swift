@@ -37,12 +37,13 @@ struct BallonView_Previews: PreviewProvider {
 
 private extension BallonView {
     var makeBody: some View {
-            HStack {
-                textView
-                Spacer(minLength: maxLayoutWidth * maxSpacerProportionalWidth)
-            }
-            .background(theme.dialogueViewStyle.background)
-            .padding(.leading, theme.baloonStyle.paddings.leftContentInset)
+        HStack {
+            textView
+            Spacer(minLength: maxLayoutWidth * maxSpacerProportionalWidth)
+        }
+        .animation(nil)
+        .background(theme.dialogueViewStyle.background)
+        .padding(.leading, theme.baloonStyle.paddings.leftContentInset)
     }
 
     var text: some View {
@@ -53,7 +54,7 @@ private extension BallonView {
             .lineLimit(nil)
             .fixedSize(horizontal: false, vertical: false)
     }
-
+    
     var textView: some View {
         Group {
             text
