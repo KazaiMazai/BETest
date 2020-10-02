@@ -28,7 +28,9 @@ struct DialogueView: View {
     let props: Props
 
     var body: some View {
-        makeBody.onAppear { props.onAppear() }
+        makeBody
+            .onAppear { props.onAppear() }
+            .disabled(true)
     }
 }
 
@@ -51,6 +53,7 @@ extension DialogueView {
 
             }
         }
+
         .rotationEffect(.radians(.pi))
         .ignoresSafeArea(edges: .vertical)
         .background(theme.dialogueViewStyle.background)
