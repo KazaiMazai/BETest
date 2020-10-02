@@ -41,8 +41,7 @@ extension TextToSpeechDriver {
             finish: bind(Actions.SpeechSynthesizer.StateChange(state: .finish)),
             pause: bind(Actions.SpeechSynthesizer.StateChange(state: .pause)),
             cancel: bind(Actions.SpeechSynthesizer.StateChange(state: .cancel)),
-            continued: bind(Actions.SpeechSynthesizer.StateChange(state: .continued)),
-            willStart: bind(Actions.SpeechSynthesizer.StateChange(state: .willStart)))
+            continued: bind(Actions.SpeechSynthesizer.StateChange(state: .continued)))
 
         textToSpeechOperator.process(request: ttsRequest)
     }

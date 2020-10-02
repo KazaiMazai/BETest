@@ -14,8 +14,7 @@ struct TextToSpeechRequest {
                   finish: @escaping Command,
                   pause: @escaping Command,
                   cancel: @escaping Command,
-                  continued: @escaping Command,
-                  willStart: @escaping Command) {
+                  continued: @escaping Command) {
         self.id = id
         self.text = text
         self.start = start
@@ -23,7 +22,6 @@ struct TextToSpeechRequest {
         self.pause = pause
         self.cancel = cancel
         self.continued = continued
-        self.willStart = willStart
     }
 
     let id: UUID
@@ -32,6 +30,5 @@ struct TextToSpeechRequest {
     let finish: Command
     let pause: Command
     let cancel: Command
-    let continued: Command
-    let willStart: Command
+    let continued: Command 
 }

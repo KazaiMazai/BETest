@@ -118,10 +118,4 @@ private class SpeechSynthesizerRequestEventsHandler: NSObject, AVSpeechSynthesiz
             self?.request.cancel()
         }
     }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
-        completeHandlerQueue.async { [weak self] in
-            self?.request.willStart()
-        }
-    }
 }
