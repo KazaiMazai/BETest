@@ -6,27 +6,37 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct AppUITheme {
     let baloonStyle: BaloonStyle
     let dialogueViewStyle: DialogueViewStyle
-
+    let navBarStyle: NavBarStyle
 
     static var defaultTheme: AppUITheme {
         .init(baloonStyle: BaloonStyle(),
-              dialogueViewStyle: DialogueViewStyle())
+              dialogueViewStyle: DialogueViewStyle(),
+              navBarStyle: NavBarStyle())
     }
 }
 
 extension AppUITheme {
+    struct NavBarStyle {
+        let titleColor = Color.black
+        let backgroundColor = Color(red: 247.0 / 255.0,  green: 247.0 / 255.0, blue: 247.0 / 255.0)
+        let separatorColor = Color(red: 210.0 / 255.0,  green: 210.0 / 255.0, blue: 210.0 / 255.0)
+        let titleFont = Font.system(size: 17, weight: .semibold)
+        let height: CGFloat = 44
+    }
+
     struct DialogueViewStyle {
-        let background = Color(hex: "#F9FAFB")
+        let backgroundColor = Color(hex: "#F9FAFB")
     }
 
     struct BaloonStyle {
         let font = Font.system(size: 17, weight: .light) //Font.custom(".SFUIText-Light", size: 17)
         let textColor = Color(hex: "#000000")
-        let background = Color(hex: "#FDFDFE")
+        let backgroundColor = Color(hex: "#FDFDFE")
         let borderRadius: CGFloat = 5
         let shadow = Shadow()
         let paddings = Paddings()

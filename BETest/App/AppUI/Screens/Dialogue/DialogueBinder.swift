@@ -13,7 +13,8 @@ struct DialogueBinder: UIBinder {
     }
 
     func prepareProps(state: AppState, store: EnvironmentStore) -> DialogueView.Props {
-        .init(items: state.dialogue.items.map { .init(with: $0) },
+        .init(title: "Dialogue",
+              items: state.dialogue.items.map { .init(with: $0) },
               animationDuration: state.dialogue.delay,
               onAppear: store.bind(Actions.DialogueFlow.Run()))
     }

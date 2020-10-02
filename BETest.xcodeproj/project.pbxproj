@@ -43,6 +43,7 @@
 		EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */; };
 		EA413B542527791400107D4A /* TextToSpeechRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B412527782500107D4A /* TextToSpeechRequest.swift */; };
 		EA413B5925277DBE00107D4A /* PayloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B5825277DBE00107D4A /* PayloadRequest.swift */; };
+		EA413B732527D12900107D4A /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B722527D12900107D4A /* DarkHostingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechOperator.swift; sourceTree = "<group>"; };
 		EA413B412527782500107D4A /* TextToSpeechRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechRequest.swift; sourceTree = "<group>"; };
 		EA413B5825277DBE00107D4A /* PayloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadRequest.swift; sourceTree = "<group>"; };
+		EA413B722527D12900107D4A /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413B0D2527350400107D4A /* Color+hex.swift */,
+				EA413B722527D12900107D4A /* DarkHostingController.swift */,
 			);
 			path = SwiftUIExtensions;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				EA413AFB25272E3000107D4A /* BallonView.swift in Sources */,
 				EA413B5925277DBE00107D4A /* PayloadRequest.swift in Sources */,
 				EA413A8C2525F08300107D4A /* SpeechSynthesizer.swift in Sources */,
+				EA413B732527D12900107D4A /* DarkHostingController.swift in Sources */,
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */,
 				EA413AE3252618A800107D4A /* DialogueFlow.swift in Sources */,

@@ -9,12 +9,14 @@ import SwiftUI
 
 extension DialogueView {
     struct Props {
+        let title: String
         let items: [BallonView.Props]
         let animationDuration: Double
         let onAppear: Command
 
         static func preview(count: Int) -> Props {
             .init(
+                title: "Title",
                 items: Array(0..<count).map { .preview(id: $0) },
                 animationDuration: 0.5,
                 onAppear: nop)
@@ -35,8 +37,8 @@ struct DialogueView: View {
             .overlay(
                 GeometryReader { geo in
                     Color.clear.onAppear { layoutWidth = geo.size.width  }
-                })
-    }
+                }) 
+        }
 }
 
 struct DialogueView_Previews: PreviewProvider {
@@ -46,24 +48,45 @@ struct DialogueView_Previews: PreviewProvider {
 }
 
 private extension DialogueView {
+    var navigationBarView: some View {
+        ZStack(alignment: .bottom) {
+            HStack(alignment: .center) {
+                Spacer()
+                Text(props.title)
+                    .font(theme.navBarStyle.titleFont)
+                    .foregroundColor(theme.navBarStyle.titleColor)
+                Spacer()
+            }
+            .frame(height: theme.navBarStyle.height)
+
+            theme.navBarStyle.separatorColor
+                .frame(height: 1)
+        }
+        .frame(height: theme.navBarStyle.height)
+        .background(theme.navBarStyle.backgroundColor)
+    }
+
     var makeBody: some View {
-        ScrollView {
-            VStack(spacing: theme.baloonStyle.paddings.interItemSpacing) {
-                Color.clear.frame(height: 0)
-                ForEach(props.items.enumerated().reversed(),
-                        id: \.element.id) {
+        VStack(spacing: 0) {
+            navigationBarView
+            ScrollView {
+                VStack(spacing: theme.baloonStyle.paddings.interItemSpacing) {
+                    Color.clear.frame(height: 0)
+                    ForEach(props.items.enumerated().reversed(),
+                            id: \.element.id) {
 
-                    BallonView(props: $0.element, maxLayoutWidth: layoutWidth)
-                        .rotationEffect(.radians(.pi))
-                        .transition(itemTransitionForIndex($0.offset))
-
+                        BallonView(props: $0.element, maxLayoutWidth: layoutWidth)
+                            .rotationEffect(.radians(.pi))
+                            .transition(itemTransitionForIndex($0.offset))
+                    }
                 }
             }
+            .animation(.linear(duration: props.animationDuration))
+            .rotationEffect(.radians(.pi))
+            .background(theme.dialogueViewStyle.backgroundColor)
+            .edgesIgnoringSafeArea(.vertical)
         }
-        .animation(.linear(duration: props.animationDuration))
-        .rotationEffect(.radians(.pi))
-        .background(theme.dialogueViewStyle.background)
-        .edgesIgnoringSafeArea(.vertical)
+        .background(theme.navBarStyle.backgroundColor.edgesIgnoringSafeArea(.top))
     }
 
     func itemTransitionForIndex(_ idx: Int) -> AnyTransition {
