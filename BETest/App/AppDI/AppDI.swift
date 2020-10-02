@@ -11,6 +11,7 @@ struct AppDI {
     let theme: AppUITheme
     let environmentStore: EnvironmentStore
     let timeEventsEmitter: TimeEventsEmitter
+    let textToSpeechDriver: TextToSpeechDriver
 
     let fileDataSource: FileDataSource
 
@@ -26,6 +27,9 @@ struct AppDI {
         environmentStore = EnvironmentStore(store: store)
         timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
         fileDataSource = FileDataSource(store: store)
+        let textToSpeechOperator = TextToSpeechOperator()
+        textToSpeechDriver = TextToSpeechDriver(store: store,
+                                                textToSpeechOperator: textToSpeechOperator)
 
         subscribeToStore()
     }
@@ -50,6 +54,7 @@ extension AppDI {
     private func subscribeToStore() {
         environmentStore.store.subscribe(observer: timeEventsEmitter.asObserver)
         environmentStore.store.subscribe(observer: fileDataSource.asObserver)
+        environmentStore.store.subscribe(observer: textToSpeechDriver.asObserver)
     }
 
     private func rootViewWith<V: View>(view: V) -> some View {
