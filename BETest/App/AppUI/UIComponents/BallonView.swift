@@ -39,7 +39,7 @@ private extension BallonView {
     var makeBody: some View {
         HStack {
             textView
-            Spacer(minLength: maxLayoutWidth * maxSpacerProportionalWidth)
+            Spacer(minLength: maxLayoutWidth * minSpacerProportionalWidth)
         }
         .animation(nil)
         .background(theme.dialogueViewStyle.backgroundColor)
@@ -74,7 +74,7 @@ private extension BallonView {
             y: theme.baloonStyle.shadow.offset.height)
     }
 
-    var maxSpacerProportionalWidth: CGFloat {
+    var minSpacerProportionalWidth: CGFloat {
         (1.0 - theme.baloonStyle.paddings.maxWidthProportion)
     }
 }
