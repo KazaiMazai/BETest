@@ -13,7 +13,7 @@ extension BallonView {
         let text: String
 
         static func empty(id: Int) -> Props {
-            .init(id: id, text: "Label Label Label Label Label Label Label Label Label Label Label Label Label Label LabelLabelLabel Label Label Label Label Label Label Label Label Label LabelLabelLabelLabelLabel Label LabelLabel LabelLabel LabelLabel Label")
+            .init(id: id, text: "Label label label label label label label label label label label label label")
         }
     }
 }
