@@ -29,7 +29,7 @@ struct TextToSpeechDriver {
 
 extension TextToSpeechDriver {
     private func observe(state: AppState) {
-        guard let itemToSpeak = state.prompter.availableForSpeech(at: Date()) else {
+        guard let itemToSpeak = state.dialogue.availableForSpeech(at: Date()) else {
             textToSpeechOperator.process(request: nil)
             return
         }

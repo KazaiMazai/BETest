@@ -28,7 +28,7 @@ class FileDataSource {
 
 extension FileDataSource {
     private func observe(state: AppState) {
-        guard state.prompter.waitingForData else{
+        guard state.dialogue.waitingForData else{
             return
         }
 

@@ -1,5 +1,5 @@
 //
-//  PrompterFlow.swift
+//  DialogueFlow.swift
 //  BETest
 //
 //  Created by Sergey Kazakov on 01.10.2020.
@@ -9,10 +9,10 @@ import Foundation
 
 
 extension Actions {
-    enum PrompterFlow {}
+    enum DialogueFlow {}
 }
 
-extension Actions.PrompterFlow {
+extension Actions.DialogueFlow {
     struct Run: Action {
 
     }

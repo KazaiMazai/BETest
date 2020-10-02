@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Prompter {
+struct Dialogue {
     let delay: TimeInterval
 
     private var pendingItems: [TextData] = []
@@ -21,7 +21,7 @@ struct Prompter {
 
     mutating func reduce(_ action: Action) {
         switch action {
-        case is Actions.PrompterFlow.Run:
+        case is Actions.DialogueFlow.Run:
             state = .waitingForData
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             pendingItems.append(contentsOf: action.value)
@@ -62,7 +62,7 @@ struct Prompter {
     }
 }
 
-extension Prompter {
+extension Dialogue {
     enum State {
         case none
         case waitingForData
@@ -72,7 +72,7 @@ extension Prompter {
     }
 }
 
-extension Prompter {
+extension Dialogue {
     var waitingForData: Bool {
         guard case .waitingForData = state else {
             return false
