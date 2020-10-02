@@ -12,7 +12,7 @@ class TextToSpeechOperator {
     private let synthesizer = AVSpeechSynthesizer()
     let completeHandlerQueue: DispatchQueue
 
-    private var synthersizerHandler: SpeechSynthesizerRequestDelegate?
+    private var synthersizerHandler: SpeechSynthesizerRequestEventsHandler?
 
     init(completeHandlerQueue: DispatchQueue = DispatchQueue(label: "TTS Operator")) {
         self.completeHandlerQueue = completeHandlerQueue
@@ -47,15 +47,16 @@ class TextToSpeechOperator {
 
 extension TextToSpeechOperator {
     private func cancelCurrent() {
-        activeRequest?.cancel()
         synthersizerHandler = nil
         synthesizer.delegate = nil
-        activeRequest = nil
         synthesizer.stopSpeaking(at: .immediate)
+        activeRequest?.cancel()
+        activeRequest = nil
     }
 
     private func speak(request: TextToSpeechRequest) {
-        synthersizerHandler = SpeechSynthesizerRequestDelegate(request: request,
+        activeRequest = request
+        synthersizerHandler = SpeechSynthesizerRequestEventsHandler(request: request,
                                                                completeHandlerQueue: completeHandlerQueue,
                                                                complete: complete)
         synthesizer.delegate = synthersizerHandler
@@ -64,18 +65,17 @@ extension TextToSpeechOperator {
     }
 
     private func complete(request: TextToSpeechRequest) {
-        request.finish()
         completedRequests.insert(request.id)
         synthersizerHandler = nil
         synthesizer.delegate = nil
-
+        request.finish()
         if activeRequest?.id == request.id {
             activeRequest = nil
         }
     }
 }
 
-private class SpeechSynthesizerRequestDelegate: NSObject, AVSpeechSynthesizerDelegate {
+private class SpeechSynthesizerRequestEventsHandler: NSObject, AVSpeechSynthesizerDelegate {
     init(request: TextToSpeechRequest,
                   completeHandlerQueue: DispatchQueue,
                   complete: @escaping (TextToSpeechRequest) -> Void) {
