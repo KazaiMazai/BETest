@@ -44,6 +44,23 @@ class DialogueItemsArrayTests: XCTestCase {
         XCTAssertEqual(dialogue.items.count, 1, "1 item should present after data received")
     }
 
+    func test_WhenDataWithEmptyItemsReceived_EmptyItemsFiltered() {
+        var dialogue = Dialogue(delay: delay)
+
+        var data = testData
+        data.append(TextData(id: 5, text: "")) 
+
+        let actions: [Action] = [
+            Actions.DialogueFlow.Run(),
+            Actions.TextDataSource.ReceievedDataSuccess(value: data)
+        ]
+
+        actions.forEach { dialogue.reduce($0) }
+
+        XCTAssertEqual(dialogue.pendingItems.count + dialogue.items.count, testData.count, "Empty text item should filtered")
+    }
+
+
     func test_WhenOneAnimationIntervalsPass_OnlyFirstItemPresents() {
         var dialogue = Dialogue(delay: delay)
 

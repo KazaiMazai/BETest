@@ -14,7 +14,7 @@ struct Dialogue {
         delay
     }
 
-    private var pendingItems: [TextData] = []
+    private(set) var pendingItems: [TextData] = []
     private var state: State = .none
 
     private(set) var items: [TextData] = []
@@ -63,7 +63,7 @@ extension Dialogue {
 
 private extension Dialogue {
     mutating func handleReceiveDataSuccess(_ action: Actions.TextDataSource.ReceievedDataSuccess) {
-        pendingItems.append(contentsOf: action.value)
+        pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
         guard waitingForData && !pendingItems.isEmpty else {
             return
         }
