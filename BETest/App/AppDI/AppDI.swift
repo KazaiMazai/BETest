@@ -39,7 +39,7 @@ extension AppDI {
 
         let window = UIWindow(windowScene: windowScene)
 
-        let rootView = rootViewWith(view: ContentView())
+        let rootView = rootViewWith(view: DialogueBinder())
 
         window.rootViewController = UIHostingController(rootView: rootView)
         return window

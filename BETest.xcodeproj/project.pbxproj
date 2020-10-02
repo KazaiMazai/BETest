@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A212525E97E00107D4A /* AppDelegate.swift */; };
 		EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A232525E97E00107D4A /* SceneDelegate.swift */; };
-		EA413A262525E97E00107D4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A252525E97E00107D4A /* ContentView.swift */; };
 		EA413A282525E97F00107D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA413A272525E97F00107D4A /* Assets.xcassets */; };
 		EA413A2B2525E97F00107D4A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA413A2A2525E97F00107D4A /* Preview Assets.xcassets */; };
 		EA413A2E2525E97F00107D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA413A2C2525E97F00107D4A /* LaunchScreen.storyboard */; };
@@ -63,7 +62,6 @@
 		EA413A1E2525E97E00107D4A /* BETest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BETest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA413A212525E97E00107D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA413A232525E97E00107D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EA413A252525E97E00107D4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA413A272525E97F00107D4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA413A2A2525E97F00107D4A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EA413A2D2525E97F00107D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				EA413A542525E9CF00107D4A /* Core */,
 				EA413A212525E97E00107D4A /* AppDelegate.swift */,
 				EA413A232525E97E00107D4A /* SceneDelegate.swift */,
-				EA413A252525E97E00107D4A /* ContentView.swift */,
 				EA413A272525E97F00107D4A /* Assets.xcassets */,
 				EA413A2C2525E97F00107D4A /* LaunchScreen.storyboard */,
 				EA413A2F2525E97F00107D4A /* Info.plist */,
@@ -503,7 +500,6 @@
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
-				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EA413B132527595000107D4A /* DialogueView.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
