@@ -30,7 +30,8 @@ struct Prompter {
             }
 
             let item = pendingItems.removeFirst()
-            state = .processingItem(item, speechAvailableAfter: Date().addingTimeInterval(delay * 2.0))
+            state = .processingItem(PayloadRequest(id: UUID(), payload: item),
+                                    speechAvailableAfter: Date().addingTimeInterval(delay * 2.0))
             items.append(item)
         case let action as Actions.SpeechSynthesizer.StateChange:
             guard case .finish = action.state else {
@@ -52,7 +53,8 @@ struct Prompter {
                 break
             }
 
-            state = .processingItem(item, speechAvailableAfter: Date().addingTimeInterval(delay * 2.0))
+            state = .processingItem(PayloadRequest(id: UUID(), payload: item),
+                                    speechAvailableAfter: Date().addingTimeInterval(delay * 2.0))
             items.append(item)
         default:
             break
@@ -65,7 +67,7 @@ extension Prompter {
         case none
         case waitingForData
         case pendingItem(TextData, availableAfter: Date)
-        case processingItem(TextData, speechAvailableAfter: Date)
+        case processingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
         case finished
     }
 }
@@ -79,7 +81,7 @@ extension Prompter {
         return true
     }
 
-    func availableForSpeech(at: Date) -> TextData? {
+    func availableForSpeech(at: Date) -> PayloadRequest<TextData>? {
         guard case let .processingItem(item, speechAvailableAfter) = state else {
             return nil
         }

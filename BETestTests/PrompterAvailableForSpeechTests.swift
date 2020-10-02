@@ -108,7 +108,7 @@ class PrompterAvailableForSpeechTests: XCTestCase {
                             "Item should be available for speech after delay interval")
             XCTAssertEqual(
                 item.id,
-                prompter.availableForSpeech(at: Date().addingTimeInterval(animationDuration + delay))?.id,
+                prompter.availableForSpeech(at: Date().addingTimeInterval(animationDuration + delay))?.payload.id,
                 "Item should be available for speech after delay interval")
             prompter.reduce(Actions.SpeechSynthesizer.StateChange(state: .start))
             prompter.reduce(Actions.SpeechSynthesizer.StateChange(state: .finish))
