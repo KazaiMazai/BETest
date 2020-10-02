@@ -50,7 +50,9 @@ private extension BallonView {
         Text(props.text)
             .font(theme.baloonStyle.font)
             .foregroundColor(theme.baloonStyle.textColor)
-            .padding(theme.baloonStyle.paddings.textPaddings)
+            .padding(.vertical, theme.baloonStyle.paddings.textPaddings)
+            .padding(.trailing, theme.baloonStyle.paddings.textPaddings)
+            .padding(.leading, theme.baloonStyle.paddings.textPaddings + theme.baloonStyle.paddings.leftBodyInset)
             .lineLimit(nil)
             .fixedSize(horizontal: false, vertical: false)
     }
@@ -60,18 +62,63 @@ private extension BallonView {
             text
         }
         .background(theme.baloonStyle.backgroundColor)
-        .clipShape(RoundedRectangle(cornerRadius: theme.baloonStyle.borderRadius))
+        .clipShape(
+            Bubble(radius: theme.baloonStyle.borderRadius,
+                   leftPadding: theme.baloonStyle.paddings.leftBodyInset,
+                   triangularHeight: theme.baloonStyle.paddings.triangularHeight))
         .shadow(
             color: theme.baloonStyle.shadow.color
                 .opacity(theme.baloonStyle.shadow.alpha),
             radius: theme.baloonStyle.shadow.blur,
             x: theme.baloonStyle.shadow.offset.width,
             y: theme.baloonStyle.shadow.offset.height)
-
-        .padding(.leading, theme.baloonStyle.paddings.leftBodyInset)
     }
 
     var maxSpacerProportionalWidth: CGFloat {
         (1.0 - theme.baloonStyle.paddings.maxWidthProportion)
     }
 }
+
+private struct Bubble: Shape {
+    let radius: CGFloat
+    let leftPadding: CGFloat
+    let triangularHeight: CGFloat
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+
+        path.addLine(to: CGPoint(x: rect.maxX - radius, y: rect.maxY))
+
+        path.addQuadCurve(
+            to: CGPoint(x: rect.maxX, y: rect.maxY - radius), control: CGPoint(x: rect.maxX, y: rect.maxY))
+
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY + radius))
+
+        path.addQuadCurve(
+            to: CGPoint(x: rect.maxX - radius, y: rect.minY),
+            control: CGPoint(x: rect.maxX, y: rect.minY))
+
+        path.addLine(to: CGPoint(x: rect.minX + leftPadding + radius, y: rect.minY))
+
+        path.addQuadCurve(
+            to: CGPoint(x: rect.minX + leftPadding, y: rect.minY + radius),
+            control: CGPoint(x: rect.minX + leftPadding, y: rect.minY))
+
+        path.addLine(to: CGPoint(x: rect.minX + leftPadding,
+                                 y: rect.maxY - triangularHeight - radius ))
+
+        path.addQuadCurve(
+            to: CGPoint(x: rect.minX + leftPadding, y: rect.maxY - triangularHeight + radius / 2),
+            control: CGPoint(x: rect.minX + leftPadding, y: rect.maxY - triangularHeight))
+
+        path.addLine(to: CGPoint(x: rect.minX + radius / 1.5,
+                                 y: rect.maxY - radius ))
+        path.addQuadCurve(
+            to: CGPoint(x: rect.minX + radius, y: rect.maxY),
+            control: CGPoint(x: rect.minX, y: rect.maxY))
+
+        return path
+    }
+}
+
