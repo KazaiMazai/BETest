@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct PayloadRequest<Payload> {
+    let id: UUID
+    let payload: Payload
+}
