@@ -9,21 +9,37 @@ import Foundation
 
 class FileDataSource {
     let store: Store<AppState, Action>
-    private let queue: DispatchQueue
+    let filename: String
+    private let completeHandlerQueue: DispatchQueue
+    private let jsonDecoder: JSONDecoder
+    private var inProgress: Bool = false
 
     init(store: Store<AppState, Action>,
-         queue: DispatchQueue = DispatchQueue.global(qos: .background)) {
+         completeHandlerQueue: DispatchQueue = DispatchQueue(label: "FileDataSource"),
+         filename: String,
+         decoder: JSONDecoder = FileDataSource.defaultDecoder) {
 
         self.store = store
-        self.queue = queue
+        self.completeHandlerQueue = completeHandlerQueue
+        self.filename = filename
+        self.jsonDecoder = decoder
     }
 
     var asObserver: Observer<AppState> {
-        Observer(queue: self.queue) { [weak self] state in
+        Observer(queue: self.completeHandlerQueue) { [weak self] state in
             self?.observe(state: state)
             return .active
         }
     }
+}
+
+extension FileDataSource {
+    static let defaultDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+
+    }()
 }
 
 extension FileDataSource {
@@ -32,25 +48,61 @@ extension FileDataSource {
             return
         }
 
-        let data = [
+        guard !inProgress else {
+            return
+        }
 
-            TextData(id: 0,
-                     text: "\(0): Lorem Ipsum is simply dummy text"),
+        inProgress = true
 
-            TextData(id: 1,
-                     text: "\(1): Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley."),
+        print("FileDataSource:\t\t ReadFile: \(filename) \n")
+
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.read()
+        }
+    }
+
+    private func read() {
+        let name = String(filename.split(separator: ".").first ?? "")
+        let fileExtension = String(filename.split(separator: ".").last ?? "")
+
+        guard let filePath = Bundle.main.url(forResource: name,
+                                             withExtension: fileExtension) else {
+            store.dispatch(action: Actions.TextDataSource.ReceievedDataFail(error: Errors.couldNotOpenFile))
+            return
+        }
+
+        guard let stringContent = try? String(contentsOfFile: filePath.path, encoding: .utf8) else {
+            store.dispatch(action: Actions.TextDataSource.ReceievedDataFail(error: Errors.couldNotOpenFile))
+            return
+        }
+
+        guard let contentData = stringContent.data(using: .utf8) else {
+            store.dispatch(action: Actions.TextDataSource.ReceievedDataFail(error: Errors.unrecognizedDataFormat))
+            return
+        }
+
+        guard let data = try? jsonDecoder.decode([FileTextData].self, from: contentData) else {
+            store.dispatch(action: Actions.TextDataSource.ReceievedDataFail(error: Errors.unrecognizedDataFormat))
+            return
+        }
+
+        let models = data.enumerated().map { TextData(id: $0.offset, text: $0.element.line) }
+
+        completeHandlerQueue.async { [weak self] in
+            self?.store.dispatch(action: Actions.TextDataSource.ReceievedDataSuccess(value: models))
+        }
+
+    }
+}
+
+private struct FileTextData: Codable {
+    let line: String
+}
 
 
-            TextData(id: 2,
-                     text: "\(2): Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."),
-
-
-            TextData(id: 3,
-                     text: "\(3): Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum")
-
-        ]
-
-
-        store.dispatch(action: Actions.TextDataSource.ReceievedDataSuccess(value: data))
+private extension FileDataSource {
+    enum Errors: Error {
+        case couldNotOpenFile
+        case unrecognizedDataFormat
     }
 }

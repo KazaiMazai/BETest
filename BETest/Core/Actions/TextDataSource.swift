@@ -15,4 +15,8 @@ extension Actions.TextDataSource {
     struct ReceievedDataSuccess: Action {
         let value: [TextData]
     }
+
+    struct ReceievedDataFail: Action {
+        let error: Error
+    }
 }

@@ -12,6 +12,7 @@ struct AppDI {
     let environmentStore: EnvironmentStore
     let timeEventsEmitter: TimeEventsEmitter
     let textToSpeechDriver: TextToSpeechDriver
+    let filename = "data.json"
 
     let fileDataSource: FileDataSource
 
@@ -26,7 +27,7 @@ struct AppDI {
         theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
         timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
-        fileDataSource = FileDataSource(store: store)
+        fileDataSource = FileDataSource(store: store, filename: filename)
         let textToSpeechOperator = TextToSpeechOperator()
         textToSpeechDriver = TextToSpeechDriver(store: store,
                                                 textToSpeechOperator: textToSpeechOperator)

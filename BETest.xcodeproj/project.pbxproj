@@ -44,6 +44,7 @@
 		EA413B542527791400107D4A /* TextToSpeechRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B412527782500107D4A /* TextToSpeechRequest.swift */; };
 		EA413B5925277DBE00107D4A /* PayloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B5825277DBE00107D4A /* PayloadRequest.swift */; };
 		EA413B732527D12900107D4A /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B722527D12900107D4A /* DarkHostingController.swift */; };
+		EA413B8B2527EA1200107D4A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = EA413B8A2527EA1200107D4A /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		EA413B412527782500107D4A /* TextToSpeechRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechRequest.swift; sourceTree = "<group>"; };
 		EA413B5825277DBE00107D4A /* PayloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadRequest.swift; sourceTree = "<group>"; };
 		EA413B722527D12900107D4A /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
+		EA413B8A2527EA1200107D4A /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 		EA413A5E2525E9D600107D4A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EA413B892527E9E700107D4A /* Resources */,
 				EA413A602525E9E500107D4A /* SwiftUIExtensions */,
 				EA413A5F2525E9DB00107D4A /* FoundationExtensions */,
 			);
@@ -381,6 +384,14 @@
 				EA413B412527782500107D4A /* TextToSpeechRequest.swift */,
 			);
 			path = TTSOperator;
+			sourceTree = "<group>";
+		};
+		EA413B892527E9E700107D4A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA413B8A2527EA1200107D4A /* data.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +499,7 @@
 			files = (
 				EA413A2E2525E97F00107D4A /* LaunchScreen.storyboard in Resources */,
 				EA413A2B2525E97F00107D4A /* Preview Assets.xcassets in Resources */,
+				EA413B8B2527EA1200107D4A /* data.json in Resources */,
 				EA413A282525E97F00107D4A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
