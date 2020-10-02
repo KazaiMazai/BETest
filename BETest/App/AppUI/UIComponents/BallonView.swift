@@ -12,8 +12,9 @@ extension BallonView {
         let id: Int
         let text: String
 
-        static func empty(id: Int) -> Props {
-            .init(id: id, text: "Label label label label label label label label label label label label label")
+        static func preview(id: Int) -> Props {
+            .init(id: id,
+                  text: "\(id): Label label label label label label label label label label label label label")
         }
     }
 }
@@ -21,30 +22,32 @@ extension BallonView {
 struct BallonView: View {
     @Environment(\.appUITheme) var theme
     let props: Props
+    @State private var layoutWidth: CGFloat = 0
 
     var body: some View {
         makeBody
+            .overlay(
+                GeometryReader { geo in
+                    Color.clear.onAppear { layoutWidth = geo.size.width }
+                })
     }
 }
 
 struct BallonView_Previews: PreviewProvider {
     static var previews: some View {
-        BallonView(props: .empty(id: 1))
+        BallonView(props: .preview(id: 1))
     }
 }
 
 private extension BallonView {
     var makeBody: some View {
-        GeometryReader { geo in
             HStack {
                 textView
-                Spacer(
-                    minLength: geo.size.width * maxSpacerProportionalWidth)
+                Spacer(minLength: layoutWidth * maxSpacerProportionalWidth)
 
             }
             .background(theme.dialogueViewStyle.background)
             .padding(.leading, theme.baloonStyle.paddings.leftContentInset)
-        }
     }
 
     var text: some View {
@@ -53,7 +56,7 @@ private extension BallonView {
             .foregroundColor(theme.baloonStyle.textColor)
             .padding(theme.baloonStyle.paddings.textPaddings)
             .lineLimit(nil)
-            .fixedSize(horizontal: false, vertical: false)
+//            .fixedSize(horizontal: false, vertical: false)
     }
 
     var textView: some View {
