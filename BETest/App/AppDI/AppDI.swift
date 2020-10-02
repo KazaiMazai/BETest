@@ -12,6 +12,8 @@ struct AppDI {
     let environmentStore: EnvironmentStore
     let timeEventsEmitter: TimeEventsEmitter
 
+    let fileDataSource: FileDataSource
+
     init() {
         let state = AppState()
 
@@ -23,6 +25,7 @@ struct AppDI {
         theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
         timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
+        fileDataSource = FileDataSource(store: store)
 
         subscribeToStore()
     }
@@ -46,6 +49,7 @@ extension AppDI {
 extension AppDI {
     private func subscribeToStore() {
         environmentStore.store.subscribe(observer: timeEventsEmitter.asObserver)
+        environmentStore.store.subscribe(observer: fileDataSource.asObserver)
     }
 
     private func rootViewWith<V: View>(view: V) -> some View {
