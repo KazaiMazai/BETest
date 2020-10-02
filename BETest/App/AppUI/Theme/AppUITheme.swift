@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct AppUITheme {
-    init(baloonStyle: AppUITheme.BaloonStyle) {
-        self.baloonStyle = baloonStyle
-    }
-
     let baloonStyle: BaloonStyle
+    let dialogueViewStyle: DialogueViewStyle
+
 
     static var defaultTheme: AppUITheme {
-        .init(baloonStyle: BaloonStyle())
+        .init(baloonStyle: BaloonStyle(),
+              dialogueViewStyle: DialogueViewStyle())
     }
 }
 
-
 extension AppUITheme {
-    struct DialogueView {
+    struct DialogueViewStyle {
         let background = Color(hex: "#F9FAFB")
     }
 
@@ -37,11 +35,9 @@ extension AppUITheme {
 
 
 extension AppUITheme.BaloonStyle {
-
-
     struct Shadow {
         let color = Color(hex: "#000000")
-        let alpha: CGFloat = 0.5
+        let alpha: Double = 0.5
         let offset = CGSize(width: 1, height: 1)
         let blur: CGFloat = 4
     }
@@ -49,10 +45,10 @@ extension AppUITheme.BaloonStyle {
 
 extension AppUITheme.BaloonStyle {
     struct Paddings {
-        let interItemSpacing = 30
-        let textPaddings = 10
-        let leftContentInset = 20
-        let leftBodyInset = 11
+        let interItemSpacing: CGFloat = 30
+        let textPaddings: CGFloat = 10
+        let leftContentInset: CGFloat = 20
+        let leftBodyInset: CGFloat = 11
         let triangeSize = CGSize(width: 11, height: 18)
     }
 }
