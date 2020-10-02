@@ -37,6 +37,7 @@
 		EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0025272E7E00107D4A /* AppUITheme.swift */; };
 		EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B082527331900107D4A /* AppUIThemeKey.swift */; };
 		EA413B0E2527350400107D4A /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0D2527350400107D4A /* Color+hex.swift */; };
+		EA413B132527595000107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		EA413B0025272E7E00107D4A /* AppUITheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITheme.swift; sourceTree = "<group>"; };
 		EA413B082527331900107D4A /* AppUIThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIThemeKey.swift; sourceTree = "<group>"; };
 		EA413B0D2527350400107D4A /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
+		EA413B122527595000107D4A /* DialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,16 +319,17 @@
 		EA413A622525EAEB00107D4A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A632525EAF700107D4A /* Reader */,
+				EA413A632525EAF700107D4A /* Dialogue */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		EA413A632525EAF700107D4A /* Reader */ = {
+		EA413A632525EAF700107D4A /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
+				EA413B122527595000107D4A /* DialogueView.swift */,
 			);
-			path = Reader;
+			path = Dialogue;
 			sourceTree = "<group>";
 		};
 		EA413A952525F32000107D4A /* State */ = {
@@ -494,6 +497,7 @@
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA413A262525E97E00107D4A /* ContentView.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
+				EA413B132527595000107D4A /* DialogueView.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,
 				EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */,
 				EA413AB4252604F800107D4A /* EnvironmentProvider.swift in Sources */,
