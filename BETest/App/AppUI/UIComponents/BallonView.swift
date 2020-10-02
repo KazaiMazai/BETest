@@ -42,7 +42,7 @@ private extension BallonView {
             Spacer(minLength: maxLayoutWidth * maxSpacerProportionalWidth)
         }
         .animation(nil)
-        .background(theme.dialogueViewStyle.background)
+        .background(theme.dialogueViewStyle.backgroundColor)
         .padding(.leading, theme.baloonStyle.paddings.leftContentInset)
     }
 
@@ -59,7 +59,7 @@ private extension BallonView {
         Group {
             text
         }
-        .background(theme.baloonStyle.background)
+        .background(theme.baloonStyle.backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: theme.baloonStyle.borderRadius))
         .shadow(
             color: theme.baloonStyle.shadow.color
