@@ -50,5 +50,6 @@ extension AppUITheme.BaloonStyle {
         let leftContentInset: CGFloat = 20
         let leftBodyInset: CGFloat = 11
         let triangeSize = CGSize(width: 11, height: 18)
+        let maxWidthProportion: CGFloat = 0.75
     }
 }

@@ -38,7 +38,8 @@ private extension BallonView {
         GeometryReader { geo in
             HStack {
                 textView
-                Spacer(minLength: geo.size.width * 0.25)
+                Spacer(
+                    minLength: geo.size.width * maxSpacerProportionalWidth)
 
             }
             .background(theme.dialogueViewStyle.background)
@@ -69,5 +70,9 @@ private extension BallonView {
             y: theme.baloonStyle.shadow.offset.height)
 
         .padding(.leading, theme.baloonStyle.paddings.leftBodyInset)
+    }
+
+    var maxSpacerProportionalWidth: CGFloat {
+        (1.0 - theme.baloonStyle.paddings.maxWidthProportion)
     }
 }
