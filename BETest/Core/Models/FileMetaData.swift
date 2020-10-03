@@ -1,0 +1,12 @@
+//
+//  FileMetaData.swift
+//  BETest
+//
+//  Created by Sergey Kazakov on 03.10.2020.
+//
+
+import Foundation
+
+struct FileMetaData {
+    let filename: String
+}
