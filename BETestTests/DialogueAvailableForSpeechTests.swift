@@ -27,8 +27,14 @@ class DialogueAvailableForSpeechTests: XCTestCase {
         TextData(id: 4, text: "Some text4")
     ]
 
+
+    func makeTestDialogue() -> Dialogue {
+        Dialogue(delay: delay, file: .init(filename: ""))
+    }
+
+
     func test_WhenFirstItemAppearAndDelayPass_ItemAvailableForSpeech() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -42,7 +48,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
     }
 
     func test_WhenFirstItemAppearAndDelayDidNotPass_NoItemsAvailableForSpeech() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -56,7 +62,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
     }
 
     func test_WhenSpeechFinishAndDelayDidNotPass_ItemIsNotAvailableForSpeech() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -75,7 +81,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
     }
 
     func test_WhenSpeechDidNotFinishYet_ItemIsAvailableForSpeech() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -94,7 +100,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
     }
 
     func test_WhenAllItemsProcessed_NothingIsAvaliableForSpeech() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),

@@ -23,6 +23,11 @@ class DialogueItemsArrayTests: XCTestCase {
         delay * 4
     }
 
+    func makeTestDialogue() -> Dialogue {
+        Dialogue(delay: delay, file: .init(filename: ""))
+    }
+
+
     let testData = [
         TextData(id: 0, text: "Some text0"),
         TextData(id: 1, text: "Some text1"),
@@ -32,7 +37,7 @@ class DialogueItemsArrayTests: XCTestCase {
     ]
 
     func test_WhenDataReceived_FirstItemPresents() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -45,7 +50,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func test_WhenDataWithEmptyItemsReceived_EmptyItemsFiltered() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         var data = testData
         data.append(TextData(id: 5, text: "")) 
@@ -62,7 +67,7 @@ class DialogueItemsArrayTests: XCTestCase {
 
 
     func test_WhenOneAnimationIntervalsPass_OnlyFirstItemPresents() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -76,7 +81,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func test_WhenLongDelayIntervalsPassAndNoSpeakerFinishEvent_OneItemPresents() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -90,7 +95,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func test_WhenFirstItemSpeechFinishedAndDelayDidNotPass_OneItemPresents() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -107,7 +112,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func test_WhenFirstItemSpeechFinishedAndDelayPass_TwoItemsPresent() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -124,7 +129,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func test_WhenAllItemsProcessed_AllItemsPresent() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),
@@ -144,7 +149,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func test_WhenAllItemsProcessedGradually_CurrentIterationItemsAvailable() {
-        var dialogue = Dialogue(delay: delay)
+        var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
             Actions.DialogueFlow.Run(),

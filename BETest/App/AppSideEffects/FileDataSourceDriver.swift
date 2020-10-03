@@ -40,7 +40,7 @@ extension FileDataSourceDriver {
 
 extension FileDataSourceDriver {
     private func observe(state: AppState) {
-        guard let requestState = state.dialogue.waitingForData else {
+        guard let requestState = state.dialogue.dataRequestState else {
             fileDataOperator.process(requests: [])
             return
         }
@@ -49,9 +49,9 @@ extension FileDataSourceDriver {
         fileDataOperator.process(requests: [request])
     }
 
-    private func loadDataRequestFor(_ requestState: PayloadRequest<String>) -> LoadDataRequest {
+    private func loadDataRequestFor(_ requestState: PayloadRequest<FileMetaData>) -> LoadDataRequest {
         LoadDataRequest(id: requestState.id,
-                        filename: requestState.payload) {
+                        filename: requestState.payload.filename) {
             switch $0 {
             case .success(let data):
                 guard let itemsData = try? jsonDecoder.decode([FileTextData].self, from: data) else {

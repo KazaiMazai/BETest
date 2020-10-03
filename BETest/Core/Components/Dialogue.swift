@@ -9,7 +9,7 @@ import Foundation
 
 struct Dialogue {
     let delay: TimeInterval
-    let filename: String
+    let file: FileMetaData
 
     var animationsDelay: TimeInterval {
         delay
@@ -21,15 +21,15 @@ struct Dialogue {
     private(set) var items: [TextData] = []
 
     init(delay: TimeInterval,
-         filename: String) {
+         file: FileMetaData) {
         self.delay = delay
-        self.filename = filename
+        self.file = file
     }
 
     mutating func reduce(_ action: Action) {
         switch action {
         case is Actions.DialogueFlow.Run:
-            state = .waitingForData(PayloadRequest(id: UUID(), payload: filename))
+            state = .waitingForData(PayloadRequest(id: UUID(), payload: file))
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             handleReceiveDataSuccess(action)
         case let action as Actions.SpeechSynthesizer.StateChange:
@@ -44,14 +44,10 @@ struct Dialogue {
 
 extension Dialogue {
     var isWaitingForData: Bool {
-        guard case .waitingForData = state else {
-            return false
-        }
-
-        return true
+        dataRequestState != nil
     }
 
-    var waitingForData: PayloadRequest<String>? {
+    var dataRequestState: PayloadRequest<FileMetaData>? {
         guard case let .waitingForData(request) = state else {
             return nil
         }
@@ -116,7 +112,7 @@ private extension Dialogue {
 private extension Dialogue {
     enum State {
         case none
-        case waitingForData(PayloadRequest<String>)
+        case waitingForData(PayloadRequest<FileMetaData>)
         case pendingItem(TextData, availableAfter: Date)
         case processingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
         case finished
