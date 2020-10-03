@@ -9,6 +9,7 @@ import Foundation
 
 struct Dialogue {
     let delay: TimeInterval
+    let filename: String
 
     var animationsDelay: TimeInterval {
         delay
@@ -19,14 +20,16 @@ struct Dialogue {
 
     private(set) var items: [TextData] = []
 
-    init(delay: TimeInterval) {
+    init(delay: TimeInterval,
+         filename: String) {
         self.delay = delay
+        self.filename = filename
     }
 
     mutating func reduce(_ action: Action) {
         switch action {
         case is Actions.DialogueFlow.Run:
-            state = .waitingForData
+            state = .waitingForData(PayloadRequest(id: UUID(), payload: filename))
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             handleReceiveDataSuccess(action)
         case let action as Actions.SpeechSynthesizer.StateChange:
@@ -40,12 +43,20 @@ struct Dialogue {
 }
 
 extension Dialogue {
-    var waitingForData: Bool {
+    var isWaitingForData: Bool {
         guard case .waitingForData = state else {
             return false
         }
 
         return true
+    }
+
+    var waitingForData: PayloadRequest<String>? {
+        guard case let .waitingForData(request) = state else {
+            return nil
+        }
+
+        return request
     }
 
     func availableForSpeech(at: Date) -> PayloadRequest<TextData>? {
@@ -64,7 +75,7 @@ extension Dialogue {
 private extension Dialogue {
     mutating func handleReceiveDataSuccess(_ action: Actions.TextDataSource.ReceievedDataSuccess) {
         pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
-        guard waitingForData && !pendingItems.isEmpty else {
+        guard isWaitingForData && !pendingItems.isEmpty else {
             return
         }
 
@@ -105,7 +116,7 @@ private extension Dialogue {
 private extension Dialogue {
     enum State {
         case none
-        case waitingForData
+        case waitingForData(PayloadRequest<String>)
         case pendingItem(TextData, availableAfter: Date)
         case processingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
         case finished
