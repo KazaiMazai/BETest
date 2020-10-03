@@ -34,7 +34,7 @@ extension AppUITheme {
     }
 
     struct BaloonStyle {
-        let font = Font.system(size: 17, weight: .light) //Font.custom(".SFUIText-Light", size: 17)
+        let font = Font.system(size: 17, weight: .light)
         let textColor = Color(hex: "#000000")
         let backgroundColor = Color(hex: "#FDFDFE")
         let borderRadius: CGFloat = 5
