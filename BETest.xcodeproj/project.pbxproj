@@ -48,6 +48,7 @@
 		EA413BA72527F74D00107D4A /* FileDataSourceDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */; };
 		EA413BAF2528026000107D4A /* FileMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BAE2528026000107D4A /* FileMetaData.swift */; };
 		EA413BBC2528087200107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
+		EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BC32528145700107D4A /* NavigationBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		EA413B9E2527F3C200107D4A /* LoadDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataRequest.swift; sourceTree = "<group>"; };
 		EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSourceDriver.swift; sourceTree = "<group>"; };
 		EA413BAE2528026000107D4A /* FileMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMetaData.swift; sourceTree = "<group>"; };
+		EA413BC32528145700107D4A /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +268,7 @@
 				EA413A5B2525E9CF00107D4A /* AppDI */,
 				EA413A5C2525E9CF00107D4A /* SwiftUIReduxExtensions */,
 				EA413B382527709300107D4A /* SideEffectsOperators */,
-				EA413A5D2525E9CF00107D4A /* AppSideEffects */,
+				EA413A5D2525E9CF00107D4A /* SideEffectsDrivers */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -300,14 +302,14 @@
 			path = SwiftUIReduxExtensions;
 			sourceTree = "<group>";
 		};
-		EA413A5D2525E9CF00107D4A /* AppSideEffects */ = {
+		EA413A5D2525E9CF00107D4A /* SideEffectsDrivers */ = {
 			isa = PBXGroup;
 			children = (
 				EA413AC02526069000107D4A /* TimeEventsEmitter.swift */,
 				EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */,
 				EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */,
 			);
-			path = AppSideEffects;
+			path = SideEffectsDrivers;
 			sourceTree = "<group>";
 		};
 		EA413A5E2525E9D600107D4A /* Library */ = {
@@ -340,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413AFA25272E3000107D4A /* BallonView.swift */,
+				EA413BC32528145700107D4A /* NavigationBarView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				EA413B1B2527623800107D4A /* DialogueBinder.swift in Sources */,
 				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EA413BBC2528087200107D4A /* DialogueView.swift in Sources */,
+				EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */,
