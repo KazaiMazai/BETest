@@ -39,12 +39,15 @@
 		EA413B132527595000107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
 		EA413B1B2527623800107D4A /* DialogueBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B1A2527623800107D4A /* DialogueBinder.swift */; };
 		EA413B20252763F200107D4A /* FileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B1F252763F200107D4A /* FileDataSource.swift */; };
-		EA413B3125276C6900107D4A /* SpeechSynthesizerSideEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B3025276C6900107D4A /* SpeechSynthesizerSideEffect.swift */; };
+		EA413B3125276C6900107D4A /* TextToSpeechDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */; };
 		EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */; };
 		EA413B542527791400107D4A /* TextToSpeechRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B412527782500107D4A /* TextToSpeechRequest.swift */; };
 		EA413B5925277DBE00107D4A /* PayloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B5825277DBE00107D4A /* PayloadRequest.swift */; };
 		EA413B732527D12900107D4A /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B722527D12900107D4A /* DarkHostingController.swift */; };
 		EA413B8B2527EA1200107D4A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = EA413B8A2527EA1200107D4A /* data.json */; };
+		EA413B972527F3B300107D4A /* FileDataOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B962527F3B300107D4A /* FileDataOperator.swift */; };
+		EA413B9F2527F3C200107D4A /* LoadDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B9E2527F3C200107D4A /* LoadDataRequest.swift */; };
+		EA413BA72527F74D00107D4A /* FileDataSourceDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,12 +106,15 @@
 		EA413B122527595000107D4A /* DialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueView.swift; sourceTree = "<group>"; };
 		EA413B1A2527623800107D4A /* DialogueBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBinder.swift; sourceTree = "<group>"; };
 		EA413B1F252763F200107D4A /* FileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSource.swift; sourceTree = "<group>"; };
-		EA413B3025276C6900107D4A /* SpeechSynthesizerSideEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerSideEffect.swift; sourceTree = "<group>"; };
+		EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechDriver.swift; sourceTree = "<group>"; };
 		EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechOperator.swift; sourceTree = "<group>"; };
 		EA413B412527782500107D4A /* TextToSpeechRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechRequest.swift; sourceTree = "<group>"; };
 		EA413B5825277DBE00107D4A /* PayloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadRequest.swift; sourceTree = "<group>"; };
 		EA413B722527D12900107D4A /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
 		EA413B8A2527EA1200107D4A /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		EA413B962527F3B300107D4A /* FileDataOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataOperator.swift; sourceTree = "<group>"; };
+		EA413B9E2527F3C200107D4A /* LoadDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataRequest.swift; sourceTree = "<group>"; };
+		EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSourceDriver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +302,8 @@
 			children = (
 				EA413AC02526069000107D4A /* TimeEventsEmitter.swift */,
 				EA413B1F252763F200107D4A /* FileDataSource.swift */,
-				EA413B3025276C6900107D4A /* SpeechSynthesizerSideEffect.swift */,
+				EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */,
+				EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */,
 			);
 			path = AppSideEffects;
 			sourceTree = "<group>";
@@ -372,6 +379,7 @@
 		EA413B382527709300107D4A /* SideEffectsOperators */ = {
 			isa = PBXGroup;
 			children = (
+				EA413B952527F39C00107D4A /* FileDataOperator */,
 				EA413B462527784500107D4A /* TTSOperator */,
 			);
 			path = SideEffectsOperators;
@@ -392,6 +400,15 @@
 				EA413B8A2527EA1200107D4A /* data.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA413B952527F39C00107D4A /* FileDataOperator */ = {
+			isa = PBXGroup;
+			children = (
+				EA413B962527F3B300107D4A /* FileDataOperator.swift */,
+				EA413B9E2527F3C200107D4A /* LoadDataRequest.swift */,
+			);
+			path = FileDataOperator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +554,7 @@
 				EA413A762525EC0F00107D4A /* Store.swift in Sources */,
 				EA413AC12526069000107D4A /* TimeEventsEmitter.swift in Sources */,
 				EA413AE3252618A800107D4A /* DialogueFlow.swift in Sources */,
+				EA413BA72527F74D00107D4A /* FileDataSourceDriver.swift in Sources */,
 				EA413B0E2527350400107D4A /* Color+hex.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413B20252763F200107D4A /* FileDataSource.swift in Sources */,
@@ -546,8 +564,10 @@
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413AAF2526009C00107D4A /* UIBinder.swift in Sources */,
 				EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */,
-				EA413B3125276C6900107D4A /* SpeechSynthesizerSideEffect.swift in Sources */,
+				EA413B3125276C6900107D4A /* TextToSpeechDriver.swift in Sources */,
+				EA413B9F2527F3C200107D4A /* LoadDataRequest.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
+				EA413B972527F3B300107D4A /* FileDataOperator.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EA413B132527595000107D4A /* DialogueView.swift in Sources */,
 				EA413A6B2525EBFA00107D4A /* Observer.swift in Sources */,

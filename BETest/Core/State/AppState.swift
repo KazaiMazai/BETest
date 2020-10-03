@@ -8,7 +8,7 @@
 import Foundation
 
 struct AppState {
-    private(set) var dialogue = Dialogue(delay: 0.5)
+    private(set) var dialogue = Dialogue(delay: 0.5, filename: "data.json")
     private(set) var currentTime = CurrentTime()
 
     mutating func reduce(_ action: Action) {

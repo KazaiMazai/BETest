@@ -14,7 +14,7 @@ struct AppDI {
     let textToSpeechDriver: TextToSpeechDriver
     let filename = "data.json"
 
-    let fileDataSource: FileDataSource
+    let fileDataSource: FileDataSourceDriver
 
     init() {
         let state = AppState()
@@ -27,7 +27,11 @@ struct AppDI {
         theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
         timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
-        fileDataSource = FileDataSource(store: store, filename: filename)
+
+
+        let fileDataSourceOperator = FileDataOperator()
+        fileDataSource = FileDataSourceDriver(store: store,
+                                              fileDataOperator: fileDataSourceOperator)
         let textToSpeechOperator = TextToSpeechOperator()
         textToSpeechDriver = TextToSpeechDriver(store: store,
                                                 textToSpeechOperator: textToSpeechOperator)
