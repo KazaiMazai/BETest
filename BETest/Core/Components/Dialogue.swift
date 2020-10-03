@@ -31,11 +31,38 @@ struct Dialogue {
         case is Actions.DialogueFlow.Run:
             state = .waitingForData(RequestState(id: UUID(), payload: file))
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
-            handleReceiveDataSuccess(action)
+            pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
+            guard isWaitingForData && !pendingItems.isEmpty else {
+                break
+            }
+
+            let item = pendingItems.removeFirst()
+            state = .processingItem(RequestState(id: UUID(), payload: item),
+                                    speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
+            items.append(item)
         case let action as Actions.SpeechSynthesizer.StateChange:
-            handleSynthesizerStateChange(action)
+            guard case .finish = action.state else {
+                break
+            }
+
+            guard !pendingItems.isEmpty else {
+                break
+            }
+
+            let item = pendingItems.removeFirst()
+            state = .pendingItem(item, availableAfter: Date().addingTimeInterval(delay))
         case let action as Actions.Time.TimeChanged:
-            handleTimeChange(action)
+            guard case let .pendingItem(item, availableAfter) = state else {
+                break
+            }
+
+            guard availableAfter <= action.timestamp else {
+                break
+            }
+
+            state = .processingItem(RequestState(id: UUID(), payload: item),
+                                    speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
+            items.append(item)
         default:
             break
         }
@@ -68,46 +95,6 @@ extension Dialogue {
     }
 }
 
-private extension Dialogue {
-    mutating func handleReceiveDataSuccess(_ action: Actions.TextDataSource.ReceievedDataSuccess) {
-        pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
-        guard isWaitingForData && !pendingItems.isEmpty else {
-            return
-        }
-
-        let item = pendingItems.removeFirst()
-        state = .processingItem(RequestState(id: UUID(), payload: item),
-                                speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
-        items.append(item)
-    }
-
-    mutating func handleSynthesizerStateChange(_ action: Actions.SpeechSynthesizer.StateChange) {
-        guard case .finish = action.state else {
-            return
-        }
-
-        guard !pendingItems.isEmpty else {
-            return
-        }
-
-        let item = pendingItems.removeFirst()
-        state = .pendingItem(item, availableAfter: Date().addingTimeInterval(delay))
-    }
-
-    mutating func handleTimeChange(_ action: Actions.Time.TimeChanged) {
-        guard case let .pendingItem(item, availableAfter) = state else {
-            return
-        }
-
-        guard availableAfter <= action.timestamp else {
-            return
-        }
-
-        state = .processingItem(RequestState(id: UUID(), payload: item),
-                                speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
-        items.append(item)
-    }
-}
 
 private extension Dialogue {
     enum State {

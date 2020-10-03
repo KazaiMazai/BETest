@@ -18,12 +18,7 @@ class FileDataOperator {
     }
 
     func process(requests: [LoadDataRequest]) {
-        var remainedActiveRequestsIds = Set(activeRequests.keys)
-
-        for request in requests {
-            process(request: request)
-            remainedActiveRequestsIds.remove(request.id)
-        }
+        requests.forEach { process(request: $0) }
     }
 }
 
@@ -61,7 +56,6 @@ extension FileDataOperator {
                 complete()
                 request.complete(.failure(Errors.couldNotOpenFile))
             }
-
             return
         }
 
@@ -70,7 +64,6 @@ extension FileDataOperator {
                 complete()
                 request.complete(.failure(Errors.couldNotOpenFile))
             }
-
             return
         }
 
@@ -88,7 +81,6 @@ extension FileDataOperator {
         }
     }
 }
-
 
 private extension FileDataOperator {
     enum Errors: Error {

@@ -12,6 +12,8 @@ class TextToSpeechOperator {
     private let synthesizer = AVSpeechSynthesizer()
     let completeHandlerQueue: DispatchQueue
 
+    private var activeRequest: TextToSpeechRequest?
+    private var completedRequests: Set<UUID> = []
     private var synthersizerHandler: SpeechSynthesizerRequestEventsHandler?
 
     init(completeHandlerQueue: DispatchQueue = DispatchQueue(label: "TTS Operator")) {
@@ -40,9 +42,6 @@ class TextToSpeechOperator {
 
         speak(request: request)
     }
-
-    private var activeRequest: TextToSpeechRequest?
-    private var completedRequests: Set<UUID> = []
 }
 
 extension TextToSpeechOperator {
