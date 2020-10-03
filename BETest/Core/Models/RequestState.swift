@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PayloadRequest<Payload> {
+struct RequestState<Payload> {
     let id: UUID
     let payload: Payload
 }

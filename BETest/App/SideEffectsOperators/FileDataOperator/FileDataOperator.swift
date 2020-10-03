@@ -25,7 +25,6 @@ class FileDataOperator {
             remainedActiveRequestsIds.remove(request.id)
         }
     }
-
 }
 
 extension FileDataOperator {
