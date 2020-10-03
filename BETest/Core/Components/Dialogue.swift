@@ -29,7 +29,7 @@ struct Dialogue {
     mutating func reduce(_ action: Action) {
         switch action {
         case is Actions.DialogueFlow.Run:
-            state = .waitingForData(PayloadRequest(id: UUID(), payload: file))
+            state = .waitingForData(RequestState(id: UUID(), payload: file))
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             handleReceiveDataSuccess(action)
         case let action as Actions.SpeechSynthesizer.StateChange:
@@ -47,7 +47,7 @@ extension Dialogue {
         dataRequestState != nil
     }
 
-    var dataRequestState: PayloadRequest<FileMetaData>? {
+    var dataRequestState: RequestState<FileMetaData>? {
         guard case let .waitingForData(request) = state else {
             return nil
         }
@@ -55,7 +55,7 @@ extension Dialogue {
         return request
     }
 
-    func availableForSpeech(at: Date) -> PayloadRequest<TextData>? {
+    func availableForSpeech(at: Date) -> RequestState<TextData>? {
         guard case let .processingItem(item, speechAvailableAfter) = state else {
             return nil
         }
@@ -76,7 +76,7 @@ private extension Dialogue {
         }
 
         let item = pendingItems.removeFirst()
-        state = .processingItem(PayloadRequest(id: UUID(), payload: item),
+        state = .processingItem(RequestState(id: UUID(), payload: item),
                                 speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
         items.append(item)
     }
@@ -103,7 +103,7 @@ private extension Dialogue {
             return
         }
 
-        state = .processingItem(PayloadRequest(id: UUID(), payload: item),
+        state = .processingItem(RequestState(id: UUID(), payload: item),
                                 speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
         items.append(item)
     }
@@ -112,9 +112,9 @@ private extension Dialogue {
 private extension Dialogue {
     enum State {
         case none
-        case waitingForData(PayloadRequest<FileMetaData>)
+        case waitingForData(RequestState<FileMetaData>)
         case pendingItem(TextData, availableAfter: Date)
-        case processingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
+        case processingItem(RequestState<TextData>, speechAvailableAfter: Date)
         case finished
     }
 }
