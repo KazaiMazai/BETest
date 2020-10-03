@@ -38,7 +38,6 @@
 		EA413B0E2527350400107D4A /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0D2527350400107D4A /* Color+hex.swift */; };
 		EA413B132527595000107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
 		EA413B1B2527623800107D4A /* DialogueBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B1A2527623800107D4A /* DialogueBinder.swift */; };
-		EA413B20252763F200107D4A /* FileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B1F252763F200107D4A /* FileDataSource.swift */; };
 		EA413B3125276C6900107D4A /* TextToSpeechDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */; };
 		EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */; };
 		EA413B542527791400107D4A /* TextToSpeechRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B412527782500107D4A /* TextToSpeechRequest.swift */; };
@@ -105,7 +104,6 @@
 		EA413B0D2527350400107D4A /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		EA413B122527595000107D4A /* DialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueView.swift; sourceTree = "<group>"; };
 		EA413B1A2527623800107D4A /* DialogueBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBinder.swift; sourceTree = "<group>"; };
-		EA413B1F252763F200107D4A /* FileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSource.swift; sourceTree = "<group>"; };
 		EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechDriver.swift; sourceTree = "<group>"; };
 		EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechOperator.swift; sourceTree = "<group>"; };
 		EA413B412527782500107D4A /* TextToSpeechRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechRequest.swift; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				EA413AC02526069000107D4A /* TimeEventsEmitter.swift */,
-				EA413B1F252763F200107D4A /* FileDataSource.swift */,
 				EA413BA62527F74D00107D4A /* FileDataSourceDriver.swift */,
 				EA413B3025276C6900107D4A /* TextToSpeechDriver.swift */,
 			);
@@ -557,7 +554,6 @@
 				EA413BA72527F74D00107D4A /* FileDataSourceDriver.swift in Sources */,
 				EA413B0E2527350400107D4A /* Color+hex.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
-				EA413B20252763F200107D4A /* FileDataSource.swift in Sources */,
 				EA413B1B2527623800107D4A /* DialogueBinder.swift in Sources */,
 				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
