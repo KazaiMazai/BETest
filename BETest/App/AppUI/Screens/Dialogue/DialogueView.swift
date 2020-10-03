@@ -48,8 +48,6 @@ struct DialogueView_Previews: PreviewProvider {
 }
 
 private extension DialogueView {
-
-
     var makeBody: some View {
         VStack(spacing: 0) {
             NavigationBarView(props: .init(title: props.title))

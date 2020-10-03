@@ -24,7 +24,7 @@ class DialogueItemsArrayTests: XCTestCase {
     }
 
     func makeTestDialogue() -> Dialogue {
-        Dialogue(delay: delay, file: .init(filename: ""))
+        Dialogue(delay: delay)
     }
 
 
@@ -40,7 +40,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -56,7 +56,7 @@ class DialogueItemsArrayTests: XCTestCase {
         data.append(TextData(id: 5, text: "")) 
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: data)
         ]
 
@@ -70,7 +70,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -84,7 +84,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -98,7 +98,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -115,7 +115,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -132,7 +132,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -152,7 +152,7 @@ class DialogueItemsArrayTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 

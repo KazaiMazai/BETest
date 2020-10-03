@@ -9,7 +9,6 @@ import Foundation
 
 struct Dialogue {
     let delay: TimeInterval
-    let file: FileMetaData
 
     var animationsDelay: TimeInterval {
         delay
@@ -20,16 +19,14 @@ struct Dialogue {
 
     private(set) var items: [TextData] = []
 
-    init(delay: TimeInterval,
-         file: FileMetaData) {
+    init(delay: TimeInterval) {
         self.delay = delay
-        self.file = file
     }
 
     mutating func reduce(_ action: Action) {
         switch action {
-        case is Actions.DialogueFlow.Run:
-            state = .waitingForData(RequestState(id: UUID(), payload: file))
+        case let action as Actions.DialogueFlow.Run:
+            state = .waitingForData(RequestState(id: UUID(), payload: FileMetaData(filename: action.filename)))
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
             guard isWaitingForData && !pendingItems.isEmpty else {
