@@ -44,8 +44,8 @@ class TextToSpeechOperator {
     }
 }
 
-extension TextToSpeechOperator {
-    private func cancelCurrent() {
+private extension TextToSpeechOperator {
+    func cancelCurrent() {
         synthersizerHandler = nil
         synthesizer.delegate = nil
         synthesizer.stopSpeaking(at: .immediate)
@@ -53,17 +53,17 @@ extension TextToSpeechOperator {
         activeRequest = nil
     }
 
-    private func speak(request: TextToSpeechRequest) {
+    func speak(request: TextToSpeechRequest) {
         activeRequest = request
         synthersizerHandler = SpeechSynthesizerRequestEventsHandler(request: request,
-                                                               completeHandlerQueue: completeHandlerQueue,
-                                                               complete: complete)
+                                                                    completeHandlerQueue: completeHandlerQueue,
+                                                                    complete: complete)
         synthesizer.delegate = synthersizerHandler
         let utterance = AVSpeechUtterance(string: request.text)
         synthesizer.speak(utterance)
     }
 
-    private func complete(request: TextToSpeechRequest) {
+    func complete(request: TextToSpeechRequest) {
         completedRequests.insert(request.id)
         synthersizerHandler = nil
         synthesizer.delegate = nil
