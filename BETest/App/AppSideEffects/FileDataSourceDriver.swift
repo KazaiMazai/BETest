@@ -7,6 +7,12 @@
 
 import Foundation
 
+extension FileDataSourceDriver {
+    enum Errors: Error {
+        case couldNotDecodeData
+    }
+}
+
 struct FileDataSourceDriver {
     let store: Store<AppState, Action>
     let fileDataOperator: FileDataOperator
@@ -38,8 +44,8 @@ extension FileDataSourceDriver {
     }()
 }
 
-extension FileDataSourceDriver {
-    private func observe(state: AppState) {
+private extension FileDataSourceDriver {
+    func observe(state: AppState) {
         guard let requestState = state.dialogue.dataRequestState else {
             fileDataOperator.process(requests: [])
             return
@@ -49,7 +55,7 @@ extension FileDataSourceDriver {
         fileDataOperator.process(requests: [request])
     }
 
-    private func loadDataRequestFor(_ requestState: PayloadRequest<FileMetaData>) -> LoadDataRequest {
+    func loadDataRequestFor(_ requestState: RequestState<FileMetaData>) -> LoadDataRequest {
         LoadDataRequest(id: requestState.id,
                         filename: requestState.payload.filename) {
             switch $0 {
@@ -69,10 +75,4 @@ extension FileDataSourceDriver {
 
 private struct FileTextData: Codable {
     let line: String
-}
-
-extension FileDataSourceDriver {
-    enum Errors: Error {
-        case couldNotDecodeData
-    }
 }
