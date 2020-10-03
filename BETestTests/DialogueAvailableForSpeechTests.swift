@@ -29,7 +29,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
 
 
     func makeTestDialogue() -> Dialogue {
-        Dialogue(delay: delay, file: .init(filename: ""))
+        Dialogue(delay: delay)
     }
 
 
@@ -37,7 +37,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -51,7 +51,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -65,7 +65,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -84,7 +84,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 
@@ -103,7 +103,7 @@ class DialogueAvailableForSpeechTests: XCTestCase {
         var dialogue = makeTestDialogue()
 
         let actions: [Action] = [
-            Actions.DialogueFlow.Run(),
+            Actions.DialogueFlow.Run(filename: ""),
             Actions.TextDataSource.ReceievedDataSuccess(value: testData)
         ]
 

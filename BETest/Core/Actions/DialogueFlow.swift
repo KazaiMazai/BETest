@@ -13,6 +13,6 @@ extension Actions {
 
 extension Actions.DialogueFlow {
     struct Run: Action {
-
+        let filename: String
     }
 }
