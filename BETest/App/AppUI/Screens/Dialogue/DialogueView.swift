@@ -48,27 +48,11 @@ struct DialogueView_Previews: PreviewProvider {
 }
 
 private extension DialogueView {
-    var navigationBarView: some View {
-        ZStack(alignment: .bottom) {
-            HStack(alignment: .center) {
-                Spacer()
-                Text(props.title)
-                    .font(theme.navBarStyle.titleFont)
-                    .foregroundColor(theme.navBarStyle.titleColor)
-                Spacer()
-            }
-            .frame(height: theme.navBarStyle.height)
 
-            theme.navBarStyle.separatorColor
-                .frame(height: 1)
-        }
-        .frame(height: theme.navBarStyle.height)
-        .background(theme.navBarStyle.backgroundColor)
-    }
 
     var makeBody: some View {
         VStack(spacing: 0) {
-            navigationBarView
+            NavigationBarView(props: .init(title: props.title))
             ScrollView {
                 VStack(spacing: theme.baloonStyle.paddings.interItemSpacing) {
                     Color.clear.frame(height: 0)
