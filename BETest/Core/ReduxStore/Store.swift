@@ -19,16 +19,6 @@ class Store<State, Action> {
         self.reducer = reducer
         self.state = state
     }
-
-    private func notify(_ observer: Observer<State>) {
-        let status = observer.queue.sync {
-            observer.observe(state)
-        }
-
-        if case .dead = status {
-            observers.remove(observer)
-        }
-    }
 }
 
 extension Store {
@@ -49,5 +39,16 @@ extension Store {
             self.observers.forEach(self.notify)
         }
     }
+}
 
+private extension Store {
+    func notify(_ observer: Observer<State>) {
+        let status = observer.queue.sync {
+            observer.observe(state)
+        }
+
+        if case .dead = status {
+            observers.remove(observer)
+        }
+    }
 }
