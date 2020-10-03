@@ -71,7 +71,6 @@ private struct FileTextData: Codable {
     let line: String
 }
 
-
 extension FileDataSourceDriver {
     enum Errors: Error {
         case couldNotDecodeData

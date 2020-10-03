@@ -26,6 +26,9 @@ class FileDataOperator {
         }
     }
 
+}
+
+extension FileDataOperator {
     private func process(request: LoadDataRequest) {
         if completedRequests.contains(request.id) {
             return
@@ -41,7 +44,6 @@ class FileDataOperator {
             self?.performRead(request: request)
         }
     }
-
 
     private func performRead(request: LoadDataRequest) {
         let name = String(request.filename.split(separator: ".").first ?? "")
