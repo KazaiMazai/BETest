@@ -26,8 +26,7 @@ struct AppDI {
 
         theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
-        timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 1)
-
+        timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 0.5)
 
         let fileDataSourceOperator = FileDataOperator()
         fileDataSource = FileDataSourceDriver(store: store,
