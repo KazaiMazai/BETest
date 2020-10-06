@@ -74,6 +74,8 @@ private extension DialogueView {
     func itemTransitionForIndex(_ idx: Int) -> AnyTransition {
         return idx == 0 ?
             AnyTransition.opacity
-            : AnyTransition.move(edge: .top).combined(with: .opacity)
+            : AnyTransition.move(edge: .top)
+                .combined(with: .offset(x: 0, y: -theme.baloonStyle.paddings.interItemSpacing))
+                .combined(with: .opacity)
     }
 }
