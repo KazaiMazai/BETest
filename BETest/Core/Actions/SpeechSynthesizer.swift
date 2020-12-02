@@ -23,6 +23,7 @@ extension Actions.SpeechSynthesizer.StateChange {
         case finish
         case pause
         case cancel
-        case continued 
+        case continued
+        case failed(Error)
     }
 }

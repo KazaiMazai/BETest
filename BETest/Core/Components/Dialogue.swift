@@ -26,7 +26,7 @@ struct Dialogue {
     mutating func reduce(_ action: Action) {
         switch action {
         case let action as Actions.DialogueFlow.Run:
-            state = .waitingForData(RequestState(id: UUID(), payload: FileMetaData(filename: action.filename)))
+            state = .waitingForData(PayloadRequest(id: UUID(), payload: FileMetaData(filename: action.filename)))
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
             guard isWaitingForData && !pendingItems.isEmpty else {
@@ -34,7 +34,7 @@ struct Dialogue {
             }
 
             let item = pendingItems.removeFirst()
-            state = .processingItem(RequestState(id: UUID(), payload: item),
+            state = .processingItem(PayloadRequest(id: UUID(), payload: item),
                                     speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
             items.append(item)
         case let action as Actions.SpeechSynthesizer.StateChange:
@@ -57,7 +57,7 @@ struct Dialogue {
                 break
             }
 
-            state = .processingItem(RequestState(id: UUID(), payload: item),
+            state = .processingItem(PayloadRequest(id: UUID(), payload: item),
                                     speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
             items.append(item)
         default:
@@ -71,7 +71,7 @@ extension Dialogue {
         dataRequestState != nil
     }
 
-    var dataRequestState: RequestState<FileMetaData>? {
+    var dataRequestState: PayloadRequest<FileMetaData>? {
         guard case let .waitingForData(request) = state else {
             return nil
         }
@@ -79,7 +79,7 @@ extension Dialogue {
         return request
     }
 
-    func availableForSpeech(at: Date) -> RequestState<TextData>? {
+    func availableForSpeech(at: Date) -> PayloadRequest<TextData>? {
         guard case let .processingItem(item, speechAvailableAfter) = state else {
             return nil
         }
@@ -96,9 +96,9 @@ extension Dialogue {
 private extension Dialogue {
     enum State {
         case none
-        case waitingForData(RequestState<FileMetaData>)
+        case waitingForData(PayloadRequest<FileMetaData>)
         case pendingItem(TextData, availableAfter: Date)
-        case processingItem(RequestState<TextData>, speechAvailableAfter: Date)
+        case processingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
         case finished
     }
 }

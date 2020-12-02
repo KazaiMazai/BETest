@@ -13,5 +13,6 @@ struct AppState {
 
     mutating func reduce(_ action: Action) {
         dialogue.reduce(action)
+        currentTime.reduce(action)
     }
 }
