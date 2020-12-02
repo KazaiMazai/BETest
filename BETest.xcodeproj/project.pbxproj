@@ -33,7 +33,7 @@
 		EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B082527331900107D4A /* AppUIThemeKey.swift */; };
 		EA413B0E2527350400107D4A /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B0D2527350400107D4A /* Color+hex.swift */; };
 		EA413B1B2527623800107D4A /* DialoguePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B1A2527623800107D4A /* DialoguePresenter.swift */; };
-		EA413B3125276C6900107D4A /* TTSSideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B3025276C6900107D4A /* TTSSideEffects.swift */; };
+		EA413B3125276C6900107D4A /* TextToSpeechSideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B3025276C6900107D4A /* TextToSpeechSideEffects.swift */; };
 		EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */; };
 		EA413B5925277DBE00107D4A /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B5825277DBE00107D4A /* RequestState.swift */; };
 		EA413B732527D12900107D4A /* DarkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B722527D12900107D4A /* DarkHostingController.swift */; };
@@ -101,7 +101,7 @@
 		EA413B0D2527350400107D4A /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		EA413B122527595000107D4A /* DialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueView.swift; sourceTree = "<group>"; };
 		EA413B1A2527623800107D4A /* DialoguePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialoguePresenter.swift; sourceTree = "<group>"; };
-		EA413B3025276C6900107D4A /* TTSSideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSSideEffects.swift; sourceTree = "<group>"; };
+		EA413B3025276C6900107D4A /* TextToSpeechSideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechSideEffects.swift; sourceTree = "<group>"; };
 		EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechOperator.swift; sourceTree = "<group>"; };
 		EA413B5825277DBE00107D4A /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
 		EA413B722527D12900107D4A /* DarkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkHostingController.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			children = (
 				EA413AC02526069000107D4A /* TimeEventsSideEffects.swift */,
 				EA413BA62527F74D00107D4A /* FileDataSideEffects.swift */,
-				EA413B3025276C6900107D4A /* TTSSideEffects.swift */,
+				EA413B3025276C6900107D4A /* TextToSpeechSideEffects.swift */,
 			);
 			path = SideEffects;
 			sourceTree = "<group>";
@@ -571,7 +571,7 @@
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */,
-				EA413B3125276C6900107D4A /* TTSSideEffects.swift in Sources */,
+				EA413B3125276C6900107D4A /* TextToSpeechSideEffects.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA413B972527F3B300107D4A /* FileDataOperator.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-struct TTSSideEffects {
+struct TextToSpeechSideEffects {
     func map(state: AppState, on store: Store) -> [TextToSpeechOperator.Request] {
         guard let itemToSpeak = state.dialogue.availableForSpeech(at: Date()) else {
             return []

@@ -41,7 +41,7 @@ struct AppDI {
                                       prepareRequests: fileDataSideEffects.map)
 
 
-        let ttsSideEffects = TTSSideEffects()
+        let ttsSideEffects = TextToSpeechSideEffects()
         let textToSpeechOperator = TextToSpeechOperator(queueLabel: "TTS Operator", qos: .userInitiated)
         textToSpeechDriver = Driver(store: store,
                                     sideEffectsOperator: textToSpeechOperator,
