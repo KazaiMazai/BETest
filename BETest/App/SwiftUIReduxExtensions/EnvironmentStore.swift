@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 class EnvironmentStore: ObservableObject {
     let store: Store<AppState, Action>
 
@@ -20,11 +20,19 @@ class EnvironmentStore: ObservableObject {
     }
 }
 
-extension EnvironmentStore {
-    func dispatch(_ action: Action) {
-        store.dispatch(action: action)
-    }
 
+
+extension EnvironmentStore {
+    private var asObserver: Observer<AppState> {
+        Observer(queue: .main) { state in
+            self.state = state
+            return .active
+        }
+    }
+}
+*/
+
+extension EnvironmentStore {
     func bind(_ action: Action) -> Command {
         return {
             self.dispatch(action)
@@ -34,15 +42,6 @@ extension EnvironmentStore {
     func bind<T>(_ action: @escaping (T) -> Action) -> CommandWith<T> {
         return { value in
             self.dispatch(action(value))
-        }
-    }
-}
-
-extension EnvironmentStore {
-    private var asObserver: Observer<AppState> {
-        Observer(queue: .main) { state in
-            self.state = state
-            return .active
         }
     }
 }

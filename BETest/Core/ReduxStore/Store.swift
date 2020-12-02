@@ -6,7 +6,7 @@
 //
 
 import Dispatch
-
+/*
 class Store<State, Action> {
     typealias Reducer = (inout State, Action) -> Void
     private(set) var state: State
@@ -52,3 +52,4 @@ private extension Store {
         }
     }
 }
+*/

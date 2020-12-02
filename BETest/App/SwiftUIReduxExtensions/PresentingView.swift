@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-
-protocol UIBinder: View {
+/*
+protocol PresentingView: View {
     associatedtype Content: View
     associatedtype Props
 
@@ -15,7 +15,7 @@ protocol UIBinder: View {
     func prepareProps(state: AppState, store: EnvironmentStore) -> Props
 }
 
-extension UIBinder {
+extension PresentingView {
     private func map(state: AppState, store: EnvironmentStore) -> Content {
         contentWith(props: prepareProps(state: state, store: store))
     }
@@ -34,3 +34,4 @@ private struct UIBind<V: View>: View {
         map(store.state, store)
     }
 }
+*/

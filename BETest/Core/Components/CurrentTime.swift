@@ -8,15 +8,17 @@
 import Foundation
 
 struct CurrentTime: Codable {
-    private(set) var time = Date()
-    private(set) var shouldReceiveTimeEvents: Bool = true
+    public var time = Date()
+    public let interval: Double = 1
+    public private(set) var request: RequestState<SingleRequest> = .none
 
     mutating func reduce(_ action: Action) {
         switch action {
         case let action as Actions.Time.TimeChanged:
             time = action.timestamp
+            request = .inProgress(SingleRequest())
         default:
-            break
+            request = .inProgress(SingleRequest())
         }
 
     }

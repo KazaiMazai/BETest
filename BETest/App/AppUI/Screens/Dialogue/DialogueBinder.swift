@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct DialogueBinder: UIBinder {
-    func contentWith(props: DialogueView.Props) -> DialogueView {
+struct DialogueBinder: PresentingView {
+    func map(props: DialogueView.Props) -> DialogueView {
         DialogueView(props: props)
     }
 
-    func prepareProps(state: AppState, store: EnvironmentStore) -> DialogueView.Props {
+
+    func props(for state: AppState, on store: EnvironmentStore) -> DialogueView.Props {
         .init(title: "Dialogue",
               items: state.dialogue.items.map { .init(with: $0) },
               animationDuration: state.dialogue.animationsDelay,

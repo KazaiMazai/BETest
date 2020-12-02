@@ -10,30 +10,40 @@ import SwiftUI
 struct AppDI {
     let theme: AppUITheme
     let environmentStore: EnvironmentStore
-    let timeEventsEmitter: TimeEventsEmitter
-    let textToSpeechDriver: TextToSpeechDriver
+    let store: Store
+    let timeEventsEmitter: Driver<TimeEventsOperator>
+    let textToSpeechDriver: Driver<TextToSpeechOperator>
     let filename = "data.json"
 
-    let fileDataSource: FileDataSourceDriver
+//    let fileDataSource: FileDataSourceDriver
 
     init() {
         let state = AppState()
 
-        let store = Store<AppState, Action>(initial: state) { state, action in
+        store = Store(initial: state) { state, action in
             defer { state.reduce(action) }
             print("Reduce: \t\t \(String(reflecting: action))")
         }
 
         theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
-        timeEventsEmitter = TimeEventsEmitter(store: store, timeInterval: 0.5)
 
-        let fileDataSourceOperator = FileDataOperator()
-        fileDataSource = FileDataSourceDriver(store: store,
-                                              fileDataOperator: fileDataSourceOperator)
-        let textToSpeechOperator = TextToSpeechOperator()
-        textToSpeechDriver = TextToSpeechDriver(store: store,
-                                                textToSpeechOperator: textToSpeechOperator)
+        let timeEventsSideEffect = TimeEventsSideEffects()
+        let timeEventsOperator = TimeEventsOperator()
+        timeEventsEmitter = Driver(store: store,
+                                   sideEffectsOperator: timeEventsOperator,
+                                   prepareRequests: timeEventsSideEffect.map)
+//
+//        let fileDataSourceOperator = FileDataOperator()
+//        fileDataSource = FileDataSourceDriver(store: store,
+//                                              fileDataOperator: fileDataSourceOperator)
+
+
+        let ttsSideEffects = TTSSideEffects()
+        let textToSpeechOperator = TextToSpeechOperator(queueLabel: "TTS Operator", qos: .userInitiated)
+        textToSpeechDriver = Driver(store: store,
+                                    sideEffectsOperator: textToSpeechOperator,
+                                    prepareRequests: ttsSideEffects.map)
 
         subscribeToStore()
     }
@@ -56,9 +66,9 @@ extension AppDI {
 
 extension AppDI {
     private func subscribeToStore() {
-        environmentStore.store.subscribe(observer: timeEventsEmitter.asObserver)
-        environmentStore.store.subscribe(observer: fileDataSource.asObserver)
-        environmentStore.store.subscribe(observer: textToSpeechDriver.asObserver)
+        store.subscribe(observer: timeEventsEmitter.asObserver)
+//        store.subscribe(observer: fileDataSource.asObserver)
+        store.subscribe(observer: textToSpeechDriver.asObserver)
     }
 
     private func rootViewWith<V: View>(view: V) -> some View {

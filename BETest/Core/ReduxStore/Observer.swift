@@ -6,7 +6,7 @@
 //
 
 import Dispatch
-
+/*
 class Observer<State>: Hashable {
     enum Status {
         case active
@@ -30,3 +30,4 @@ class Observer<State>: Hashable {
         ObjectIdentifier(self).hash(into: &hasher)
     }
 }
+*/
