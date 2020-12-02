@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DialogueBinder: PresentingView {
+struct DialoguePresenter: PresentingView {
     func map(props: DialogueView.Props) -> DialogueView {
         DialogueView(props: props)
     }

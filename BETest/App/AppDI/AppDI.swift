@@ -59,7 +59,7 @@ extension AppDI {
 
         let window = UIWindow(windowScene: windowScene)
 
-        let rootView = rootViewWith(view: DialogueBinder())
+        let rootView = rootViewWith(view: DialoguePresenter())
 
         window.rootViewController = DarkHostingController(rootView: rootView)
         return window
