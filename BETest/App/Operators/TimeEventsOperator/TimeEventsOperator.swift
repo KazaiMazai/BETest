@@ -22,7 +22,7 @@ extension TimeEventsOperator {
                 handler(.error(error))
             }
         }
-
+        
         public init(id: UUID,
                     delay: Double,
                     handler: @escaping (OperatorResult<Date>) -> Void) {
@@ -30,7 +30,7 @@ extension TimeEventsOperator {
             self.delay = delay
             self.handler = handler
         }
-
+        
         let id: UUID
         let delay: Double
         let handler: (OperatorResult<Date>) -> Void
@@ -40,17 +40,17 @@ extension TimeEventsOperator {
 class TimeEventsOperator: Operator<TimeEventsOperator.Request, DispatchWorkItem> {
     public override init(queueLabel: String = "Time-Events-Operator",
                          qos: DispatchQoS = .utility,
-                logging: LogSource = LogSource.defaultLogging()) {
+                         logging: LogSource = LogSource.defaultLogging()) {
         super.init(queueLabel: queueLabel, qos: qos, logging: logging)
     }
-
+    
     override func run(task: DispatchWorkItem, for request: Request) {
         queue.asyncAfter(deadline: .now() + request.delay, execute: task)
     }
-
+    
     override func createTaskFor(_ request: TimeEventsOperator.Request,
                                 with completeHandler: @escaping (OperatorResult<Date>) -> Void) -> DispatchWorkItem {
-
+        
         DispatchWorkItem {
             completeHandler(.success(Date()))
         }

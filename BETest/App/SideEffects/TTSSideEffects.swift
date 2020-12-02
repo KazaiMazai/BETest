@@ -13,7 +13,7 @@ struct TTSSideEffects {
         guard let itemToSpeak = state.dialogue.availableForSpeech(at: Date()) else {
             return []
         }
-
+        
         let request = TextToSpeechOperator.Request(
             id: itemToSpeak.id,
             text: itemToSpeak.payload.text) {

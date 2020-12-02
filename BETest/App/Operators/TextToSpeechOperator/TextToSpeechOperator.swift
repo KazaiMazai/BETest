@@ -87,8 +87,8 @@ class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechO
 
 private class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate {
     init(request: TextToSpeechOperator.Request,
-                  completeHandlerQueue: DispatchQueue,
-                  complete: @escaping () -> Void) {
+         completeHandlerQueue: DispatchQueue,
+         complete: @escaping () -> Void) {
         self.request = request
         self.completeHandlerQueue = completeHandlerQueue
         self.complete = complete

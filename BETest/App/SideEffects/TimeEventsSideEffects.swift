@@ -13,7 +13,7 @@ struct TimeEventsSideEffects {
         guard case let .inProgress(requestState) = state.currentTime.request else {
             return []
         }
-
+        
         let request = TimeEventsOperator.Request(id: requestState.id,
                                                  delay: state.currentTime.interval) {
             switch $0 {
@@ -25,7 +25,7 @@ struct TimeEventsSideEffects {
                 break
             }
         }
-
+        
         return [request]
     }
 }

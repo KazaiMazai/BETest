@@ -31,14 +31,14 @@ struct AppDI {
         let timeEventsSideEffect = TimeEventsSideEffects()
         let timeEventsOperator = TimeEventsOperator()
         timeEventsDriver = Driver(store: store,
-                                   sideEffectsOperator: timeEventsOperator,
-                                   prepareRequests: timeEventsSideEffect.map)
+                                  sideEffectsOperator: timeEventsOperator,
+                                  prepareRequests: timeEventsSideEffect.map)
 
         let fileDataSourceOperator = FileDataOperator()
         let fileDataSideEffects = FileDataSideEffects()
         fileDataSourceDriver = Driver(store: store,
-                                sideEffectsOperator: fileDataSourceOperator,
-                                prepareRequests: fileDataSideEffects.map)
+                                      sideEffectsOperator: fileDataSourceOperator,
+                                      prepareRequests: fileDataSideEffects.map)
 
 
         let ttsSideEffects = TTSSideEffects()
