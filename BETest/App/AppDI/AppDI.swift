@@ -11,11 +11,11 @@ struct AppDI {
     let theme: AppUITheme
     let environmentStore: EnvironmentStore
     let store: Store
-    let timeEventsEmitter: Driver<TimeEventsOperator>
+    let timeEventsDriver: Driver<TimeEventsOperator>
     let textToSpeechDriver: Driver<TextToSpeechOperator>
     let filename = "data.json"
 
-//    let fileDataSource: FileDataSourceDriver
+    let fileDataSourceDriver: Driver<FileDataOperator>
 
     init() {
         let state = AppState()
@@ -30,13 +30,15 @@ struct AppDI {
 
         let timeEventsSideEffect = TimeEventsSideEffects()
         let timeEventsOperator = TimeEventsOperator()
-        timeEventsEmitter = Driver(store: store,
+        timeEventsDriver = Driver(store: store,
                                    sideEffectsOperator: timeEventsOperator,
                                    prepareRequests: timeEventsSideEffect.map)
-//
-//        let fileDataSourceOperator = FileDataOperator()
-//        fileDataSource = FileDataSourceDriver(store: store,
-//                                              fileDataOperator: fileDataSourceOperator)
+
+        let fileDataSourceOperator = FileDataOperator()
+        let fileDataSideEffects = FileDataSideEffects()
+        fileDataSourceDriver = Driver(store: store,
+                                sideEffectsOperator: fileDataSourceOperator,
+                                prepareRequests: fileDataSideEffects.map)
 
 
         let ttsSideEffects = TTSSideEffects()
@@ -66,13 +68,14 @@ extension AppDI {
 
 extension AppDI {
     private func subscribeToStore() {
-        store.subscribe(observer: timeEventsEmitter.asObserver)
-//        store.subscribe(observer: fileDataSource.asObserver)
+        store.subscribe(observer: timeEventsDriver.asObserver)
+        store.subscribe(observer: fileDataSourceDriver.asObserver)
         store.subscribe(observer: textToSpeechDriver.asObserver)
     }
 
     private func rootViewWith<V: View>(view: V) -> some View {
-        EnvironmentProvider(theme: theme,
-                            store: environmentStore) { view }
+        StoreProvidingView(store: environmentStore) {
+            view.environment(\.appUITheme, theme)
+        }
     }
 }
