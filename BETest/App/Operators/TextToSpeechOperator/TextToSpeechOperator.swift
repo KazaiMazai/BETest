@@ -9,49 +9,9 @@ import Foundation
 import AVFoundation
 import PureduxSideEffects
 
-extension TextToSpeechOperator.Request {
-    enum State {
-        case start
-        case finish
-        case pause
-        case cancel
-        case continued
-        case failed(Error)
-    }
-}
 
 extension TextToSpeechOperator {
-    struct Request: OperatorRequest {
-        func handle(_ result: OperatorResult<Void>) {
-            switch result {
-            case .success():
-                handler(.finish)
-            case .cancelled:
-                handler(.cancel)
-            case .error(let error):
-                handler(.failed(error))
-            }
-        }
-
-        typealias Result = Void
-        typealias RequestID = UUID
-
-        internal init(id: UUID,
-                      text: String,
-                      handler: @escaping CommandWith<Request.State>) {
-            self.id = id
-            self.text = text
-            self.handler = handler
-        }
-
-        let id: UUID
-        let text: String
-        let handler: CommandWith<Request.State>
-    }
-}
-
-extension TextToSpeechOperator {
-    struct Task: OperatorTask {
+    struct Task2: OperatorTask {
         fileprivate let ttsDelegate: TTSDelegate
         let cancelClosure: Command
 
@@ -59,73 +19,133 @@ extension TextToSpeechOperator {
             cancelClosure()
         }
     }
+
+    struct Task1: OperatorTask {
+        fileprivate let ttsDelegate: TTSDelegate
+        let cancelClosure: Command
+
+        func cancel() {
+            cancelClosure()
+        }
+    }
+
+    enum Task: OperatorTask {
+        case speakTask(text: String, delegate: TTSDelegate, cancelClosure: Command)
+        case controlTask(Command)
+
+        func cancel() {
+            switch self {
+            case .speakTask(_, _, cancelClosure: let cancelClosure):
+                cancelClosure()
+            case .controlTask:
+                break
+            }
+        }
+    }
+
 }
 
 class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechOperator.Task> {
     private let synthesizer = AVSpeechSynthesizer()
     private var synthersizerHandler: TTSDelegate?
 
-    override func createTaskFor(_ request: Request, with completeHandler: @escaping (OperatorResult<Void>) -> Void) -> Task {
-        let ttsDelegate = TTSDelegate(request: request,
-                                      completeHandlerQueue: queue) {
-            completeHandler(.success(Void()))
-        }
+    override func createTaskFor(_ request: Request,
+                                with completeHandler: @escaping (OperatorResult<Void>) -> Void) -> Task {
+        switch request.requestType {
+        case let .textToSpeech(text, requestHandler):
+            let delegate = TTSDelegate(completeHandlerQueue: queue) {
+                switch $0 {
+                case .cancel:
+                    completeHandler(.cancelled)
+                case .continued:
+                    requestHandler(.continued)
+                case .start:
+                    requestHandler(.start)
+                case .finish:
+                    completeHandler(.success(Void()))
+                case .pause:
+                    requestHandler(.pause)
+                case .failed(let error):
+                    completeHandler(.error(error))
+                }
+            }
 
-        return Task(ttsDelegate: ttsDelegate,
-                    cancelClosure: { [weak self] in
-                        self?.synthesizer.stopSpeaking(at: .immediate)
-                    })
+            return Task.speakTask(text: text,
+                                  delegate: delegate,
+                                  cancelClosure: { [weak self] in
+                                    self?.synthesizer.stopSpeaking(at: .immediate)
+                                  })
+        case let .changeState(changeState, _):
+            return Task.controlTask({ [weak self] in
+
+                switch changeState {
+                case .pause(at: let boundary):
+                    self?.synthesizer.stopSpeaking(at: boundary)
+                case .stop(at: let boundary):
+                    self?.synthesizer.stopSpeaking(at: boundary)
+                case .continueSpeaking:
+                    self?.synthesizer.continueSpeaking()
+                }
+
+                completeHandler(.success(Void()))
+            })
+        }
     }
 
     override func run(task: Task, for request: Request) {
-        synthesizer.delegate = task.ttsDelegate
-        let utterance = AVSpeechUtterance(string: request.text)
-        self.synthesizer.speak(utterance)
-
+        switch task {
+        case let .speakTask(text, ttsDelegate, _):
+            synthesizer.delegate = ttsDelegate
+            let utterance = AVSpeechUtterance(string: text)
+            self.synthesizer.speak(utterance)
+        case let .controlTask(taskCommand):
+            taskCommand()
+        }
     }
 }
 
-private class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate {
-    init(request: TextToSpeechOperator.Request,
-         completeHandlerQueue: DispatchQueue,
-         complete: @escaping () -> Void) {
-        self.request = request
-        self.completeHandlerQueue = completeHandlerQueue
-        self.complete = complete
-    }
 
-    let request: TextToSpeechOperator.Request
-    let completeHandlerQueue: DispatchQueue
-    let complete: () -> Void
+extension TextToSpeechOperator {
+    class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate {
+        let completeHandlerQueue: DispatchQueue
+        let handler: CommandWith<Request.State>
 
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        completeHandlerQueue.async { [weak self] in
-            self?.request.handler(.start)
+
+        init(completeHandlerQueue: DispatchQueue,
+             handler: @escaping CommandWith<Request.State>) {
+            self.handler = handler
+            self.completeHandlerQueue = completeHandlerQueue
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+            completeHandlerQueue.async { [weak self] in
+                self?.handler(.start)
+            }
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+            completeHandlerQueue.async { [weak self] in
+                self?.handler(.finish)
+            }
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
+            completeHandlerQueue.async { [weak self] in
+                self?.handler(.pause)
+            }
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {
+            completeHandlerQueue.async { [weak self] in
+                self?.handler(.continued)
+            }
+        }
+
+        func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+            completeHandlerQueue.async { [weak self] in
+                self?.handler(.cancel)
+            }
         }
     }
 
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        completeHandlerQueue.async { [weak self] in
-            guard let self = self else { return }
-            self.complete()
-        }
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
-        completeHandlerQueue.async { [weak self] in
-            self?.request.handler(.pause)
-        }
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {
-        completeHandlerQueue.async { [weak self] in
-            self?.request.handler(.continued)
-        }
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        completeHandlerQueue.async { [weak self] in
-            self?.request.handler(.cancel)
-        }
-    }
 }

@@ -48,6 +48,7 @@
 		EABC9A012577A7B2002D2594 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A002577A7B2002D2594 /* Types.swift */; };
 		EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A052577BAEB002D2594 /* SingeRequest.swift */; };
 		EABC9A182577CB68002D2594 /* TimeEventsOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */; };
+		EADCDFF425800EC7000D51A5 /* TextToSpeechOperatorRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCDFF325800EC7000D51A5 /* TextToSpeechOperatorRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		EABC9A002577A7B2002D2594 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		EABC9A052577BAEB002D2594 /* SingeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingeRequest.swift; sourceTree = "<group>"; };
 		EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsOperator.swift; sourceTree = "<group>"; };
+		EADCDFF325800EC7000D51A5 /* TextToSpeechOperatorRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechOperatorRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413B39252770AE00107D4A /* TextToSpeechOperator.swift */,
+				EADCDFF325800EC7000D51A5 /* TextToSpeechOperatorRequest.swift */,
 			);
 			path = TextToSpeechOperator;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */,
 				EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */,
+				EADCDFF425800EC7000D51A5 /* TextToSpeechOperatorRequest.swift in Sources */,
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
 				EA413A9F2525FEDE00107D4A /* Command.swift in Sources */,
