@@ -70,10 +70,11 @@ class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechO
                 }
             }
 
-            return Task.speakTask(text: text, delegate: delegate,
-                         cancelClosure: { [weak self] in
-                self?.synthesizer.stopSpeaking(at: .immediate)
-            })
+            return Task.speakTask(text: text,
+                                  delegate: delegate,
+                                  cancelClosure: { [weak self] in
+                                    self?.synthesizer.stopSpeaking(at: .immediate)
+                                  })
         case let .changeState(changeState, _):
             return Task.controlTask({ [weak self] in
 
