@@ -11,7 +11,7 @@ struct CurrentTime: Codable {
 
     public var time = Date()
     public let interval: Double = 1
-    public private(set) var request: RequestState<SingleRequest> = .none
+    public private(set) var request: RequestState<SingleRequest> = .inProgress(SingleRequest())
 
     mutating func reduce(_ action: Action) {
         switch action {

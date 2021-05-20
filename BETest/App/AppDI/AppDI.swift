@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AppDI {
     let theme: AppUITheme
-    let environmentStore: EnvironmentStore
+    let environmentStore: EnvironmentStore<AppState, Action>
     let store: Store
-    let timeEventsDriver: Driver<TimeEventsOperator>
-    let textToSpeechDriver: Driver<TextToSpeechOperator>
+    let timeEvents: Middleware<TimeEventsOperator>
+    let textToSpeech: Middleware<TextToSpeechOperator>
     let filename = "data.json"
 
-    let fileDataSourceDriver: Driver<FileDataOperator>
+    let fileDataSourceDriver: Middleware<FileDataOperator>
 
     init() {
         let state = AppState()
@@ -30,22 +30,23 @@ struct AppDI {
 
         let timeEventsSideEffect = TimeEventsSideEffects()
         let timeEventsOperator = TimeEventsOperator()
-        timeEventsDriver = Driver(store: store,
-                                  sideEffectsOperator: timeEventsOperator,
-                                  prepareRequests: timeEventsSideEffect.map)
+        timeEvents = Middleware(store: store,
+                                operator: timeEventsOperator,
+                                props: timeEventsSideEffect.map)
 
         let fileDataSourceOperator = FileDataOperator()
         let fileDataSideEffects = FileDataSideEffects()
-        fileDataSourceDriver = Driver(store: store,
-                                      sideEffectsOperator: fileDataSourceOperator,
-                                      prepareRequests: fileDataSideEffects.map)
+        fileDataSourceDriver = Middleware(store: store,
+                                          operator: fileDataSourceOperator,
+                                          props: fileDataSideEffects.map)
 
 
         let ttsSideEffects = TextToSpeechSideEffects()
-        let textToSpeechOperator = TextToSpeechOperator(queueLabel: "TTS Operator", qos: .userInitiated)
-        textToSpeechDriver = Driver(store: store,
-                                    sideEffectsOperator: textToSpeechOperator,
-                                    prepareRequests: ttsSideEffects.map)
+        let textToSpeechOperator = TextToSpeechOperator(label: "TTS Operator",
+                                                        qos: .userInitiated)
+        textToSpeech = Middleware(store: store,
+                                  operator: textToSpeechOperator,
+                                  props: ttsSideEffects.map)
 
         subscribeToStore()
     }
@@ -68,9 +69,9 @@ extension AppDI {
 
 extension AppDI {
     private func subscribeToStore() {
-        store.subscribe(observer: timeEventsDriver.asObserver)
+        store.subscribe(observer: timeEvents.asObserver)
         store.subscribe(observer: fileDataSourceDriver.asObserver)
-        store.subscribe(observer: textToSpeechDriver.asObserver)
+        store.subscribe(observer: textToSpeech.asObserver)
     }
 
     private func rootViewWith<V: View>(view: V) -> some View {

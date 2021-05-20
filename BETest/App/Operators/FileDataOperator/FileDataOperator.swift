@@ -28,14 +28,14 @@ extension FileDataOperator {
 }
 
 class FileDataOperator: Operator<FileDataOperator.Request, DispatchWorkItem> {
-    public override init(queueLabel: String = "File-Data-Operator",
+    public override init(label: String = "File-Data-Operator",
                          qos: DispatchQoS = .utility,
-                         logging: LogSource = LogSource.defaultLogging()) {
-        super.init(queueLabel: queueLabel, qos: qos, logging: logging)
+                         logger: Logger = .console(.info)) {
+        super.init(label: label, qos: qos, logger: logger)
     }
     
     override func run(task: DispatchWorkItem, for request: FileDataOperator.Request) {
-        queue.async(execute: task)
+        processingQueue.async(execute: task)
     }
     
     override func createTaskFor(_ request: Request, with completeHandler: @escaping (OperatorResult<Data>) -> Void) -> DispatchWorkItem {

@@ -53,7 +53,7 @@ class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechO
                                 with completeHandler: @escaping (OperatorResult<Void>) -> Void) -> Task {
         switch request.requestType {
         case let .textToSpeech(text, requestHandler):
-            let delegate = TTSDelegate(completeHandlerQueue: queue) {
+            let delegate = TTSDelegate(completeHandlerQueue: processingQueue) {
                 switch $0 {
                 case .cancel:
                     completeHandler(.cancelled)

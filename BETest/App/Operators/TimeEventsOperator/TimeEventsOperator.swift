@@ -38,14 +38,14 @@ extension TimeEventsOperator {
 }
 
 class TimeEventsOperator: Operator<TimeEventsOperator.Request, DispatchWorkItem> {
-    public override init(queueLabel: String = "Time-Events-Operator",
+    public override init(label: String = "Time-Events-Operator",
                          qos: DispatchQoS = .utility,
-                         logging: LogSource = LogSource.defaultLogging()) {
-        super.init(queueLabel: queueLabel, qos: qos, logging: logging)
+                         logger: Logger = .console(.info)) {
+        super.init(label: label, qos: qos, logger: logger)
     }
     
     override func run(task: DispatchWorkItem, for request: Request) {
-        queue.asyncAfter(deadline: .now() + request.delay, execute: task)
+        processingQueue.asyncAfter(deadline: .now() + request.delay, execute: task)
     }
     
     override func createTaskFor(_ request: TimeEventsOperator.Request,

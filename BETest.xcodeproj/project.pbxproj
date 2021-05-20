@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA39B06225FE8FD9009A33A4 /* PureduxSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EA39B06125FE8FD9009A33A4 /* PureduxSwiftUI */; };
 		EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A212525E97E00107D4A /* AppDelegate.swift */; };
 		EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A232525E97E00107D4A /* SceneDelegate.swift */; };
 		EA413A282525E97F00107D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA413A272525E97F00107D4A /* Assets.xcassets */; };
@@ -44,7 +45,6 @@
 		EA413BBC2528087200107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
 		EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BC32528145700107D4A /* NavigationBarView.swift */; };
 		EABC99F62577A764002D2594 /* Puredux in Frameworks */ = {isa = PBXBuildFile; productRef = EABC99F52577A764002D2594 /* Puredux */; };
-		EABC99FC2577A78F002D2594 /* PureduxSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EABC99FB2577A78F002D2594 /* PureduxSwiftUI */; };
 		EABC9A012577A7B2002D2594 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A002577A7B2002D2594 /* Types.swift */; };
 		EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A052577BAEB002D2594 /* SingeRequest.swift */; };
 		EABC9A182577CB68002D2594 /* TimeEventsOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */; };
@@ -69,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA39B05C25FE8FC4009A33A4 /* PureduxSwiftUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PureduxSwiftUI; path = ../PureduxSwiftUI; sourceTree = "<group>"; };
 		EA413A1E2525E97E00107D4A /* BETest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BETest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA413A212525E97E00107D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA413A232525E97E00107D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EABC99FC2577A78F002D2594 /* PureduxSwiftUI in Frameworks */,
+				EA39B06225FE8FD9009A33A4 /* PureduxSwiftUI in Frameworks */,
 				EABC99F62577A764002D2594 /* Puredux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,13 +145,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA39B06025FE8FD9009A33A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EA413A152525E97E00107D4A = {
 			isa = PBXGroup;
 			children = (
+				EA39B05C25FE8FC4009A33A4 /* PureduxSwiftUI */,
 				EA413A202525E97E00107D4A /* BETest */,
 				EA413A372525E97F00107D4A /* BETestTests */,
 				EA413A422525E97F00107D4A /* BETestUITests */,
 				EA413A1F2525E97E00107D4A /* Products */,
+				EA39B06025FE8FD9009A33A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -430,7 +440,7 @@
 			name = BETest;
 			packageProductDependencies = (
 				EABC99F52577A764002D2594 /* Puredux */,
-				EABC99FB2577A78F002D2594 /* PureduxSwiftUI */,
+				EA39B06125FE8FD9009A33A4 /* PureduxSwiftUI */,
 			);
 			productName = BETest;
 			productReference = EA413A1E2525E97E00107D4A /* BETest.app */;
@@ -505,7 +515,6 @@
 			mainGroup = EA413A152525E97E00107D4A;
 			packageReferences = (
 				EABC99F42577A764002D2594 /* XCRemoteSwiftPackageReference "Puredux" */,
-				EABC99FA2577A78F002D2594 /* XCRemoteSwiftPackageReference "PureduxSwiftUI" */,
 			);
 			productRefGroup = EA413A1F2525E97E00107D4A /* Products */;
 			projectDirPath = "";
@@ -919,30 +928,21 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/KazaiMazai/Puredux";
 			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		EABC99FA2577A78F002D2594 /* XCRemoteSwiftPackageReference "PureduxSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KazaiMazai/PureduxSwiftUI";
-			requirement = {
-				branch = main;
+				branch = dev;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EA39B06125FE8FD9009A33A4 /* PureduxSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PureduxSwiftUI;
+		};
 		EABC99F52577A764002D2594 /* Puredux */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EABC99F42577A764002D2594 /* XCRemoteSwiftPackageReference "Puredux" */;
 			productName = Puredux;
-		};
-		EABC99FB2577A78F002D2594 /* PureduxSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EABC99FA2577A78F002D2594 /* XCRemoteSwiftPackageReference "PureduxSwiftUI" */;
-			productName = PureduxSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
