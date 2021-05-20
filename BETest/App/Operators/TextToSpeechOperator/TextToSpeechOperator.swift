@@ -11,23 +11,6 @@ import PureduxSideEffects
 
 
 extension TextToSpeechOperator {
-    struct Task2: OperatorTask {
-        fileprivate let ttsDelegate: TTSDelegate
-        let cancelClosure: Command
-
-        func cancel() {
-            cancelClosure()
-        }
-    }
-
-    struct Task1: OperatorTask {
-        fileprivate let ttsDelegate: TTSDelegate
-        let cancelClosure: Command
-
-        func cancel() {
-            cancelClosure()
-        }
-    }
 
     enum Task: OperatorTask {
         case speakTask(text: String, delegate: TTSDelegate, cancelClosure: Command)
@@ -45,7 +28,7 @@ extension TextToSpeechOperator {
 
 }
 
-class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechOperator.Task> {
+class TextToSpeechOperator: SingleTaskOperator<TextToSpeechOperator.Request, TextToSpeechOperator.Task> {
     private let synthesizer = AVSpeechSynthesizer()
     private var synthersizerHandler: TTSDelegate?
 
@@ -53,6 +36,7 @@ class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechO
                                 with completeHandler: @escaping (OperatorResult<Void>) -> Void) -> Task {
         switch request.requestType {
         case let .textToSpeech(text, requestHandler):
+
             let delegate = TTSDelegate(completeHandlerQueue: processingQueue) {
                 switch $0 {
                 case .cancel:
@@ -108,11 +92,11 @@ class TextToSpeechOperator: Operator<TextToSpeechOperator.Request, TextToSpeechO
 extension TextToSpeechOperator {
     class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate {
         let completeHandlerQueue: DispatchQueue
-        let handler: CommandWith<Request.State>
+        let handler: CommandWith<Request.SpeakingState>
 
 
         init(completeHandlerQueue: DispatchQueue,
-             handler: @escaping CommandWith<Request.State>) {
+             handler: @escaping CommandWith<Request.SpeakingState>) {
             self.handler = handler
             self.completeHandlerQueue = completeHandlerQueue
         }

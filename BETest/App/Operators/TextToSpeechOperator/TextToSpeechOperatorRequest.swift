@@ -11,7 +11,7 @@ import AVFoundation
 
 
 extension TextToSpeechOperator.Request {
-    enum State {
+    enum SpeakingState {
         case start
         case finish
         case pause
@@ -27,7 +27,7 @@ extension TextToSpeechOperator.Request {
     }
 
     enum RequestType {
-        case textToSpeech(text: String, handler: CommandWith<State>)
+        case textToSpeech(text: String, handler: CommandWith<SpeakingState>)
         case changeState(SpeakingRequest, handler: CommandWith<Swift.Result<Void, Error>>)
     }
 }
@@ -36,7 +36,7 @@ extension TextToSpeechOperator {
     struct Request {
         internal init(id: UUID,
                       text: String,
-                      handler: @escaping CommandWith<Request.State>) {
+                      handler: @escaping CommandWith<Request.SpeakingState>) {
             self.id = id
             self.requestType = RequestType.textToSpeech(text: text, handler: handler)
         }
