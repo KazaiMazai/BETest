@@ -9,7 +9,6 @@ import Foundation
 import PureduxSideEffects
 import AVFoundation
 
-
 extension TextToSpeechOperator.Request {
     enum SpeakingState {
         case start
@@ -47,7 +46,7 @@ extension TextToSpeechOperator {
 }
 
 extension TextToSpeechOperator.Request: OperatorRequest {
-    func handle(_ result: OperatorResult<Void>) {
+    func handle(_ result: TaskResult<Void, SpeakingState>) {
         switch requestType {
         case .textToSpeech(_ , let handler):
             switch result {
@@ -55,7 +54,9 @@ extension TextToSpeechOperator.Request: OperatorRequest {
                 handler(.finish)
             case .cancelled:
                 handler(.cancel)
-            case .error(let error):
+            case .statusChanged(let state):
+                handler(state)
+            case .failure(let error):
                 handler(.failed(error))
             }
             
@@ -65,7 +66,9 @@ extension TextToSpeechOperator.Request: OperatorRequest {
                 handler(.success(Void()))
             case .cancelled:
                 break
-            case .error(let error):
+            case .statusChanged:
+                break
+            case .failure(let error):
                 handler(.failure(error))
             }
         }

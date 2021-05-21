@@ -43,6 +43,10 @@ struct FileDataSideEffects {
                 store.dispatch(action: Actions.TextDataSource.ReceievedDataSuccess(value: models))
             case .failure(let error):
                 store.dispatch(action: Actions.TextDataSource.ReceievedDataFail(error: error))
+            case .cancelled:
+                break
+            case .statusChanged:
+                break
             }
         }
         

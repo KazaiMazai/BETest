@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/KazaiMazai/PureduxNetworkOperator.git",
         "state": {
           "branch": "dev",
-          "revision": "bf0ca059852a128478e416557eb78bdf4482f3a3",
+          "revision": "150287b46378cb7873ff5e4b571b4387104810c7",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/KazaiMazai/PureduxSideEffects.git",
         "state": {
           "branch": "dev",
-          "revision": "12ee57f09f9a5f1841d50ff5c46ab61d56eac31c",
+          "revision": "14af73aca18755a906b3cda89a54d9353ca587e5",
           "version": null
         }
       },

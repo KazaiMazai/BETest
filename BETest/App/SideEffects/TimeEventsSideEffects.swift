@@ -21,7 +21,9 @@ struct TimeEventsSideEffects {
                 store.dispatch(action: Actions.Time.TimeChanged(timestamp: date))
             case .cancelled:
                 break
-            case .error:
+            case .failure:
+                break
+            case .statusChanged:
                 break
             }
         }
