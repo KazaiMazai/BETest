@@ -8,6 +8,11 @@
 import Foundation
 
 struct TextData: Codable {
-    let id: Int
+    struct ID: Hashable, Codable {
+        let rawValue: Int
+    }
+
+    let id: ID
     let text: String
 }
+

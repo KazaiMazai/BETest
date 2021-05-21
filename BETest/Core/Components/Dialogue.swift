@@ -11,6 +11,7 @@ struct Dialogue {
     private let delay: TimeInterval
     private var state: State = .none
 
+    private(set) var lastModified: Date = .distantPast
     private(set) var pendingItems: [TextData] = []
     private(set) var items: [TextData] = []
     private let dataFileName: String
@@ -27,15 +28,19 @@ extension Dialogue {
     mutating func reduce(_ action: Action, env: AppEnvironment) {
         switch action {
         case is Actions.DialogueFlow.Run:
+            lastModified = env.now()
             requestLoadDataFrom(filename: dataFileName, requestId: env.makeUUID())
 
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
+            lastModified = env.now()
             processNewTextData(data: action.value)
 
         case let action as Actions.SpeechSynthesizer.StateChange:
+            lastModified = env.now()
             handleSpeakingStateChange(action.state)
 
         case is Actions.Time.TimeChanged:
+            lastModified = env.now()
             startSpeakingIfReady(now: env.now())
 
         default:

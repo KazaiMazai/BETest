@@ -39,7 +39,11 @@ struct FileDataSideEffects {
                     return
                 }
                 
-                let models = itemsData.enumerated().map { TextData(id: $0.offset, text: $0.element.line) }
+                let models = itemsData
+                    .enumerated()
+                    .map { TextData(
+                        id: TextData.ID(rawValue: $0.offset),
+                        text: $0.element.line) }
                 store.dispatch(action: Actions.TextDataSource.ReceievedDataSuccess(value: models))
             case .failure(let error):
                 store.dispatch(action: Actions.TextDataSource.ReceievedDataFail(error: error))

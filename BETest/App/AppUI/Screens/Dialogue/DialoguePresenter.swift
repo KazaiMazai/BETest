@@ -10,7 +10,7 @@ import SwiftUI
 struct DialoguePresenter: PresentableView {
     var stateEquating: Equating<AppState> {
         .equal {
-            $0.dialogue.items.count
+            $0.dialogue.lastModified
         }
     }
 
@@ -21,15 +21,10 @@ struct DialoguePresenter: PresentableView {
     func props(for state: AppState, on store: EnvironmentStore<AppState, Action>) -> DialogueView.Props {
         DialogueView.Props(
             title: "Dialogue",
-            items: state.dialogue.items.map { .init(with: $0) },
+            items: state.dialogue.items.map { BallonView.Props(
+                id: $0.id.rawValue,
+                text: $0.text) },
             animationDuration: state.dialogue.animationsDelay,
             onAppear: store.bind(Actions.DialogueFlow.Run()))
-    }
-}
-
-extension BallonView.Props {
-    init(with model: TextData) {
-        self.init(id: model.id,
-                  text: model.text)
     }
 }

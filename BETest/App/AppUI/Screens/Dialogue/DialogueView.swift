@@ -10,12 +10,12 @@ import SwiftUI
 extension DialogueView {
     struct Props {
         let title: String
-        let items: [BallonView.Props]
+        let items: [BallonView<Int>.Props<Int>]
         let animationDuration: Double
         let onAppear: Command
 
         static func preview(count: Int) -> Props {
-            .init(
+            Props(
                 title: "Title",
                 items: Array(0..<count).map { .preview(id: $0) },
                 animationDuration: 0.5,
