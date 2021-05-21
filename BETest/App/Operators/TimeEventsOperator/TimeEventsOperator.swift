@@ -14,9 +14,9 @@ extension TimeEventsOperator {
     struct Request: OperatorRequest {
         let id: UUID
         let delay: Double
-        let completeHandler: (TaskResult<Date, Void>) -> Void
+        let completeHandler: (TaskResult<Void, Void>) -> Void
 
-        func handle(_ result: TaskResult<Date, Void>) {
+        func handle(_ result: TaskResult<Void, Void>) {
             completeHandler(result)
         }
     }
@@ -34,10 +34,10 @@ class TimeEventsOperator: Operator<TimeEventsOperator.Request, DispatchWorkItem>
     }
     
     override func createTaskFor(_ request: TimeEventsOperator.Request,
-                                with completeHandler: @escaping (TaskResult<Date, Void>) -> Void) -> DispatchWorkItem {
+                                with completeHandler: @escaping (TaskResult<Void, Void>) -> Void) -> DispatchWorkItem {
         
         DispatchWorkItem {
-            completeHandler(.success(Date()))
+            completeHandler(.success(Void()))
         }
     }
 }

@@ -23,7 +23,7 @@ struct DialoguePresenter: PresentableView {
             title: "Dialogue",
             items: state.dialogue.items.map { .init(with: $0) },
             animationDuration: state.dialogue.animationsDelay,
-            onAppear: store.bind(Actions.DialogueFlow.Run(filename: "data.json")))
+            onAppear: store.bind(Actions.DialogueFlow.Run()))
     }
 }
 

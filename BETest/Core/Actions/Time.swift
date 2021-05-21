@@ -13,6 +13,6 @@ extension Actions {
 
 extension Actions.Time {
     struct TimeChanged: Action {
-        let timestamp: Date
+
     }
 }

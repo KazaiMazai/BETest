@@ -8,65 +8,49 @@
 import Foundation
 
 struct Dialogue {
-    let delay: TimeInterval
-
-    var animationsDelay: TimeInterval {
-        delay
-    }
-
-    private(set) var pendingItems: [TextData] = []
+    private let delay: TimeInterval
     private var state: State = .none
 
+    private(set) var pendingItems: [TextData] = []
     private(set) var items: [TextData] = []
+    private let dataFileName: String
 
-    init(delay: TimeInterval) {
+    init(delay: TimeInterval, dataFileName: String) {
+        self.dataFileName = dataFileName
         self.delay = delay
     }
+}
 
-    mutating func reduce(_ action: Action) {
+// MARK: - Dialogue Reducer
+
+extension Dialogue {
+    mutating func reduce(_ action: Action, env: AppEnvironment) {
         switch action {
-        case let action as Actions.DialogueFlow.Run:
-            state = .waitingForData(PayloadRequest(id: UUID(), payload: FileMetaData(filename: action.filename)))
+        case is Actions.DialogueFlow.Run:
+            requestLoadDataFrom(filename: dataFileName, requestId: env.makeUUID())
+
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
-            pendingItems.append(contentsOf: action.value.filter { !$0.text.isEmpty })
-            guard isWaitingForData && !pendingItems.isEmpty else {
-                break
-            }
+            processNewTextData(data: action.value)
 
-            let item = pendingItems.removeFirst()
-            state = .processingItem(PayloadRequest(id: UUID(), payload: item),
-                                    speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
-            items.append(item)
         case let action as Actions.SpeechSynthesizer.StateChange:
-            guard case .finish = action.state else {
-                break
-            }
+            handleSpeakingStateChange(action.state)
 
-            guard !pendingItems.isEmpty else {
-                break
-            }
+        case is Actions.Time.TimeChanged:
+            startSpeakingIfReady(now: env.now())
 
-            let item = pendingItems.removeFirst()
-            state = .pendingItem(item, availableAfter: Date().addingTimeInterval(delay))
-        case let action as Actions.Time.TimeChanged:
-            guard case let .pendingItem(item, availableAfter) = state else {
-                break
-            }
-
-            guard availableAfter <= action.timestamp else {
-                break
-            }
-
-            state = .processingItem(PayloadRequest(id: UUID(), payload: item),
-                                    speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
-            items.append(item)
         default:
             break
         }
     }
 }
 
+// MARK: - Dialogue API
+
 extension Dialogue {
+    var animationsDelay: TimeInterval {
+        delay
+    }
+
     var isWaitingForData: Bool {
         dataRequestState != nil
     }
@@ -80,7 +64,7 @@ extension Dialogue {
     }
 
     func availableForSpeech(at: Date) -> PayloadRequest<TextData>? {
-        guard case let .processingItem(item, speechAvailableAfter) = state else {
+        guard case let .speakingItem(item, speechAvailableAfter) = state else {
             return nil
         }
 
@@ -92,13 +76,64 @@ extension Dialogue {
     }
 }
 
+// MARK: - Dialogue Private
+
+extension Dialogue {
+    private mutating func requestLoadDataFrom(filename: String, requestId: UUID) {
+        state = .waitingForData(
+            PayloadRequest(
+                id: requestId,
+                payload: FileMetaData(filename: filename)))
+    }
+
+    private mutating func processNewTextData(data: [TextData]) {
+        pendingItems.append(contentsOf: data.filter { !$0.text.isEmpty })
+        guard isWaitingForData && !pendingItems.isEmpty else {
+            return
+        }
+
+        let item = pendingItems.removeFirst()
+        state = .speakingItem(PayloadRequest(id: UUID(), payload: item),
+                                speechAvailableAfter: Date().addingTimeInterval(animationsDelay + delay))
+        items.append(item)
+    }
+
+    private mutating func handleSpeakingStateChange(_ state: SyntesizerState) {
+        guard case .finish = state else {
+            return
+        }
+
+        guard !pendingItems.isEmpty else {
+            return
+        }
+
+        let item = pendingItems.removeFirst()
+        self.state = .pendingItem(item, availableAfter: Date().addingTimeInterval(delay))
+    }
+
+    private mutating func startSpeakingIfReady(now: Date) {
+        guard case let .pendingItem(item, availableAfter) = state else {
+            return
+        }
+
+        guard now >= availableAfter else {
+            return
+        }
+
+        state = .speakingItem(PayloadRequest(
+                                    id: UUID(),
+                                    payload: item),
+                                speechAvailableAfter: now.addingTimeInterval(animationsDelay + delay))
+        items.append(item)
+    }
+}
 
 private extension Dialogue {
     enum State {
         case none
         case waitingForData(PayloadRequest<FileMetaData>)
         case pendingItem(TextData, availableAfter: Date)
-        case processingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
+        case speakingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
         case finished
     }
 }

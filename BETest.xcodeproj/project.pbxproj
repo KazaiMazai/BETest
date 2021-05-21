@@ -44,6 +44,9 @@
 		EA413BAF2528026000107D4A /* FileMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BAE2528026000107D4A /* FileMetaData.swift */; };
 		EA413BBC2528087200107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
 		EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BC32528145700107D4A /* NavigationBarView.swift */; };
+		EA67E5062657BD000058DAF8 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E5052657BD000058DAF8 /* AppEnvironment.swift */; };
+		EA67E50B2657BE970058DAF8 /* AppStateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E50A2657BE970058DAF8 /* AppStateConfig.swift */; };
+		EA67E5102657C17F0058DAF8 /* SynthesizerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E50F2657C17F0058DAF8 /* SynthesizerState.swift */; };
 		EABC99F62577A764002D2594 /* Puredux in Frameworks */ = {isa = PBXBuildFile; productRef = EABC99F52577A764002D2594 /* Puredux */; };
 		EABC9A012577A7B2002D2594 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A002577A7B2002D2594 /* Types.swift */; };
 		EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A052577BAEB002D2594 /* SingeRequest.swift */; };
@@ -112,6 +115,9 @@
 		EA413BA62527F74D00107D4A /* FileDataSideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSideEffects.swift; sourceTree = "<group>"; };
 		EA413BAE2528026000107D4A /* FileMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMetaData.swift; sourceTree = "<group>"; };
 		EA413BC32528145700107D4A /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		EA67E5052657BD000058DAF8 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		EA67E50A2657BE970058DAF8 /* AppStateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateConfig.swift; sourceTree = "<group>"; };
+		EA67E50F2657C17F0058DAF8 /* SynthesizerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthesizerState.swift; sourceTree = "<group>"; };
 		EABC9A002577A7B2002D2594 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		EABC9A052577BAEB002D2594 /* SingeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingeRequest.swift; sourceTree = "<group>"; };
 		EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsOperator.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413A902525F27200107D4A /* TextData.swift */,
+				EA67E50F2657C17F0058DAF8 /* SynthesizerState.swift */,
 				EA413B5825277DBE00107D4A /* RequestState.swift */,
 				EA413BAE2528026000107D4A /* FileMetaData.swift */,
 				EABC9A052577BAEB002D2594 /* SingeRequest.swift */,
@@ -357,6 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				EA413A7A2525EF5600107D4A /* AppState.swift */,
+				EA67E5052657BD000058DAF8 /* AppEnvironment.swift */,
+				EA67E50A2657BE970058DAF8 /* AppStateConfig.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -578,6 +587,7 @@
 				EA413B1B2527623800107D4A /* DialoguePresenter.swift in Sources */,
 				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
 				EABC9A182577CB68002D2594 /* TimeEventsOperator.swift in Sources */,
+				EA67E5102657C17F0058DAF8 /* SynthesizerState.swift in Sources */,
 				EA413BBC2528087200107D4A /* DialogueView.swift in Sources */,
 				EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
@@ -585,6 +595,7 @@
 				EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */,
 				EA413B3125276C6900107D4A /* TextToSpeechSideEffects.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
+				EA67E50B2657BE970058DAF8 /* AppStateConfig.swift in Sources */,
 				EA413B972527F3B300107D4A /* FileDataOperator.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */,
@@ -593,6 +604,7 @@
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
 				EA413A9F2525FEDE00107D4A /* Command.swift in Sources */,
+				EA67E5062657BD000058DAF8 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

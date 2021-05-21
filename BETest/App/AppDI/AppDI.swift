@@ -11,6 +11,8 @@ struct AppDI {
     let theme: AppUITheme
     let environmentStore: EnvironmentStore<AppState, Action>
     let store: Store
+    let appStateEnvironment: AppEnvironment
+    let appStateConfig: AppStateConfig
     let timeEvents: Middleware<TimeEventsOperator>
     let textToSpeech: Middleware<TextToSpeechOperator>
     let filename = "data.json"
@@ -18,15 +20,20 @@ struct AppDI {
     let fileDataSourceDriver: Middleware<FileDataOperator>
 
     init() {
-        let state = AppState()
+        let env = AppEnvironment.defaultAppEnvironment()
+        let config = AppStateConfig.defaultConfig()
+        
+        let state = AppState(config: config, env: env)
 
         store = Store(initial: state) { state, action in
-            defer { state.reduce(action) }
+            defer { state.reduce(action, env: env) }
             print("Reduce: \t\t \(String(reflecting: action))")
         }
 
         theme = .defaultTheme
         environmentStore = EnvironmentStore(store: store)
+        appStateEnvironment = env
+        appStateConfig = config
 
         let timeEventsSideEffect = TimeEventsSideEffects()
         let timeEventsOperator = TimeEventsOperator()

@@ -17,8 +17,8 @@ struct TimeEventsSideEffects {
         let request = TimeEventsOperator.Request(id: requestState.id,
                                                  delay: state.currentTime.interval) {
             switch $0 {
-            case .success(let date):
-                store.dispatch(action: Actions.Time.TimeChanged(timestamp: date))
+            case .success:
+                store.dispatch(action: Actions.Time.TimeChanged())
             case .cancelled:
                 break
             case .failure:
