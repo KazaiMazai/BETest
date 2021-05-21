@@ -31,19 +31,6 @@ struct DialogueView: View {
     let props: Props
 
     var body: some View {
-        makeBody
-
-        }
-}
-
-struct DialogueView_Previews: PreviewProvider {
-    static var previews: some View {
-        DialogueView(props: .preview(count: 5))
-    }
-}
-
-private extension DialogueView {
-    var makeBody: some View {
         VStack(spacing: 0) {
             NavigationBarView(props: props.navBar)
 
@@ -66,17 +53,24 @@ private extension DialogueView {
         .background(theme.navBarStyle.backgroundColor.edgesIgnoringSafeArea(.top))
         .onAppear { props.onAppear() }
         .disabled(true)
-        .overlay(
-            GeometryReader { geo in
-                Color.clear.onAppear { layoutWidth = geo.size.width  }
-            })
+        .overlay(GeometryReader { geo in
+            Color.clear.onAppear { layoutWidth = geo.size.width  }
+        })
     }
+}
 
+struct DialogueView_Previews: PreviewProvider {
+    static var previews: some View {
+        DialogueView(props: .preview(count: 5))
+    }
+}
+
+private extension DialogueView {
     func itemTransitionForIndex(_ idx: Int) -> AnyTransition {
         return idx == 0 ?
             AnyTransition.opacity
             : AnyTransition.move(edge: .top)
-                .combined(with: .offset(x: 0, y: -theme.baloonStyle.paddings.interItemSpacing))
-                .combined(with: .opacity)
+            .combined(with: .offset(x: 0, y: -theme.baloonStyle.paddings.interItemSpacing))
+            .combined(with: .opacity)
     }
 }

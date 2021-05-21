@@ -8,7 +8,6 @@
 import SwiftUI
 import PureduxSwiftUI
 
-
 struct DialoguePresenter: PresentableView {
     func content(for props: DialogueView.Props) -> DialogueView {
         DialogueView(props: props)
