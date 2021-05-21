@@ -41,8 +41,8 @@ struct FileDataSideEffects {
                 
                 let models = itemsData
                     .enumerated()
-                    .map { TextData(
-                        id: TextData.ID(rawValue: $0.offset),
+                    .map { DialogueMessage(
+                        id: DialogueMessage.ID(rawValue: $0.offset),
                         text: $0.element.line) }
                 store.dispatch(action: Actions.TextDataSource.ReceievedDataSuccess(value: models))
             case .failure(let error):

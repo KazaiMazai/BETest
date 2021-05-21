@@ -10,13 +10,14 @@ import AVFoundation
 
 struct TextToSpeechSideEffects {
     func map(state: AppState, on store: Store) -> TextToSpeechOperator.Request? {
-        guard let itemToSpeak = state.dialogue.availableForSpeech(at: Date()) else {
+        guard let requestState = state.dialogue.availableForSpeech(at: Date()),
+              let item = state.storage.messages.findById(requestState.payload)  else {
             return nil
         }
         
         let request = TextToSpeechOperator.Request(
-            id: itemToSpeak.id,
-            text: itemToSpeak.payload.text) {
+            id: requestState.id,
+            text: item.text) {
             switch $0 {
             case .start:
                 store.dispatch(action: Actions.SpeechSynthesizer.StateChange(state: .start))

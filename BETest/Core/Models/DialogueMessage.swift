@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct TextData: Codable {
-    struct ID: Hashable, Codable {
+struct DialogueMessage: Entity {
+    struct ID: EntityID {
         let rawValue: Int
     }
 

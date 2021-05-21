@@ -12,8 +12,8 @@ struct Dialogue {
     private var state: State = .none
 
     private(set) var lastModified: Date = .distantPast
-    private(set) var pendingItems: [TextData] = []
-    private(set) var items: [TextData] = []
+    private(set) var pendingItems: [DialogueMessage.ID] = []
+    private(set) var items: [DialogueMessage.ID] = []
     private let dataFileName: String
 
     init(delay: TimeInterval, dataFileName: String) {
@@ -33,7 +33,7 @@ extension Dialogue {
 
         case let action as Actions.TextDataSource.ReceievedDataSuccess:
             lastModified = env.now()
-            processNewTextData(data: action.value)
+            processNewTextData(data: action.value.map { $0.id })
 
         case let action as Actions.SpeechSynthesizer.StateChange:
             lastModified = env.now()
@@ -68,7 +68,7 @@ extension Dialogue {
         return request
     }
 
-    func availableForSpeech(at: Date) -> PayloadRequest<TextData>? {
+    func availableForSpeech(at: Date) -> PayloadRequest<DialogueMessage.ID>? {
         guard case let .speakingItem(item, speechAvailableAfter) = state else {
             return nil
         }
@@ -91,8 +91,8 @@ extension Dialogue {
                 payload: FileMetaData(filename: filename)))
     }
 
-    private mutating func processNewTextData(data: [TextData]) {
-        pendingItems.append(contentsOf: data.filter { !$0.text.isEmpty })
+    private mutating func processNewTextData(data: [DialogueMessage.ID]) {
+        pendingItems.append(contentsOf: data)
         guard isWaitingForData && !pendingItems.isEmpty else {
             return
         }
@@ -137,8 +137,8 @@ private extension Dialogue {
     enum State {
         case none
         case waitingForData(PayloadRequest<FileMetaData>)
-        case pendingItem(TextData, availableAfter: Date)
-        case speakingItem(PayloadRequest<TextData>, speechAvailableAfter: Date)
+        case pendingItem(DialogueMessage.ID, availableAfter: Date)
+        case speakingItem(PayloadRequest<DialogueMessage.ID>, speechAvailableAfter: Date)
         case finished
     }
 }
