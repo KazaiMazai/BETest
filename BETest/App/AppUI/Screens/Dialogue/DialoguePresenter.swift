@@ -20,10 +20,15 @@ struct DialoguePresenter: PresentableView {
 
     func props(for state: AppState, on store: EnvironmentStore<AppState, Action>) -> DialogueView.Props {
         DialogueView.Props(
-            title: "Dialogue",
-            items: state.dialogue.items.map { BallonView.Props(
-                id: $0.id.rawValue,
-                text: $0.text) },
+            navBar: NavigationBarView.Props(title: "Dialogue"),
+            items: state.dialogue.items
+                .enumerated()
+                .reversed()
+                .map {
+                    BallonView.Props(
+                        id: $0.offset,
+                        text: $0.element.text)
+                },
             animationDuration: state.dialogue.animationsDelay,
             onAppear: store.bind(Actions.DialogueFlow.Run()))
     }

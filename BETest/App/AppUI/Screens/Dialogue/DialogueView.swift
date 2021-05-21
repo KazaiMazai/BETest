@@ -9,14 +9,14 @@ import SwiftUI
 
 extension DialogueView {
     struct Props {
-        let title: String
+        let navBar: NavigationBarView.Props
         let items: [BallonView<Int>.Props<Int>]
         let animationDuration: Double
         let onAppear: Command
 
         static func preview(count: Int) -> Props {
             Props(
-                title: "Title",
+                navBar: .preview,
                 items: Array(0..<count).map { .preview(id: $0) },
                 animationDuration: 0.5,
                 onAppear: nop)
@@ -32,12 +32,7 @@ struct DialogueView: View {
 
     var body: some View {
         makeBody
-            .onAppear { props.onAppear() }
-            .disabled(true)
-            .overlay(
-                GeometryReader { geo in
-                    Color.clear.onAppear { layoutWidth = geo.size.width  }
-                }) 
+
         }
 }
 
@@ -50,16 +45,16 @@ struct DialogueView_Previews: PreviewProvider {
 private extension DialogueView {
     var makeBody: some View {
         VStack(spacing: 0) {
-            NavigationBarView(props: .init(title: props.title))
+            NavigationBarView(props: props.navBar)
+
             ScrollView {
                 VStack(spacing: theme.baloonStyle.paddings.interItemSpacing) {
                     Color.clear.frame(height: 0)
-                    ForEach(props.items.enumerated().reversed(),
-                            id: \.element.id) {
 
-                        BallonView(props: $0.element, maxLayoutWidth: layoutWidth)
+                    ForEach(props.items, id: \.id) {
+                        BallonView(props: $0, maxLayoutWidth: layoutWidth)
                             .rotationEffect(.radians(.pi))
-                            .transition(itemTransitionForIndex($0.offset))
+                            .transition(itemTransitionForIndex($0.id))
                     }
                 }
             }
@@ -69,6 +64,12 @@ private extension DialogueView {
             .edgesIgnoringSafeArea(.vertical)
         }
         .background(theme.navBarStyle.backgroundColor.edgesIgnoringSafeArea(.top))
+        .onAppear { props.onAppear() }
+        .disabled(true)
+        .overlay(
+            GeometryReader { geo in
+                Color.clear.onAppear { layoutWidth = geo.size.width  }
+            })
     }
 
     func itemTransitionForIndex(_ idx: Int) -> AnyTransition {
