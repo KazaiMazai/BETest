@@ -13,17 +13,7 @@ extension Actions {
 
 extension Actions.SpeechSynthesizer {
     struct StateChange: Action {
-        let state: State
+        let state: SyntesizerState
     }
 }
-
-extension Actions.SpeechSynthesizer.StateChange {
-    enum State {
-        case start
-        case finish
-        case pause
-        case cancel
-        case continued
-        case failed(Error)
-    }
-}
+ 

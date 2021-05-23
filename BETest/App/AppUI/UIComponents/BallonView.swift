@@ -8,20 +8,21 @@
 import SwiftUI
 
 extension BallonView {
-    struct Props: Identifiable {
-        let id: Int
+    struct Props<ID: Hashable>: Identifiable {
+        let id: ID
         let text: String
 
-        static func preview(id: Int) -> Props {
-            .init(id: id,
-                  text: "\(id): Label label label label label label label label label label label label label")
+        static func preview(id: Int) -> Props<Int> {
+            Props<Int>(
+                id: id,
+                text: "\(id): Label label label label label label label label label label label label label")
         }
     }
 }
 
-struct BallonView: View {
+struct BallonView<ID: Hashable>: View {
     @Environment(\.appUITheme) var theme
-    let props: Props
+    let props: Props<ID>
     let maxLayoutWidth: CGFloat
 
     var body: some View {

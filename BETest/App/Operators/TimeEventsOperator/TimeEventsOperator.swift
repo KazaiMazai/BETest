@@ -11,48 +11,33 @@ import Foundation
 extension DispatchWorkItem: OperatorTask { }
 
 extension TimeEventsOperator {
-    public struct Request: OperatorRequest {
-        func handle(_ result: OperatorResult<Date>) {
-            switch result {
-            case .success(let res):
-                handler(.success(res))
-            case .cancelled:
-                handler(.cancelled)
-            case .error(let error):
-                handler(.error(error))
-            }
-        }
-        
-        public init(id: UUID,
-                    delay: Double,
-                    handler: @escaping (OperatorResult<Date>) -> Void) {
-            self.id = id
-            self.delay = delay
-            self.handler = handler
-        }
-        
+    struct Request: OperatorRequest {
         let id: UUID
         let delay: Double
-        let handler: (OperatorResult<Date>) -> Void
+        let completeHandler: (TaskResult<Void, Void>) -> Void
+
+        func handle(_ result: TaskResult<Void, Void>) {
+            completeHandler(result)
+        }
     }
 }
 
 class TimeEventsOperator: Operator<TimeEventsOperator.Request, DispatchWorkItem> {
-    public override init(queueLabel: String = "Time-Events-Operator",
-                         qos: DispatchQoS = .utility,
-                         logging: LogSource = LogSource.defaultLogging()) {
-        super.init(queueLabel: queueLabel, qos: qos, logging: logging)
+    override init(label: String = "Time-Events-Operator",
+                  qos: DispatchQoS = .utility,
+                  logger: Logger = .console(.info)) {
+        super.init(label: label, qos: qos, logger: logger)
     }
     
     override func run(task: DispatchWorkItem, for request: Request) {
-        queue.asyncAfter(deadline: .now() + request.delay, execute: task)
+        processingQueue.asyncAfter(deadline: .now() + request.delay, execute: task)
     }
     
     override func createTaskFor(_ request: TimeEventsOperator.Request,
-                                with completeHandler: @escaping (OperatorResult<Date>) -> Void) -> DispatchWorkItem {
+                                with completeHandler: @escaping (TaskResult<Void, Void>) -> Void) -> DispatchWorkItem {
         
         DispatchWorkItem {
-            completeHandler(.success(Date()))
+            completeHandler(.success(Void()))
         }
     }
 }

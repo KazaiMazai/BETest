@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA39B06225FE8FD9009A33A4 /* PureduxSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EA39B06125FE8FD9009A33A4 /* PureduxSwiftUI */; };
 		EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A212525E97E00107D4A /* AppDelegate.swift */; };
 		EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A232525E97E00107D4A /* SceneDelegate.swift */; };
 		EA413A282525E97F00107D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA413A272525E97F00107D4A /* Assets.xcassets */; };
@@ -17,10 +18,10 @@
 		EA413A802525F00C00107D4A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A7F2525F00C00107D4A /* Action.swift */; };
 		EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A862525F07A00107D4A /* TextDataSource.swift */; };
 		EA413A8C2525F08300107D4A /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A8B2525F08300107D4A /* SpeechSynthesizer.swift */; };
-		EA413A912525F27200107D4A /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A902525F27200107D4A /* TextData.swift */; };
+		EA413A912525F27200107D4A /* DialogueMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A902525F27200107D4A /* DialogueMessage.swift */; };
 		EA413A9F2525FEDE00107D4A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A9E2525FEDE00107D4A /* Command.swift */; };
 		EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AA62525FF2300107D4A /* EnvironmentStore.swift */; };
-		EA413ABC2526061900107D4A /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ABB2526061900107D4A /* AppDI.swift */; };
+		EA413ABC2526061900107D4A /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ABB2526061900107D4A /* AppLauncher.swift */; };
 		EA413AC12526069000107D4A /* TimeEventsSideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC02526069000107D4A /* TimeEventsSideEffects.swift */; };
 		EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC82526071D00107D4A /* CurrentTime.swift */; };
 		EA413ACE2526073A00107D4A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ACD2526073A00107D4A /* Time.swift */; };
@@ -43,8 +44,14 @@
 		EA413BAF2528026000107D4A /* FileMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BAE2528026000107D4A /* FileMetaData.swift */; };
 		EA413BBC2528087200107D4A /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413B122527595000107D4A /* DialogueView.swift */; };
 		EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413BC32528145700107D4A /* NavigationBarView.swift */; };
+		EA67E5062657BD000058DAF8 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E5052657BD000058DAF8 /* AppEnvironment.swift */; };
+		EA67E50B2657BE970058DAF8 /* AppStateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E50A2657BE970058DAF8 /* AppStateConfig.swift */; };
+		EA67E5102657C17F0058DAF8 /* SynthesizerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E50F2657C17F0058DAF8 /* SynthesizerState.swift */; };
+		EA67E5162657E6090058DAF8 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E5152657E6090058DAF8 /* Entities.swift */; };
+		EA67E51E2657E63E0058DAF8 /* Merging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E51D2657E63E0058DAF8 /* Merging.swift */; };
+		EA67E5232657E6870058DAF8 /* ModelSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E5222657E6870058DAF8 /* ModelSchema.swift */; };
+		EA67E52B2657E6DA0058DAF8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E52A2657E6DA0058DAF8 /* Storage.swift */; };
 		EABC99F62577A764002D2594 /* Puredux in Frameworks */ = {isa = PBXBuildFile; productRef = EABC99F52577A764002D2594 /* Puredux */; };
-		EABC99FC2577A78F002D2594 /* PureduxSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EABC99FB2577A78F002D2594 /* PureduxSwiftUI */; };
 		EABC9A012577A7B2002D2594 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A002577A7B2002D2594 /* Types.swift */; };
 		EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A052577BAEB002D2594 /* SingeRequest.swift */; };
 		EABC9A182577CB68002D2594 /* TimeEventsOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */; };
@@ -69,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA39B05C25FE8FC4009A33A4 /* PureduxSwiftUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PureduxSwiftUI; path = ../PureduxSwiftUI; sourceTree = "<group>"; };
 		EA413A1E2525E97E00107D4A /* BETest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BETest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA413A212525E97E00107D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA413A232525E97E00107D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,11 +93,11 @@
 		EA413A7F2525F00C00107D4A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		EA413A862525F07A00107D4A /* TextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDataSource.swift; sourceTree = "<group>"; };
 		EA413A8B2525F08300107D4A /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
-		EA413A902525F27200107D4A /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
+		EA413A902525F27200107D4A /* DialogueMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueMessage.swift; sourceTree = "<group>"; };
 		EA413A962525F38A00107D4A /* Dialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialogue.swift; sourceTree = "<group>"; };
 		EA413A9E2525FEDE00107D4A /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		EA413AA62525FF2300107D4A /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
-		EA413ABB2526061900107D4A /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
+		EA413ABB2526061900107D4A /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		EA413AC02526069000107D4A /* TimeEventsSideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsSideEffects.swift; sourceTree = "<group>"; };
 		EA413AC82526071D00107D4A /* CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTime.swift; sourceTree = "<group>"; };
 		EA413ACD2526073A00107D4A /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -111,6 +119,13 @@
 		EA413BA62527F74D00107D4A /* FileDataSideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSideEffects.swift; sourceTree = "<group>"; };
 		EA413BAE2528026000107D4A /* FileMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMetaData.swift; sourceTree = "<group>"; };
 		EA413BC32528145700107D4A /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		EA67E5052657BD000058DAF8 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		EA67E50A2657BE970058DAF8 /* AppStateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateConfig.swift; sourceTree = "<group>"; };
+		EA67E50F2657C17F0058DAF8 /* SynthesizerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthesizerState.swift; sourceTree = "<group>"; };
+		EA67E5152657E6090058DAF8 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		EA67E51D2657E63E0058DAF8 /* Merging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merging.swift; sourceTree = "<group>"; };
+		EA67E5222657E6870058DAF8 /* ModelSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSchema.swift; sourceTree = "<group>"; };
+		EA67E52A2657E6DA0058DAF8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		EABC9A002577A7B2002D2594 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		EABC9A052577BAEB002D2594 /* SingeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingeRequest.swift; sourceTree = "<group>"; };
 		EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsOperator.swift; sourceTree = "<group>"; };
@@ -122,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EABC99FC2577A78F002D2594 /* PureduxSwiftUI in Frameworks */,
+				EA39B06225FE8FD9009A33A4 /* PureduxSwiftUI in Frameworks */,
 				EABC99F62577A764002D2594 /* Puredux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,13 +159,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA39B06025FE8FD9009A33A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EA413A152525E97E00107D4A = {
 			isa = PBXGroup;
 			children = (
+				EA39B05C25FE8FC4009A33A4 /* PureduxSwiftUI */,
 				EA413A202525E97E00107D4A /* BETest */,
 				EA413A372525E97F00107D4A /* BETestTests */,
 				EA413A422525E97F00107D4A /* BETestUITests */,
 				EA413A1F2525E97E00107D4A /* Products */,
+				EA39B06025FE8FD9009A33A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,7 +244,8 @@
 		EA413A552525E9CF00107D4A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A902525F27200107D4A /* TextData.swift */,
+				EA413A902525F27200107D4A /* DialogueMessage.swift */,
+				EA67E50F2657C17F0058DAF8 /* SynthesizerState.swift */,
 				EA413B5825277DBE00107D4A /* RequestState.swift */,
 				EA413BAE2528026000107D4A /* FileMetaData.swift */,
 				EABC9A052577BAEB002D2594 /* SingeRequest.swift */,
@@ -231,6 +256,7 @@
 		EA413A562525E9CF00107D4A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EA67E5142657E5F40058DAF8 /* EntitiesStorage */,
 				EA413A962525F38A00107D4A /* Dialogue.swift */,
 				EA413AC82526071D00107D4A /* CurrentTime.swift */,
 			);
@@ -252,7 +278,7 @@
 		EA413A592525E9CF00107D4A /* App */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A5B2525E9CF00107D4A /* AppDI */,
+				EA413A5B2525E9CF00107D4A /* AppLauncher */,
 				EA413A5A2525E9CF00107D4A /* AppUI */,
 				EA413A5D2525E9CF00107D4A /* SideEffects */,
 				EA413B382527709300107D4A /* Operators */,
@@ -272,13 +298,13 @@
 			path = AppUI;
 			sourceTree = "<group>";
 		};
-		EA413A5B2525E9CF00107D4A /* AppDI */ = {
+		EA413A5B2525E9CF00107D4A /* AppLauncher */ = {
 			isa = PBXGroup;
 			children = (
-				EA413ABB2526061900107D4A /* AppDI.swift */,
+				EA413ABB2526061900107D4A /* AppLauncher.swift */,
 				EABC9A002577A7B2002D2594 /* Types.swift */,
 			);
-			path = AppDI;
+			path = AppLauncher;
 			sourceTree = "<group>";
 		};
 		EA413A5C2525E9CF00107D4A /* Utils */ = {
@@ -347,6 +373,8 @@
 			isa = PBXGroup;
 			children = (
 				EA413A7A2525EF5600107D4A /* AppState.swift */,
+				EA67E5052657BD000058DAF8 /* AppEnvironment.swift */,
+				EA67E50A2657BE970058DAF8 /* AppStateConfig.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -395,6 +423,17 @@
 			path = FileDataOperator;
 			sourceTree = "<group>";
 		};
+		EA67E5142657E5F40058DAF8 /* EntitiesStorage */ = {
+			isa = PBXGroup;
+			children = (
+				EA67E5152657E6090058DAF8 /* Entities.swift */,
+				EA67E51D2657E63E0058DAF8 /* Merging.swift */,
+				EA67E5222657E6870058DAF8 /* ModelSchema.swift */,
+				EA67E52A2657E6DA0058DAF8 /* Storage.swift */,
+			);
+			path = EntitiesStorage;
+			sourceTree = "<group>";
+		};
 		EABC9A162577CB55002D2594 /* TimeEventsOperator */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +469,7 @@
 			name = BETest;
 			packageProductDependencies = (
 				EABC99F52577A764002D2594 /* Puredux */,
-				EABC99FB2577A78F002D2594 /* PureduxSwiftUI */,
+				EA39B06125FE8FD9009A33A4 /* PureduxSwiftUI */,
 			);
 			productName = BETest;
 			productReference = EA413A1E2525E97E00107D4A /* BETest.app */;
@@ -505,7 +544,6 @@
 			mainGroup = EA413A152525E97E00107D4A;
 			packageReferences = (
 				EABC99F42577A764002D2594 /* XCRemoteSwiftPackageReference "Puredux" */,
-				EABC99FA2577A78F002D2594 /* XCRemoteSwiftPackageReference "PureduxSwiftUI" */,
 			);
 			productRefGroup = EA413A1F2525E97E00107D4A /* Products */;
 			projectDirPath = "";
@@ -554,10 +592,11 @@
 				EA413BAF2528026000107D4A /* FileMetaData.swift in Sources */,
 				EA413ADE252611AF00107D4A /* Dialogue.swift in Sources */,
 				EA413B092527331900107D4A /* AppUIThemeKey.swift in Sources */,
-				EA413A912525F27200107D4A /* TextData.swift in Sources */,
+				EA413A912525F27200107D4A /* DialogueMessage.swift in Sources */,
 				EA413ACE2526073A00107D4A /* Time.swift in Sources */,
 				EA413AFB25272E3000107D4A /* BallonView.swift in Sources */,
 				EA413B5925277DBE00107D4A /* RequestState.swift in Sources */,
+				EA67E5162657E6090058DAF8 /* Entities.swift in Sources */,
 				EA413A8C2525F08300107D4A /* SpeechSynthesizer.swift in Sources */,
 				EA413B732527D12900107D4A /* DarkHostingController.swift in Sources */,
 				EA413AC12526069000107D4A /* TimeEventsSideEffects.swift in Sources */,
@@ -567,23 +606,29 @@
 				EABC9A012577A7B2002D2594 /* Types.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413B1B2527623800107D4A /* DialoguePresenter.swift in Sources */,
-				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
+				EA413ABC2526061900107D4A /* AppLauncher.swift in Sources */,
 				EABC9A182577CB68002D2594 /* TimeEventsOperator.swift in Sources */,
+				EA67E5102657C17F0058DAF8 /* SynthesizerState.swift in Sources */,
 				EA413BBC2528087200107D4A /* DialogueView.swift in Sources */,
 				EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
+				EA67E51E2657E63E0058DAF8 /* Merging.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
 				EA413B4D2527790600107D4A /* TextToSpeechOperator.swift in Sources */,
 				EA413B3125276C6900107D4A /* TextToSpeechSideEffects.swift in Sources */,
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
+				EA67E50B2657BE970058DAF8 /* AppStateConfig.swift in Sources */,
+				EA67E52B2657E6DA0058DAF8 /* Storage.swift in Sources */,
 				EA413B972527F3B300107D4A /* FileDataOperator.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */,
 				EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */,
+				EA67E5232657E6870058DAF8 /* ModelSchema.swift in Sources */,
 				EADCDFF425800EC7000D51A5 /* TextToSpeechOperatorRequest.swift in Sources */,
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
 				EA413A9F2525FEDE00107D4A /* Command.swift in Sources */,
+				EA67E5062657BD000058DAF8 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,30 +964,21 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/KazaiMazai/Puredux";
 			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		EABC99FA2577A78F002D2594 /* XCRemoteSwiftPackageReference "PureduxSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KazaiMazai/PureduxSwiftUI";
-			requirement = {
-				branch = main;
+				branch = dev;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EA39B06125FE8FD9009A33A4 /* PureduxSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PureduxSwiftUI;
+		};
 		EABC99F52577A764002D2594 /* Puredux */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EABC99F42577A764002D2594 /* XCRemoteSwiftPackageReference "Puredux" */;
 			productName = Puredux;
-		};
-		EABC99FB2577A78F002D2594 /* PureduxSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EABC99FA2577A78F002D2594 /* XCRemoteSwiftPackageReference "PureduxSwiftUI" */;
-			productName = PureduxSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

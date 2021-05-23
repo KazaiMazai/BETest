@@ -10,35 +10,29 @@ import PureduxSideEffects
 
 extension FileDataOperator {
     struct Request: OperatorRequest {
-        func handle(_ result: OperatorResult<Data>) {
-            switch result {
-            case .success(let data):
-                complete(.success(data))
-            case .error(let error):
-                complete(.failure(error))
-            case .cancelled:
-                break
-            }
-        }
-        
         let id: UUID
         let filename: String
-        let complete: CommandWith<Result<Data, Error>>
+        let completeHandler: (TaskResult<Data, Void>) -> Void
+
+        func handle(_ result: TaskResult<Data, Void>) {
+            completeHandler(result)
+        }
     }
 }
 
 class FileDataOperator: Operator<FileDataOperator.Request, DispatchWorkItem> {
-    public override init(queueLabel: String = "File-Data-Operator",
+    override init(label: String = "File-Data-Operator",
                          qos: DispatchQoS = .utility,
-                         logging: LogSource = LogSource.defaultLogging()) {
-        super.init(queueLabel: queueLabel, qos: qos, logging: logging)
+                         logger: Logger = .console(.info)) {
+        super.init(label: label, qos: qos, logger: logger)
     }
     
     override func run(task: DispatchWorkItem, for request: FileDataOperator.Request) {
-        queue.async(execute: task)
+        processingQueue.async(execute: task)
     }
     
-    override func createTaskFor(_ request: Request, with completeHandler: @escaping (OperatorResult<Data>) -> Void) -> DispatchWorkItem {
+    override func createTaskFor(_ request: Request,
+                                with taskResultHandler: @escaping (TaskResult<Data, Void>) -> Void) -> DispatchWorkItem {
         DispatchWorkItem {
             let name = String(request.filename.split(separator: ".").first ?? "")
             let fileExtension = String(request.filename.split(separator: ".").last ?? "")
@@ -47,21 +41,21 @@ class FileDataOperator: Operator<FileDataOperator.Request, DispatchWorkItem> {
             guard let filePath = Bundle.main.url(forResource: name,
                                                  withExtension: fileExtension) else {
                 
-                completeHandler(.error(Errors.couldNotOpenFile))
+                taskResultHandler(.failure(Errors.couldNotOpenFile))
                 return
             }
             
             guard let stringContent = try? String(contentsOfFile: filePath.path, encoding: .utf8) else {
-                completeHandler(.error(Errors.couldNotOpenFile))
+                taskResultHandler(.failure(Errors.couldNotOpenFile))
                 return
             }
             
             guard let contentData = stringContent.data(using: .utf8) else {
-                completeHandler(.error(Errors.unrecognizedDataFormat))
+                taskResultHandler(.failure(Errors.unrecognizedDataFormat))
                 return
             }
             
-            completeHandler(.success(contentData))
+            taskResultHandler(.success(contentData))
         }
     }
 }

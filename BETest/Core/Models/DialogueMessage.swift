@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct TextData: Codable {
-    let id: Int
+struct DialogueMessage: Entity {
+    struct ID: EntityID {
+        let rawValue: Int
+    }
+
+    let id: ID
     let text: String
 }
+

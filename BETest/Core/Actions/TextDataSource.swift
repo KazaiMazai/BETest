@@ -13,7 +13,7 @@ extension Actions {
 
 extension Actions.TextDataSource {
     struct ReceievedDataSuccess: Action {
-        let value: [TextData]
+        let value: [DialogueMessage]
     }
 
     struct ReceievedDataFail: Action {

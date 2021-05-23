@@ -8,18 +8,24 @@
 import Foundation
 
 struct CurrentTime: Codable {
+    public var time: Date
+    public let interval: Double
 
-    public var time = Date()
-    public let interval: Double = 1
-    public private(set) var request: RequestState<SingleRequest> = .none
+    init(time: Date, interval: Double, initialRequest: UUID) {
+        self.time = time
+        self.interval = interval
+        self.request = .inProgress(SingleRequest(id: initialRequest))
+    }
 
-    mutating func reduce(_ action: Action) {
+    public private(set) var request: RequestState<SingleRequest>
+
+    mutating func reduce(_ action: Action, env: AppEnvironment) {
         switch action {
-        case let action as Actions.Time.TimeChanged:
-            time = action.timestamp
-            request = .inProgress(SingleRequest())
+        case is Actions.Time.TimeChanged:
+            time = env.now()
+            request = .inProgress(SingleRequest(id: env.makeUUID()))
         default:
-            request = .inProgress(SingleRequest())
+            break
         }
 
     }

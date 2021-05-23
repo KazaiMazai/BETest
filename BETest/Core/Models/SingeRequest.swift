@@ -8,7 +8,7 @@
 import Foundation
 
 public struct SingleRequest: Codable {
-    public init(id: UUID = UUID()) {
+    public init(id: UUID) {
         self.id = id
     }
 

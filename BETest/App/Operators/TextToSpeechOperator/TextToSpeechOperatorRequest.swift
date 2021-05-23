@@ -9,9 +9,8 @@ import Foundation
 import PureduxSideEffects
 import AVFoundation
 
-
 extension TextToSpeechOperator.Request {
-    enum State {
+    enum SpeakingState {
         case start
         case finish
         case pause
@@ -27,7 +26,7 @@ extension TextToSpeechOperator.Request {
     }
 
     enum RequestType {
-        case textToSpeech(text: String, handler: CommandWith<State>)
+        case textToSpeech(text: String, handler: CommandWith<SpeakingState>)
         case changeState(SpeakingRequest, handler: CommandWith<Swift.Result<Void, Error>>)
     }
 }
@@ -36,7 +35,7 @@ extension TextToSpeechOperator {
     struct Request {
         internal init(id: UUID,
                       text: String,
-                      handler: @escaping CommandWith<Request.State>) {
+                      handler: @escaping CommandWith<Request.SpeakingState>) {
             self.id = id
             self.requestType = RequestType.textToSpeech(text: text, handler: handler)
         }
@@ -47,7 +46,7 @@ extension TextToSpeechOperator {
 }
 
 extension TextToSpeechOperator.Request: OperatorRequest {
-    func handle(_ result: OperatorResult<Void>) {
+    func handle(_ result: TaskResult<Void, SpeakingState>) {
         switch requestType {
         case .textToSpeech(_ , let handler):
             switch result {
@@ -55,7 +54,9 @@ extension TextToSpeechOperator.Request: OperatorRequest {
                 handler(.finish)
             case .cancelled:
                 handler(.cancel)
-            case .error(let error):
+            case .statusChanged(let state):
+                handler(state)
+            case .failure(let error):
                 handler(.failed(error))
             }
             
@@ -65,7 +66,9 @@ extension TextToSpeechOperator.Request: OperatorRequest {
                 handler(.success(Void()))
             case .cancelled:
                 break
-            case .error(let error):
+            case .statusChanged:
+                break
+            case .failure(let error):
                 handler(.failure(error))
             }
         }

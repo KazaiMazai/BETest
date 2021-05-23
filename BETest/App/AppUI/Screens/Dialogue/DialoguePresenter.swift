@@ -6,24 +6,46 @@
 //
 
 import SwiftUI
+import PureduxSwiftUI
 
-struct DialoguePresenter: PresentingView {
-    func map(props: DialogueView.Props) -> DialogueView {
+struct DialoguePresenter: PresentableView {
+    func content(for props: DialogueView.Props) -> DialogueView {
         DialogueView(props: props)
     }
 
+    func props(for state: AppState, on store: EnvironmentStore<AppState, Action>) -> DialogueView.Props {
+        DialogueView.Props(
+            navBar: NavigationBarView.Props(title: "Dialogue"),
+            items: balloonViewItemsProps(for: state),
+            animationDuration: state.dialogue.animationsDelay,
+            onAppear: store.bind(Actions.DialogueFlow.Run()))
+    }
 
-    func props(for state: AppState, on store: EnvironmentStore) -> DialogueView.Props {
-        .init(title: "Dialogue",
-              items: state.dialogue.items.map { .init(with: $0) },
-              animationDuration: state.dialogue.animationsDelay,
-              onAppear: store.bind(Actions.DialogueFlow.Run(filename: "data.json")))
+    var distinctStateChangesBy: Equating<AppState> {
+        .equal {
+            $0.dialogue.lastModified
+        } &&
+        .equal {
+            $0.storage.lastModified
+        }
     }
 }
 
-extension BallonView.Props {
-    init(with model: TextData) {
-        self.init(id: model.id,
-                  text: model.text)
+extension DialoguePresenter {
+    private func dialogueMessageItems(for state: AppState) -> [DialogueMessage] {
+        state.storage.messages.findAllById(state.dialogue.items)
     }
+
+    private func balloonViewItemsProps(for state: AppState) -> [BallonView<Int>.Props<Int>] {
+        dialogueMessageItems(for: state)
+            .enumerated()
+            .reversed()
+            .map {
+                BallonView.Props(
+                    id: $0.offset,
+                    text: $0.element.text)
+            }
+    }
+
+
 }
