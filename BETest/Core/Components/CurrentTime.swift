@@ -11,7 +11,13 @@ struct CurrentTime: Codable {
     public var time: Date
     public let interval: Double
 
-    public private(set) var request: RequestState<SingleRequest> = .none
+    init(time: Date, interval: Double, initialRequest: UUID) {
+        self.time = time
+        self.interval = interval
+        self.request = .inProgress(SingleRequest(id: initialRequest))
+    }
+
+    public private(set) var request: RequestState<SingleRequest>
 
     mutating func reduce(_ action: Action, env: AppEnvironment) {
         switch action {
@@ -19,7 +25,7 @@ struct CurrentTime: Codable {
             time = env.now()
             request = .inProgress(SingleRequest(id: env.makeUUID()))
         default:
-            request = .inProgress(SingleRequest(id: env.makeUUID()))
+            break
         }
 
     }

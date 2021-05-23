@@ -14,7 +14,7 @@ struct AppStateConfig {
 
     static func defaultConfig() -> AppStateConfig {
         AppStateConfig(
-            timeEventsInterval: 1,
+            timeEventsInterval: 0.3,
             dialogueDelay: 0.5,
             dialogueDataFilename: "data.json")
     }

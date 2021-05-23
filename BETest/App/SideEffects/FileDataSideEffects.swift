@@ -13,18 +13,7 @@ struct FileDataSideEffects {
     init(decoder: JSONDecoder = Self.defaultDecoder) {
         self.decoder = decoder
     }
-    
-    enum Errors: Error {
-        case couldNotDecodeData
-    }
-    
-    static let defaultDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
-        
-    }()
-    
+
     func map(state: AppState, on store: Store) -> [FileDataOperator.Request] {
         guard let requestState = state.dialogue.dataRequestState else {
             return []
@@ -57,6 +46,23 @@ struct FileDataSideEffects {
         return [request]
     }
 }
+
+extension FileDataSideEffects {
+    enum Errors: Error {
+        case couldNotDecodeData
+    }
+}
+
+
+extension FileDataSideEffects {
+    static let defaultDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+
+    }()
+}
+
 
 private struct FileTextData: Codable {
     let line: String

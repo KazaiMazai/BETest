@@ -10,17 +10,28 @@ import Foundation
 struct AppState {
     private(set) var dialogue: Dialogue
     private(set) var currentTime: CurrentTime
+    private(set) var storage: Storage
 
-    private(set) var storage = Storage()
+    init(dialogue: Dialogue, currentTime: CurrentTime, storage: Storage) {
+        self.dialogue = dialogue
+        self.currentTime = currentTime
+        self.storage = storage
+    }
+}
 
-    init(config: AppStateConfig, env: AppEnvironment) {
-        dialogue = Dialogue(
-            delay: config.dialogueDelay,
-            dataFileName: config.dialogueDataFilename)
+extension AppState {
+    static func createStateWith(config: AppStateConfig, env: AppEnvironment) -> AppState {
+        AppState(
+            dialogue: Dialogue(
+                delay: config.dialogueDelay,
+                dataFileName: config.dialogueDataFilename),
 
-        currentTime = CurrentTime(
-            time: env.now(),
-            interval: config.timeEventsInterval)
+            currentTime: CurrentTime(
+                time: env.now(),
+                interval: config.timeEventsInterval,
+                initialRequest: env.makeUUID()),
+
+            storage: Storage())
     }
 }
 

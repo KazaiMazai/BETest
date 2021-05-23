@@ -13,21 +13,19 @@ struct AppDI {
     let store: Store
     let appStateEnvironment: AppEnvironment
     let appStateConfig: AppStateConfig
+
     let timeEvents: Middleware<TimeEventsOperator>
     let textToSpeech: Middleware<TextToSpeechOperator>
-    let filename = "data.json"
-
-    let fileDataSourceDriver: Middleware<FileDataOperator>
+    let readFileData: Middleware<FileDataOperator>
 
     init() {
         let env = AppEnvironment.defaultAppEnvironment()
         let config = AppStateConfig.defaultConfig()
-        
-        let state = AppState(config: config, env: env)
+        let initialState = AppState.createStateWith(config: config, env: env)
 
-        store = Store(initial: state) { state, action in
-            defer { state.reduce(action, env: env) }
-            print("Reduce: \t\t \(String(reflecting: action))")
+        store = Store(initial: initialState) { state, action in
+            print("[Reducer] \(String(reflecting: action))")
+            state.reduce(action, env: env)
         }
 
         theme = .defaultTheme
@@ -37,23 +35,27 @@ struct AppDI {
 
         let timeEventsSideEffect = TimeEventsSideEffects()
         let timeEventsOperator = TimeEventsOperator()
-        timeEvents = Middleware(store: store,
-                                operator: timeEventsOperator,
-                                props: timeEventsSideEffect.map)
+        timeEvents = Middleware(
+            store: store,
+            operator: timeEventsOperator,
+            props: timeEventsSideEffect.map)
 
         let fileDataSourceOperator = FileDataOperator()
         let fileDataSideEffects = FileDataSideEffects()
-        fileDataSourceDriver = Middleware(store: store,
-                                          operator: fileDataSourceOperator,
-                                          props: fileDataSideEffects.map)
+        readFileData = Middleware(
+            store: store,
+            operator: fileDataSourceOperator,
+            props: fileDataSideEffects.map)
 
 
         let ttsSideEffects = TextToSpeechSideEffects()
-        let textToSpeechOperator = TextToSpeechOperator(label: "TTS Operator",
-                                                        qos: .userInitiated)
-        textToSpeech = Middleware(store: store,
-                                  operator: textToSpeechOperator,
-                                  props: ttsSideEffects.map)
+        let textToSpeechOperator = TextToSpeechOperator(
+            label: "TTS Operator",
+            qos: .userInitiated)
+        textToSpeech = Middleware(
+            store: store,
+            operator: textToSpeechOperator,
+            props: ttsSideEffects.map)
 
         subscribeToStore()
     }
@@ -77,7 +79,7 @@ extension AppDI {
 extension AppDI {
     private func subscribeToStore() {
         store.subscribe(observer: timeEvents.asObserver)
-        store.subscribe(observer: fileDataSourceDriver.asObserver)
+        store.subscribe(observer: readFileData.asObserver)
         store.subscribe(observer: textToSpeech.asObserver)
     }
 
