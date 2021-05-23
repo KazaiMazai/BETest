@@ -11,16 +11,18 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    lazy var appDI: AppDI = {
-        AppDI()
+    lazy var appLauncher: AppLauncher = {
+        AppLauncher()
     }()
 
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        self.window = appDI.launchUIWith(scene: scene)
+        self.window = appLauncher.launchUIWith(scene: scene)
         window?.makeKeyAndVisible()
+        
+        appLauncher.run()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

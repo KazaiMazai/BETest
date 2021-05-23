@@ -21,7 +21,7 @@
 		EA413A912525F27200107D4A /* DialogueMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A902525F27200107D4A /* DialogueMessage.swift */; };
 		EA413A9F2525FEDE00107D4A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413A9E2525FEDE00107D4A /* Command.swift */; };
 		EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AA62525FF2300107D4A /* EnvironmentStore.swift */; };
-		EA413ABC2526061900107D4A /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ABB2526061900107D4A /* AppDI.swift */; };
+		EA413ABC2526061900107D4A /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ABB2526061900107D4A /* AppLauncher.swift */; };
 		EA413AC12526069000107D4A /* TimeEventsSideEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC02526069000107D4A /* TimeEventsSideEffects.swift */; };
 		EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413AC82526071D00107D4A /* CurrentTime.swift */; };
 		EA413ACE2526073A00107D4A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA413ACD2526073A00107D4A /* Time.swift */; };
@@ -97,7 +97,7 @@
 		EA413A962525F38A00107D4A /* Dialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialogue.swift; sourceTree = "<group>"; };
 		EA413A9E2525FEDE00107D4A /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		EA413AA62525FF2300107D4A /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
-		EA413ABB2526061900107D4A /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
+		EA413ABB2526061900107D4A /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		EA413AC02526069000107D4A /* TimeEventsSideEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsSideEffects.swift; sourceTree = "<group>"; };
 		EA413AC82526071D00107D4A /* CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTime.swift; sourceTree = "<group>"; };
 		EA413ACD2526073A00107D4A /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 		EA413A592525E9CF00107D4A /* App */ = {
 			isa = PBXGroup;
 			children = (
-				EA413A5B2525E9CF00107D4A /* AppDI */,
+				EA413A5B2525E9CF00107D4A /* AppLauncher */,
 				EA413A5A2525E9CF00107D4A /* AppUI */,
 				EA413A5D2525E9CF00107D4A /* SideEffects */,
 				EA413B382527709300107D4A /* Operators */,
@@ -298,13 +298,13 @@
 			path = AppUI;
 			sourceTree = "<group>";
 		};
-		EA413A5B2525E9CF00107D4A /* AppDI */ = {
+		EA413A5B2525E9CF00107D4A /* AppLauncher */ = {
 			isa = PBXGroup;
 			children = (
-				EA413ABB2526061900107D4A /* AppDI.swift */,
+				EA413ABB2526061900107D4A /* AppLauncher.swift */,
 				EABC9A002577A7B2002D2594 /* Types.swift */,
 			);
-			path = AppDI;
+			path = AppLauncher;
 			sourceTree = "<group>";
 		};
 		EA413A5C2525E9CF00107D4A /* Utils */ = {
@@ -606,7 +606,7 @@
 				EABC9A012577A7B2002D2594 /* Types.swift in Sources */,
 				EA413A222525E97E00107D4A /* AppDelegate.swift in Sources */,
 				EA413B1B2527623800107D4A /* DialoguePresenter.swift in Sources */,
-				EA413ABC2526061900107D4A /* AppDI.swift in Sources */,
+				EA413ABC2526061900107D4A /* AppLauncher.swift in Sources */,
 				EABC9A182577CB68002D2594 /* TimeEventsOperator.swift in Sources */,
 				EA67E5102657C17F0058DAF8 /* SynthesizerState.swift in Sources */,
 				EA413BBC2528087200107D4A /* DialogueView.swift in Sources */,

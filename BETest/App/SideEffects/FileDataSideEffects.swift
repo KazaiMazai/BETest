@@ -14,7 +14,7 @@ struct FileDataSideEffects {
         self.decoder = decoder
     }
 
-    func map(state: AppState, on store: Store) -> [FileDataOperator.Request] {
+    func props(state: AppState, on store: Store) -> [FileDataOperator.Request] {
         guard let requestState = state.dialogue.dataRequestState else {
             return []
         }

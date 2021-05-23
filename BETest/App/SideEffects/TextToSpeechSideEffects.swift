@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 
 struct TextToSpeechSideEffects {
-    func map(state: AppState, on store: Store) -> TextToSpeechOperator.Request? {
+    func props(state: AppState, on store: Store) -> TextToSpeechOperator.Request? {
         guard let requestState = state.dialogue.availableForSpeech(at: Date()),
               let item = state.storage.messages.findById(requestState.payload)  else {
             return nil

@@ -9,7 +9,7 @@ import Foundation
 import PureduxSideEffects
 
 struct TimeEventsSideEffects {
-    func map(state: AppState, on store: Store) -> [TimeEventsOperator.Request] {
+    func props(state: AppState, on store: Store) -> [TimeEventsOperator.Request] {
         guard case let .inProgress(requestState) = state.currentTime.request else {
             return []
         }
