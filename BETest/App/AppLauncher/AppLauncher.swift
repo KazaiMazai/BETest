@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AppLauncher {
     private let theme: AppUITheme
+    private let screenViewsFactory: ScreenViewsFactoryProtocol
     private let environmentStore: EnvironmentStore<AppState, Action>
     private let store: Store
     private let appStateEnvironment: AppEnvironment
@@ -33,6 +34,7 @@ struct AppLauncher {
         appStateEnvironment = env
         appStateConfig = config
         theme = AppUITheme.defaultTheme
+        screenViewsFactory = ScreenViewsFactory.defaultScreenViewsFactory
 
         timeEvents = Middleware(
             store: store,
@@ -67,9 +69,7 @@ extension AppLauncher {
         }
 
         let window = UIWindow(windowScene: windowScene)
-
-        let rootView = rootViewWith(view: DialoguePresenter())
-
+        let rootView = rootViewWith(view: screenViewsFactory.makeView(for: .dialogue))
         window.rootViewController = DarkHostingController(rootView: rootView)
         return window
     }
@@ -89,6 +89,7 @@ private extension AppLauncher {
     func rootViewWith<V: View>(view: V) -> some View {
         StoreProvidingView(store: environmentStore) {
             view.environment(\.appUITheme, theme)
+                .environment(\.screenViewsFactory, self.screenViewsFactory)
         }
     }
 }
