@@ -51,6 +51,11 @@
 		EA67E51E2657E63E0058DAF8 /* Merging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E51D2657E63E0058DAF8 /* Merging.swift */; };
 		EA67E5232657E6870058DAF8 /* ModelSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E5222657E6870058DAF8 /* ModelSchema.swift */; };
 		EA67E52B2657E6DA0058DAF8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E52A2657E6DA0058DAF8 /* Storage.swift */; };
+		EA67E55A265A966F0058DAF8 /* ScreenViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E559265A966F0058DAF8 /* ScreenViewFactory.swift */; };
+		EA67E562265A96CE0058DAF8 /* ScreenViewFactoryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E561265A96CE0058DAF8 /* ScreenViewFactoryKey.swift */; };
+		EA67E567265A97550058DAF8 /* ScreenViewsFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E566265A97550058DAF8 /* ScreenViewsFactoryProtocol.swift */; };
+		EA67E56C265A97730058DAF8 /* ScreenViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E56B265A97730058DAF8 /* ScreenViews.swift */; };
+		EA67E571265A97AE0058DAF8 /* View+AnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67E570265A97AE0058DAF8 /* View+AnyView.swift */; };
 		EABC99F62577A764002D2594 /* Puredux in Frameworks */ = {isa = PBXBuildFile; productRef = EABC99F52577A764002D2594 /* Puredux */; };
 		EABC9A012577A7B2002D2594 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A002577A7B2002D2594 /* Types.swift */; };
 		EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABC9A052577BAEB002D2594 /* SingeRequest.swift */; };
@@ -126,6 +131,11 @@
 		EA67E51D2657E63E0058DAF8 /* Merging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merging.swift; sourceTree = "<group>"; };
 		EA67E5222657E6870058DAF8 /* ModelSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSchema.swift; sourceTree = "<group>"; };
 		EA67E52A2657E6DA0058DAF8 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		EA67E559265A966F0058DAF8 /* ScreenViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewFactory.swift; sourceTree = "<group>"; };
+		EA67E561265A96CE0058DAF8 /* ScreenViewFactoryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewFactoryKey.swift; sourceTree = "<group>"; };
+		EA67E566265A97550058DAF8 /* ScreenViewsFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewsFactoryProtocol.swift; sourceTree = "<group>"; };
+		EA67E56B265A97730058DAF8 /* ScreenViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViews.swift; sourceTree = "<group>"; };
+		EA67E570265A97AE0058DAF8 /* View+AnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AnyView.swift"; sourceTree = "<group>"; };
 		EABC9A002577A7B2002D2594 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		EABC9A052577BAEB002D2594 /* SingeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingeRequest.swift; sourceTree = "<group>"; };
 		EABC9A172577CB68002D2594 /* TimeEventsOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEventsOperator.swift; sourceTree = "<group>"; };
@@ -291,6 +301,7 @@
 		EA413A5A2525E9CF00107D4A /* AppUI */ = {
 			isa = PBXGroup;
 			children = (
+				EA67E558265A96380058DAF8 /* ScreenViewFactory */,
 				EA413AFF25272E6D00107D4A /* Theme */,
 				EA413A622525EAEB00107D4A /* Screens */,
 				EA413A612525EAE500107D4A /* UIComponents */,
@@ -311,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				EA413A9E2525FEDE00107D4A /* Command.swift */,
+				EA67E570265A97AE0058DAF8 /* View+AnyView.swift */,
 				EA413AA62525FF2300107D4A /* EnvironmentStore.swift */,
 			);
 			path = Utils;
@@ -432,6 +444,17 @@
 				EA67E52A2657E6DA0058DAF8 /* Storage.swift */,
 			);
 			path = EntitiesStorage;
+			sourceTree = "<group>";
+		};
+		EA67E558265A96380058DAF8 /* ScreenViewFactory */ = {
+			isa = PBXGroup;
+			children = (
+				EA67E559265A966F0058DAF8 /* ScreenViewFactory.swift */,
+				EA67E561265A96CE0058DAF8 /* ScreenViewFactoryKey.swift */,
+				EA67E56B265A97730058DAF8 /* ScreenViews.swift */,
+				EA67E566265A97550058DAF8 /* ScreenViewsFactoryProtocol.swift */,
+			);
+			path = ScreenViewFactory;
 			sourceTree = "<group>";
 		};
 		EABC9A162577CB55002D2594 /* TimeEventsOperator */ = {
@@ -611,6 +634,7 @@
 				EA67E5102657C17F0058DAF8 /* SynthesizerState.swift in Sources */,
 				EA413BBC2528087200107D4A /* DialogueView.swift in Sources */,
 				EA413BC42528145700107D4A /* NavigationBarView.swift in Sources */,
+				EA67E571265A97AE0058DAF8 /* View+AnyView.swift in Sources */,
 				EA413A242525E97E00107D4A /* SceneDelegate.swift in Sources */,
 				EA67E51E2657E63E0058DAF8 /* Merging.swift in Sources */,
 				EA413A7B2525EF5600107D4A /* AppState.swift in Sources */,
@@ -619,15 +643,19 @@
 				EA413A802525F00C00107D4A /* Action.swift in Sources */,
 				EA67E50B2657BE970058DAF8 /* AppStateConfig.swift in Sources */,
 				EA67E52B2657E6DA0058DAF8 /* Storage.swift in Sources */,
+				EA67E56C265A97730058DAF8 /* ScreenViews.swift in Sources */,
 				EA413B972527F3B300107D4A /* FileDataOperator.swift in Sources */,
 				EA413AC92526071D00107D4A /* CurrentTime.swift in Sources */,
 				EABC9A062577BAEB002D2594 /* SingeRequest.swift in Sources */,
+				EA67E562265A96CE0058DAF8 /* ScreenViewFactoryKey.swift in Sources */,
+				EA67E567265A97550058DAF8 /* ScreenViewsFactoryProtocol.swift in Sources */,
 				EA413B0125272E7E00107D4A /* AppUITheme.swift in Sources */,
 				EA67E5232657E6870058DAF8 /* ModelSchema.swift in Sources */,
 				EADCDFF425800EC7000D51A5 /* TextToSpeechOperatorRequest.swift in Sources */,
 				EA413AA72525FF2300107D4A /* EnvironmentStore.swift in Sources */,
 				EA413A872525F07A00107D4A /* TextDataSource.swift in Sources */,
 				EA413A9F2525FEDE00107D4A /* Command.swift in Sources */,
+				EA67E55A265A966F0058DAF8 /* ScreenViewFactory.swift in Sources */,
 				EA67E5062657BD000058DAF8 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
